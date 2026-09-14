@@ -1,0 +1,31 @@
+# Gradle
+.gradle/
+build/
+out/
+classes/
+
+# Fabric Loom (pastas de execução do jogo)
+run/
+run-data/
+remappedSrc/
+
+# IntelliJ / Eclipse / VS Code
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+bin/
+.settings/
+.metadata/
+.classpath
+.project
+*.launch
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs / dumps
+*.log
+*.hprof

@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "id": "buildcraftreborn",
+  "version": "${version}",
+  "name": "BuildCraft Reborn",
+  "description": "Port não oficial do BuildCraft 8 para o Minecraft moderno (Fabric): tubos, motores, pedreira, bombas, refino de petróleo, portas lógicas e construtores, com o sistema de energia Craft Energy.\nBaseado no BuildCraft original de SpaceToad e BuildCraft Team, sob a Minecraft Mod Public License.\n\nCriador: Tainan Fermino Peres\nGitHub: https://github.com/FP-Tainan/BuildCraft-Reborn\nBuildCraft original: https://www.mod-buildcraft.com/",
+  "authors": [
+    "Tainan Fermino Peres"
+  ],
+  "contributors": [
+    "SpaceToad",
+    "BuildCraft Team"
+  ],
+  "contact": {
+    "homepage": "https://github.com/FP-Tainan/BuildCraft-Reborn",
+    "sources": "https://github.com/FP-Tainan/BuildCraft-Reborn",
+    "issues": "https://github.com/FP-Tainan/BuildCraft-Reborn/issues"
+  },
+  "license": "MMPL-1.0.1",
+  "icon": "assets/buildcraftreborn/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "net.buildcraftreborn.BuildCraftReborn"
+    ],
+    "client": [
+      "net.buildcraftreborn.client.BuildCraftRebornClient"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=0.19.5",
+    "minecraft": "~26.2",
+    "java": ">=25",
+    "fabric-api": "*",
+    "craftenergy": "*"
+  }
+}

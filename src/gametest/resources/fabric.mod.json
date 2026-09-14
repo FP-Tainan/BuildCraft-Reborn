@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "buildcraftreborn-test",
+  "version": "1.0.0",
+  "name": "BuildCraft Reborn Game Tests",
+  "environment": "*",
+  "entrypoints": {
+    "fabric-gametest": [
+      "net.buildcraftreborn.test.FoundationGameTest"
+    ]
+  }
+}

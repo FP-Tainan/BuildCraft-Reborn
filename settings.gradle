@@ -1,0 +1,16 @@
+pluginManagement {
+    repositories {
+        maven {
+            name = 'Fabric'
+            url = 'https://maven.fabricmc.net/'
+        }
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+
+rootProject.name = 'buildcraftreborn'
+
+// Craft Energy fica na pasta irmã: C:\Projetos\craft-energy
+include 'craft-energy'
+project(':craft-energy').projectDir = file('../craft-energy')
