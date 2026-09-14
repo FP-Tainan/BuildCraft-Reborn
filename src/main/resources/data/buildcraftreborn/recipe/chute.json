@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": ["ici", "igi", " i "],
+  "key": {"i": "#c:ingots/iron", "c": "minecraft:chest", "g": "#c:gears/stone"},
+  "result": {"id": "buildcraftreborn:chute", "count": 1}
+}

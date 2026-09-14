@@ -8,7 +8,8 @@
     "fabric-gametest": [
       "net.buildcraftreborn.test.FoundationGameTest",
       "net.buildcraftreborn.test.CoreGameTest",
-      "net.buildcraftreborn.test.EngineGameTest"
+      "net.buildcraftreborn.test.EngineGameTest",
+      "net.buildcraftreborn.test.FactoryGameTest"
     ]
   }
 }

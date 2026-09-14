@@ -94,7 +94,10 @@ Cada sessão termina com build verde, testes de jogo (gametests) e teste do usu�
   pistão animado, saída de CW no Craft Energy.
 - Motor de redstone (baixíssima potência), motor Stirling (combustível sólido, GUI), motor criativo.
 
-### Sessão 3 — Tanque, bomba e poço de mineração
+### Sessão 3 — Tanque, bomba e poço de mineração ✅
+> Feita: tanque (16.000 CL, empilhável), bomba (10 CWh por balde), poço de mineração (dureza × 16 CWh
+> por bloco), comporta, calha e bancada automática (40 CWh por item), tudo a 220 MV.
+
 - Tanque (empilha na vertical, renderiza o fluido, comparador).
 - Tubo de mineração, poço de mineração, bomba (busca de fluido até 64 blocos, água infinita).
 - Comporta (flood gate), calha (chute), bancada automática.

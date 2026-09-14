@@ -59,6 +59,14 @@ public final class BCItems {
     public static final RegistryObject<BlockItem> STIRLING_ENGINE = described("stirling_engine", BCBlocks.STIRLING_ENGINE);
     public static final RegistryObject<BlockItem> CREATIVE_ENGINE = described("creative_engine", BCBlocks.CREATIVE_ENGINE);
 
+    // ── factory ───────────────────────────────────────────────────────────
+    public static final RegistryObject<BlockItem> TANK = block("tank", BCBlocks.TANK);
+    public static final RegistryObject<BlockItem> PUMP = described("pump", BCBlocks.PUMP);
+    public static final RegistryObject<BlockItem> MINING_WELL = described("mining_well", BCBlocks.MINING_WELL);
+    public static final RegistryObject<BlockItem> FLOOD_GATE = described("flood_gate", BCBlocks.FLOOD_GATE);
+    public static final RegistryObject<BlockItem> CHUTE = described("chute", BCBlocks.CHUTE);
+    public static final RegistryObject<BlockItem> AUTO_WORKBENCH = described("auto_workbench", BCBlocks.AUTO_WORKBENCH);
+
     private BCItems() {}
 
     private static RegistryObject<BlockItem> described(String name, RegistryObject<? extends Block> block) {

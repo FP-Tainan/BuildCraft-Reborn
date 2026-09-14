@@ -49,6 +49,22 @@ public class EngineBlock extends BCDirectionalBlock implements EntityBlock, Wren
         return this.kind;
     }
 
+    /**
+     * Colocado clicando numa máquina ou cabo, o motor vira para ela; senão, para o primeiro vizinho
+     * que aceita energia; sem ninguém, para onde o jogador olha.
+     */
+    @Override
+    public BlockState getStateForPlacement(net.minecraft.world.item.context.BlockPlaceContext context) {
+        Level level = context.getLevel();
+        BlockPos pos = context.getClickedPos();
+        Direction clicked = context.getClickedFace().getOpposite();
+        if (canFace(level, pos, clicked)) return defaultBlockState().setValue(FACING, clicked);
+        for (Direction direction : context.getNearestLookingDirections()) {
+            if (canFace(level, pos, direction)) return defaultBlockState().setValue(FACING, direction);
+        }
+        return super.getStateForPlacement(context);
+    }
+
     @Override
     protected RenderShape getRenderShape(BlockState state) {
         return RenderShape.INVISIBLE;

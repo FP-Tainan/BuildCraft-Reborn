@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": ["ggg", "g g", "ggg"],
+  "key": {"g": "minecraft:glass"},
+  "result": {"id": "buildcraftreborn:tank", "count": 1}
+}

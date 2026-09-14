@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": ["iri", "igi", "tbt"],
+  "key": {"i": "#c:ingots/iron", "r": "minecraft:redstone", "g": "#c:gears/iron", "t": "buildcraftreborn:tank", "b": "minecraft:bucket"},
+  "result": {"id": "buildcraftreborn:pump", "count": 1}
+}

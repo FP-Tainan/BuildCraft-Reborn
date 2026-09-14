@@ -1,0 +1,14 @@
+{
+  "parent": "minecraft:block/block",
+  "textures": {
+    "particle": "buildcraftreborn:block/factory/tank/side",
+    "end": "buildcraftreborn:block/factory/tank/end",
+    "side": "buildcraftreborn:block/factory/tank/side"
+  },
+  "elements": [
+    {
+      "from": [2, 0, 2], "to": [14, 16, 14],
+      "faces": {"up": {"texture": "#end", "cullface": "up"}, "down": {"texture": "#end", "cullface": "down"}, "north": {"texture": "#side"}, "south": {"texture": "#side"}, "west": {"texture": "#side"}, "east": {"texture": "#side"}}
+    }
+  ]
+}

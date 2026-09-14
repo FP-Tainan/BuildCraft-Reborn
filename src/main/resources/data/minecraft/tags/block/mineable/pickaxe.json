@@ -5,6 +5,11 @@
     "buildcraftreborn:decorated_template",
     "buildcraftreborn:decorated_laser_back",
     "buildcraftreborn:stirling_engine",
-    "buildcraftreborn:creative_engine"
+    "buildcraftreborn:creative_engine",
+    "buildcraftreborn:pump",
+    "buildcraftreborn:mining_well",
+    "buildcraftreborn:flood_gate",
+    "buildcraftreborn:chute",
+    "buildcraftreborn:mining_pipe"
   ]
 }

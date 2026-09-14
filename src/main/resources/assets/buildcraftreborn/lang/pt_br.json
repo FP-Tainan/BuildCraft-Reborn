@@ -50,5 +50,17 @@
   "gui.buildcraftreborn.engine.stage.yellow": "Quente",
   "gui.buildcraftreborn.engine.stage.red": "Muito quente",
   "gui.buildcraftreborn.engine.stage.overheat": "Superaquecido",
-  "message.buildcraftreborn.creative_engine": "Motor Criativo: %s a %s"
+  "message.buildcraftreborn.creative_engine": "Motor Criativo: %s a %s",
+  "block.buildcraftreborn.tank": "Tanque",
+  "block.buildcraftreborn.pump": "Bomba",
+  "block.buildcraftreborn.mining_well": "Poço de Mineração",
+  "block.buildcraftreborn.mining_pipe": "Tubo de Mineração",
+  "block.buildcraftreborn.flood_gate": "Comporta",
+  "block.buildcraftreborn.chute": "Calha",
+  "block.buildcraftreborn.auto_workbench": "Bancada Automática",
+  "tooltip.buildcraftreborn.pump": "Bombeia o fluido abaixo dela · 10 CWh por balde a 220 MV",
+  "tooltip.buildcraftreborn.mining_well": "Cava direto para baixo · dureza × 16 CWh por bloco a 220 MV",
+  "tooltip.buildcraftreborn.flood_gate": "Enche a área abaixo e ao redor com o fluido guardado",
+  "tooltip.buildcraftreborn.chute": "Pega itens atrás dela e empurra para a frente",
+  "tooltip.buildcraftreborn.auto_workbench": "Fabrica a receita fantasma com os materiais · 40 CWh por item"
 }

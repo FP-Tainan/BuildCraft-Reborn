@@ -44,7 +44,30 @@ public final class BCBlocks {
             () -> new EngineBlock(BlockBehaviour.Properties.of().setId(BLOCKS.key("creative_engine"))
                     .strength(3.0F, 6.0F).sound(SoundType.METAL), EngineBlock.Kind.CREATIVE));
 
+    // ── factory ───────────────────────────────────────────────────────────
+    public static final RegistryObject<net.buildcraftreborn.factory.block.TankBlock> TANK = BLOCKS.register("tank",
+            () -> new net.buildcraftreborn.factory.block.TankBlock(BlockBehaviour.Properties.of().setId(BLOCKS.key("tank"))
+                    .strength(1.0F).sound(SoundType.GLASS)));
+    public static final RegistryObject<net.buildcraftreborn.factory.block.FactoryMachineBlock> PUMP = BLOCKS.register("pump",
+            () -> new net.buildcraftreborn.factory.block.FactoryMachineBlock(machine("pump"), net.buildcraftreborn.factory.block.FactoryMachineBlock.Kind.PUMP));
+    public static final RegistryObject<net.buildcraftreborn.factory.block.MiningWellBlock> MINING_WELL = BLOCKS.register("mining_well",
+            () -> new net.buildcraftreborn.factory.block.MiningWellBlock(machine("mining_well")));
+    public static final RegistryObject<net.buildcraftreborn.factory.block.FactoryMachineBlock> FLOOD_GATE = BLOCKS.register("flood_gate",
+            () -> new net.buildcraftreborn.factory.block.FactoryMachineBlock(machine("flood_gate"), net.buildcraftreborn.factory.block.FactoryMachineBlock.Kind.FLOOD_GATE));
+    public static final RegistryObject<net.buildcraftreborn.factory.block.ChuteBlock> CHUTE = BLOCKS.register("chute",
+            () -> new net.buildcraftreborn.factory.block.ChuteBlock(machine("chute")));
+    public static final RegistryObject<net.buildcraftreborn.factory.block.FactoryMachineBlock> AUTO_WORKBENCH = BLOCKS.register("auto_workbench",
+            () -> new net.buildcraftreborn.factory.block.FactoryMachineBlock(BlockBehaviour.Properties.of().setId(BLOCKS.key("auto_workbench"))
+                    .strength(2.5F).sound(SoundType.WOOD), net.buildcraftreborn.factory.block.FactoryMachineBlock.Kind.AUTO_WORKBENCH));
+    public static final RegistryObject<net.buildcraftreborn.factory.block.MiningPipeBlock> MINING_PIPE = BLOCKS.register("mining_pipe",
+            () -> new net.buildcraftreborn.factory.block.MiningPipeBlock(BlockBehaviour.Properties.of().setId(BLOCKS.key("mining_pipe"))
+                    .strength(1.0F, 6.0F).sound(SoundType.METAL).noLootTable()));
+
     private BCBlocks() {}
+
+    private static BlockBehaviour.Properties machine(String name) {
+        return BlockBehaviour.Properties.of().setId(BLOCKS.key(name)).strength(3.0F, 6.0F).sound(SoundType.METAL).requiresCorrectToolForDrops();
+    }
 
     private static BlockBehaviour.Properties marker(String name) {
         return BlockBehaviour.Properties.of().setId(BLOCKS.key(name)).noCollision().instabreak().sound(SoundType.WOOD)

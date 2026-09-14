@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": ["iri", "igi", "ipi"],
+  "key": {"i": "#c:ingots/iron", "r": "minecraft:redstone", "g": "#c:gears/iron", "p": "minecraft:iron_pickaxe"},
+  "result": {"id": "buildcraftreborn:mining_well", "count": 1}
+}

@@ -50,5 +50,17 @@
   "gui.buildcraftreborn.engine.stage.yellow": "Hot",
   "gui.buildcraftreborn.engine.stage.red": "Very hot",
   "gui.buildcraftreborn.engine.stage.overheat": "Overheated",
-  "message.buildcraftreborn.creative_engine": "Creative Engine: %s at %s"
+  "message.buildcraftreborn.creative_engine": "Creative Engine: %s at %s",
+  "block.buildcraftreborn.tank": "Tank",
+  "block.buildcraftreborn.pump": "Pump",
+  "block.buildcraftreborn.mining_well": "Mining Well",
+  "block.buildcraftreborn.mining_pipe": "Mining Pipe",
+  "block.buildcraftreborn.flood_gate": "Flood Gate",
+  "block.buildcraftreborn.chute": "Chute",
+  "block.buildcraftreborn.auto_workbench": "Auto Workbench",
+  "tooltip.buildcraftreborn.pump": "Drains fluid below it · 10 CWh per bucket at 220 MV",
+  "tooltip.buildcraftreborn.mining_well": "Digs straight down · hardness × 16 CWh per block at 220 MV",
+  "tooltip.buildcraftreborn.flood_gate": "Fills the area below and around it with its fluid",
+  "tooltip.buildcraftreborn.chute": "Picks up items behind it and pushes them forward",
+  "tooltip.buildcraftreborn.auto_workbench": "Crafts the ghost recipe from its materials · 40 CWh per item"
 }

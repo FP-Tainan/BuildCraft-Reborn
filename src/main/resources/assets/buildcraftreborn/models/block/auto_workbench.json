@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "particle": "buildcraftreborn:block/factory/auto_workbench/side",
+    "down": "buildcraftreborn:block/factory/auto_workbench/top",
+    "up": "buildcraftreborn:block/factory/auto_workbench/top",
+    "north": "buildcraftreborn:block/factory/auto_workbench/side",
+    "south": "buildcraftreborn:block/factory/auto_workbench/side",
+    "west": "buildcraftreborn:block/factory/auto_workbench/side",
+    "east": "buildcraftreborn:block/factory/auto_workbench/side"
+  }
+}

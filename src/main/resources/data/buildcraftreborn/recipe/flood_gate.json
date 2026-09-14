@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": ["igi", "btb", "ibi"],
+  "key": {"i": "#c:ingots/iron", "g": "#c:gears/iron", "b": "minecraft:iron_bars", "t": "buildcraftreborn:tank"},
+  "result": {"id": "buildcraftreborn:flood_gate", "count": 1}
+}
