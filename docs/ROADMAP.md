@@ -16,7 +16,7 @@ Mesmo jeito do IC2 Reborn: cada sessão é implementada, testada no jogo e só d
 | **api** | 355 | Interfaces: MJ, tubos, portas lógicas, receitas, esquemas |
 | **core** | 113 | Chave inglesa, engrenagens (madeira → diamante), pincel (16 cores), lista (filtro), marcadores de área e de caminho, conector de marcadores, caixa de volume, fonte (água/petróleo), motor de redstone e criativo, blocos decorativos |
 | **energy** | 68 | Motor Stirling e motor a combustão, 10 fluidos de petróleo × 3 temperaturas (30), combustíveis, refrigerantes, geração de petróleo no mundo (biomas, poços, lagos) |
-| **factory** | 63 | Tanque, bomba, poço de mineração, tubo de mineração, comporta, calha, bancada automática, destilador, trocador de calor (multibloco), gel de água, folha de plástico |
+| **factory** | 63 | Tanque, bomba, poço de mineração, tubo de mineração, comporta, bancada automática, destilador, trocador de calor (multibloco), gel de água, folha de plástico |
 | **transport** | 174 | 46 tubos (estrutura, itens, fluidos, cinéticos, RF), fio de tubo (16 cores), tampão, adaptador de energia, buffer filtrado, selante |
 | **silicon** | 99 | Laser, mesa de montagem, mesa de trabalho avançada, chipsets, portas lógicas (AND/OR, 4 materiais, 3 modificadores), lente/filtro, pulsar, sensor de luz, temporizador, fachadas, copiador de portas |
 | **builders** | 176 | Pedreira (quarry) + armação, preenchedor (22 padrões), construtor, mesa do arquiteto, biblioteca eletrônica, substituidor, moldes e plantas, planejador de preenchimento |
@@ -96,11 +96,11 @@ Cada sessão termina com build verde, testes de jogo (gametests) e teste do usu�
 
 ### Sessão 3 — Tanque, bomba e poço de mineração ✅
 > Feita: tanque (16.000 CL, empilhável), bomba (10 CWh por balde), poço de mineração (dureza × 16 CWh
-> por bloco), comporta, calha e bancada automática (40 CWh por item), tudo a 220 MV.
+> por bloco), comporta e bancada automática (40 CWh por item, só com energia), tudo a 220 MV. A calha saiu: o funil do Minecraft faz o mesmo.
 
 - Tanque (empilha na vertical, renderiza o fluido, comparador).
 - Tubo de mineração, poço de mineração, bomba (busca de fluido até 64 blocos, água infinita).
-- Comporta (flood gate), calha (chute), bancada automática.
+- Comporta (flood gate), bancada automática.
 
 ### Sessão 4 — Pedreira (Quarry)
 - Armação, pedreira com fila de tarefas (armação → mover broca → quebrar), área pelos marcadores ou

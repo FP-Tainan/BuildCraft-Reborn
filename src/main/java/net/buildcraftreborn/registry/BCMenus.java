@@ -22,8 +22,6 @@ public final class BCMenus {
             MENUS.register("stirling_engine", () -> new ExtendedMenuType<>(net.buildcraftreborn.energy.engine.StirlingEngineMenu::new,
                     net.minecraft.core.BlockPos.STREAM_CODEC));
 
-    public static final RegistryObject<ExtendedMenuType<net.buildcraftreborn.factory.ChuteMenu, net.minecraft.core.BlockPos>> CHUTE =
-            MENUS.register("chute", () -> new ExtendedMenuType<>(net.buildcraftreborn.factory.ChuteMenu::new, net.minecraft.core.BlockPos.STREAM_CODEC));
     public static final RegistryObject<ExtendedMenuType<net.buildcraftreborn.factory.AutoWorkbenchMenu, net.minecraft.core.BlockPos>> AUTO_WORKBENCH =
             MENUS.register("auto_workbench", () -> new ExtendedMenuType<>(net.buildcraftreborn.factory.AutoWorkbenchMenu::new, net.minecraft.core.BlockPos.STREAM_CODEC));
 

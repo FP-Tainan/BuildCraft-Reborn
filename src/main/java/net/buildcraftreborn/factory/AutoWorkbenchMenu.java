@@ -64,9 +64,10 @@ public class AutoWorkbenchMenu extends BCMenu {
         addDataSlots(data);
     }
 
-    /** Energia guardada para a próxima fabricação, de 0 a 1. */
+    /** Progresso da fabricação atual, de 0 a 1; negativo quando não há o que fabricar. */
     public double progress() {
-        return Math.min(1.0, this.data.get(0) / 1000.0);
+        int value = this.data.get(0);
+        return value < 0 ? -1.0 : Math.min(1.0, value / 1000.0);
     }
 
     @Override

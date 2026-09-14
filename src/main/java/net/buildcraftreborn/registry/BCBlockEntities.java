@@ -32,8 +32,6 @@ public final class BCBlockEntities {
             () -> new BlockEntityType<>(net.buildcraftreborn.factory.tile.MiningWellBlockEntity::new, Set.of(BCBlocks.MINING_WELL.get())));
     public static final RegistryObject<BlockEntityType<net.buildcraftreborn.factory.tile.FloodGateBlockEntity>> FLOOD_GATE = BLOCK_ENTITIES.register("flood_gate",
             () -> new BlockEntityType<>(net.buildcraftreborn.factory.tile.FloodGateBlockEntity::new, Set.of(BCBlocks.FLOOD_GATE.get())));
-    public static final RegistryObject<BlockEntityType<net.buildcraftreborn.factory.tile.ChuteBlockEntity>> CHUTE = BLOCK_ENTITIES.register("chute",
-            () -> new BlockEntityType<>(net.buildcraftreborn.factory.tile.ChuteBlockEntity::new, Set.of(BCBlocks.CHUTE.get())));
     public static final RegistryObject<BlockEntityType<net.buildcraftreborn.factory.tile.AutoWorkbenchBlockEntity>> AUTO_WORKBENCH = BLOCK_ENTITIES.register("auto_workbench",
             () -> new BlockEntityType<>(net.buildcraftreborn.factory.tile.AutoWorkbenchBlockEntity::new, Set.of(BCBlocks.AUTO_WORKBENCH.get())));
 

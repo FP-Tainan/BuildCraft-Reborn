@@ -5,8 +5,13 @@ import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Inventory;
 
-/** Tela da bancada automática (textura original do BuildCraft), com a barra de energia da próxima fabricação. */
+/** Tela da bancada automática (textura original do BuildCraft), com a seta enchendo enquanto fabrica. */
 public class AutoWorkbenchScreen extends BCScreen<AutoWorkbenchMenu> {
+    private static final int ARROW_X = 90;
+    private static final int ARROW_Y = 47;
+    private static final int ARROW_WIDTH = 23;
+    private static final int ARROW_HEIGHT = 10;
+
     public AutoWorkbenchScreen(AutoWorkbenchMenu menu, Inventory inventory, Component title) {
         super(menu, inventory, title, "auto_workbench.png", 176, 197);
     }
@@ -14,9 +19,11 @@ public class AutoWorkbenchScreen extends BCScreen<AutoWorkbenchMenu> {
     @Override
     public void extractBackground(GuiGraphicsExtractor graphics, int mouseX, int mouseY, float partialTick) {
         super.extractBackground(graphics, mouseX, mouseY, partialTick);
-        int width = (int) Math.round(22 * this.menu.progress());
-        graphics.fill(this.leftPos + 90, this.topPos + 50, this.leftPos + 112, this.topPos + 52, 0xFF3A3A3A);
-        if (width > 0) graphics.fill(this.leftPos + 90, this.topPos + 50, this.leftPos + 90 + width, this.topPos + 52, 0xFF2FB02F);
+        double progress = this.menu.progress();
+        if (progress < 0) return;
+        // a seta branca do próprio BuildCraft (u=176, v=0) enche da esquerda para a direita
+        int width = (int) Math.round(ARROW_WIDTH * progress);
+        if (width > 0) blitPart(graphics, ARROW_X, ARROW_Y, 176, 0, width, ARROW_HEIGHT);
     }
 
     @Override

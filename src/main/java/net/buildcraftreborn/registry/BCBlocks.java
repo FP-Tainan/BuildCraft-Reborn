@@ -54,8 +54,6 @@ public final class BCBlocks {
             () -> new net.buildcraftreborn.factory.block.MiningWellBlock(machine("mining_well")));
     public static final RegistryObject<net.buildcraftreborn.factory.block.FactoryMachineBlock> FLOOD_GATE = BLOCKS.register("flood_gate",
             () -> new net.buildcraftreborn.factory.block.FactoryMachineBlock(machine("flood_gate"), net.buildcraftreborn.factory.block.FactoryMachineBlock.Kind.FLOOD_GATE));
-    public static final RegistryObject<net.buildcraftreborn.factory.block.ChuteBlock> CHUTE = BLOCKS.register("chute",
-            () -> new net.buildcraftreborn.factory.block.ChuteBlock(machine("chute")));
     public static final RegistryObject<net.buildcraftreborn.factory.block.FactoryMachineBlock> AUTO_WORKBENCH = BLOCKS.register("auto_workbench",
             () -> new net.buildcraftreborn.factory.block.FactoryMachineBlock(BlockBehaviour.Properties.of().setId(BLOCKS.key("auto_workbench"))
                     .strength(2.5F).sound(SoundType.WOOD), net.buildcraftreborn.factory.block.FactoryMachineBlock.Kind.AUTO_WORKBENCH));

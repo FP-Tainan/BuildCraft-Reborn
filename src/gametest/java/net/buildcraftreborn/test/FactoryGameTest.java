@@ -1,12 +1,10 @@
 package net.buildcraftreborn.test;
 
 import net.buildcraftreborn.factory.tile.AutoWorkbenchBlockEntity;
-import net.buildcraftreborn.factory.tile.ChuteBlockEntity;
 import net.buildcraftreborn.factory.tile.FloodGateBlockEntity;
 import net.buildcraftreborn.factory.tile.MiningWellBlockEntity;
 import net.buildcraftreborn.factory.tile.PumpBlockEntity;
 import net.buildcraftreborn.factory.tile.TankBlockEntity;
-import net.buildcraftreborn.lib.block.BCDirectionalBlock;
 import net.buildcraftreborn.registry.BCBlocks;
 import net.craftenergy.api.EnergyUnits;
 import net.fabricmc.fabric.api.gametest.v1.GameTest;
@@ -98,19 +96,6 @@ public class FactoryGameTest {
     }
 
     @GameTest(maxTicks = 40)
-    public void chutePushesIntoChest(GameTestHelper helper) {
-        BlockPos chutePos = new BlockPos(1, 2, 1);
-        helper.setBlock(chutePos.below(), Blocks.CHEST);
-        helper.setBlock(chutePos, BCBlocks.CHUTE.get().defaultBlockState().setValue(BCDirectionalBlock.FACING, Direction.DOWN));
-        ChuteBlockEntity chute = (ChuteBlockEntity) helper.getBlockEntity(chutePos, ChuteBlockEntity.class);
-        chute.inventory().setItem(0, new ItemStack(Items.DIAMOND, 2));
-        helper.succeedWhen(() -> {
-            Container chest = (Container) helper.getBlockEntity(chutePos.below(), net.minecraft.world.level.block.entity.BlockEntity.class);
-            if (chest.countItem(Items.DIAMOND) != 2) helper.fail("os diamantes deveriam descer para o baú");
-        });
-    }
-
-    @GameTest(maxTicks = 40)
     public void autoWorkbenchCraftsFromMaterials(GameTestHelper helper) {
         BlockPos pos = new BlockPos(1, 1, 1);
         helper.setBlock(pos, BCBlocks.AUTO_WORKBENCH.get());
@@ -118,7 +103,14 @@ public class FactoryGameTest {
         Item planks = item("oak_planks");
         for (int slot : new int[]{0, 1, 3, 4}) workbench.grid().setItem(slot, new ItemStack(planks));
         workbench.inventory().setItem(0, new ItemStack(planks, 4));
-        workbench.energy().receivePower(AutoWorkbenchBlockEntity.ENERGY_PER_CRAFT, 220);
+        // sem energia não fabrica; depois de 5 ticks a rede passa a alimentar
+        int[] ticks = {0};
+        helper.onEachTick(() -> {
+            if (++ticks[0] == 5 && !workbench.inventory().getItem(AutoWorkbenchBlockEntity.OUTPUT).isEmpty()) {
+                helper.fail("sem energia a bancada não deveria fabricar");
+            }
+            if (ticks[0] > 5) workbench.energy().receivePower(AutoWorkbenchBlockEntity.MAX_INPUT, 220);
+        });
         helper.succeedWhen(() -> {
             ItemStack output = workbench.inventory().getItem(AutoWorkbenchBlockEntity.OUTPUT);
             if (!output.is(Items.CRAFTING_TABLE)) helper.fail("a bancada deveria ter feito uma mesa de trabalho: " + output);

@@ -4,7 +4,6 @@ import net.buildcraftreborn.client.render.EngineRenderer;
 import net.buildcraftreborn.client.render.MarkerRenderer;
 import net.buildcraftreborn.client.render.TankRenderer;
 import net.buildcraftreborn.client.screen.AutoWorkbenchScreen;
-import net.buildcraftreborn.client.screen.ChuteScreen;
 import net.buildcraftreborn.client.screen.ListScreen;
 import net.buildcraftreborn.client.screen.StirlingEngineScreen;
 import net.buildcraftreborn.registry.BCBlockEntities;
@@ -20,7 +19,6 @@ public final class BuildCraftRebornClient implements ClientModInitializer {
     public void onInitializeClient() {
         MenuScreens.register(BCMenus.LIST.get(), ListScreen::new);
         MenuScreens.register(BCMenus.STIRLING_ENGINE.get(), StirlingEngineScreen::new);
-        MenuScreens.register(BCMenus.CHUTE.get(), ChuteScreen::new);
         MenuScreens.register(BCMenus.AUTO_WORKBENCH.get(), AutoWorkbenchScreen::new);
         BlockEntityRendererRegistry.register(BCBlockEntities.MARKER.get(), MarkerRenderer::new);
         BlockEntityRendererRegistry.register(BCBlockEntities.ENGINE.get(), EngineRenderer::new);
