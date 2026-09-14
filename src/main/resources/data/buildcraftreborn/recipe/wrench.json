@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": ["i i", " g ", " i "],
+  "key": {"i": "minecraft:iron_ingot", "g": "#c:gears/stone"},
+  "result": {"id": "buildcraftreborn:wrench", "count": 1}
+}

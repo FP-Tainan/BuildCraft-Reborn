@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "pattern": ["www", " g ", "GpG"],
+  "key": {"w": "#minecraft:stone_crafting_materials", "g": "minecraft:glass", "G": "#c:gears/stone", "p": "minecraft:piston"},
+  "result": {"id": "buildcraftreborn:stirling_engine", "count": 1}
+}

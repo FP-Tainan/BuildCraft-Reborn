@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "facing=up": {"model": "buildcraftreborn:block/redstone_engine"},
+    "facing=down": {"model": "buildcraftreborn:block/redstone_engine"},
+    "facing=north": {"model": "buildcraftreborn:block/redstone_engine"},
+    "facing=south": {"model": "buildcraftreborn:block/redstone_engine"},
+    "facing=west": {"model": "buildcraftreborn:block/redstone_engine"},
+    "facing=east": {"model": "buildcraftreborn:block/redstone_engine"}
+  }
+}

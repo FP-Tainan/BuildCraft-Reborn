@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [" iw", " gi", "s  "],
+  "key": {"i": "minecraft:string", "w": "#minecraft:wool", "g": "#c:gears/wooden", "s": "minecraft:stick"},
+  "result": {"id": "buildcraftreborn:paintbrush", "count": 1}
+}

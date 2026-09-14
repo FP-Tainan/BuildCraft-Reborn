@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "pattern": ["www", " g ", "GpG"],
+  "key": {"w": "#minecraft:planks", "g": "minecraft:glass", "G": "#c:gears/wooden", "p": "minecraft:piston"},
+  "result": {"id": "buildcraftreborn:redstone_engine", "count": 1}
+}

@@ -6,7 +6,9 @@
   "environment": "*",
   "entrypoints": {
     "fabric-gametest": [
-      "net.buildcraftreborn.test.FoundationGameTest"
+      "net.buildcraftreborn.test.FoundationGameTest",
+      "net.buildcraftreborn.test.CoreGameTest",
+      "net.buildcraftreborn.test.EngineGameTest"
     ]
   }
 }

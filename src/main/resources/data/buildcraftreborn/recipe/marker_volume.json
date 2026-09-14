@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": ["l", "t"],
+  "key": {"l": "minecraft:lapis_lazuli", "t": "minecraft:redstone_torch"},
+  "result": {"id": "buildcraftreborn:marker_volume", "count": 1}
+}

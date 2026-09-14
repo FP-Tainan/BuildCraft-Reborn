@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": ["g", "t"],
+  "key": {"g": "minecraft:green_dye", "t": "minecraft:redstone_torch"},
+  "result": {"id": "buildcraftreborn:marker_path", "count": 1}
+}

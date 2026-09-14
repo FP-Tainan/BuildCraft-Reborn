@@ -76,13 +76,20 @@ Cada sessão termina com build verde, testes de jogo (gametests) e teste do usu�
   widget de tanque, ledgers simples.
 - Gametests rodando no `./gradlew build`.
 
-### Sessão 1 — Core: ferramentas e marcadores
+### Sessão 1 — Core: ferramentas e marcadores ✅
+> Feita. A caixa de volume e a localização no mapa ficaram para as sessões do preenchedor e do
+> planejador de zonas, onde são usadas. A fonte de água também entrou nesta sessão.
+
 - Chave inglesa, 5 engrenagens, pincel (16 cores + limpar), lista (filtro com GUI), blocos decorativos.
 - Marcador de área (Land Mark) e de caminho (Path Mark), conector de marcadores, caixa de volume
   (dados salvos no mundo), localização no mapa, fragmento de fluido.
 - **Renderizador de laser** (base para marcadores, pedreira e silício).
 
-### Sessão 2 — Motores
+### Sessão 2 — Motores ✅
+> Feita: redstone (50 CW), Stirling (1.000 CW, buffer de 1.000 CWh) e criativo (1 a 256 kCW, tensão
+> escolhida). Saída só pela frente, com redstone; o motor criativo muda a tensão com clique direito
+> e a potência com a chave agachado.
+
 - Base de motor: frente giratória com chave, redstone liga, estágios de calor, superaquecimento,
   pistão animado, saída de CW no Craft Energy.
 - Motor de redstone (baixíssima potência), motor Stirling (combustível sólido, GUI), motor criativo.

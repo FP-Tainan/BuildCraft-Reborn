@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": ["prp", "pgp", "ppp"],
+  "key": {"p": "minecraft:paper", "r": "minecraft:redstone", "g": "minecraft:green_dye"},
+  "result": {"id": "buildcraftreborn:list", "count": 1}
+}

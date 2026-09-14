@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [" c ", "cgc", " c "],
+  "key": {"c": "#minecraft:stone_crafting_materials", "g": "#c:gears/wooden"},
+  "result": {"id": "buildcraftreborn:gear_stone", "count": 1}
+}

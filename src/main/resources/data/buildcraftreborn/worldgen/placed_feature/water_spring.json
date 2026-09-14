@@ -1,0 +1,8 @@
+{
+  "feature": "buildcraftreborn:water_spring",
+  "placement": [
+    {"type": "minecraft:rarity_filter", "chance": 40},
+    {"type": "minecraft:in_square"},
+    {"type": "minecraft:biome"}
+  ]
+}

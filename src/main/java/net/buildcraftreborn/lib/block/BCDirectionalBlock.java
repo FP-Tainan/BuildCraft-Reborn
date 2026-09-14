@@ -56,6 +56,8 @@ public abstract class BCDirectionalBlock extends Block {
             Direction next = Direction.from3DDataValue((current.get3DDataValue() + step) % 6);
             if (canFace(level, pos, next)) {
                 level.setBlock(pos, state.setValue(FACING, next), Block.UPDATE_ALL);
+                // a face que conecta na rede elétrica mudou
+                net.craftenergy.fabric.CraftEnergyApi.markChanged(level, pos);
                 return true;
             }
         }

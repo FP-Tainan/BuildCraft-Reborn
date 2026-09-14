@@ -1,0 +1,6 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": ["buildcraftreborn:paintbrush", "minecraft:red_dye"],
+  "result": {"id": "buildcraftreborn:paintbrush_red", "count": 1}
+}

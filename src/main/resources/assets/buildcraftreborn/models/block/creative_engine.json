@@ -1,0 +1,43 @@
+{
+  "parent": "minecraft:block/block",
+  "textures": {
+    "particle": "buildcraftreborn:block/engine/creative_back",
+    "back": "buildcraftreborn:block/engine/creative_back",
+    "side": "buildcraftreborn:block/engine/creative_side",
+    "trunk": "buildcraftreborn:block/engine/trunk_creative"
+  },
+  "elements": [
+    {
+      "from": [0, 0, 0], "to": [16, 4, 16],
+      "faces": {
+        "down": {"uv": [0, 0, 16, 16], "texture": "#back"},
+        "up": {"uv": [0, 0, 16, 16], "texture": "#back"},
+        "north": {"uv": [0, 0, 16, 4], "texture": "#side"},
+        "south": {"uv": [0, 0, 16, 4], "texture": "#side"},
+        "west": {"uv": [0, 0, 16, 4], "texture": "#side"},
+        "east": {"uv": [0, 0, 16, 4], "texture": "#side"}
+      }
+    },
+    {
+      "from": [0, 4, 0], "to": [16, 8, 16],
+      "faces": {
+        "down": {"uv": [0, 0, 16, 16], "texture": "#back"},
+        "up": {"uv": [0, 0, 16, 16], "texture": "#back"},
+        "north": {"uv": [0, 0, 16, 4], "texture": "#side"},
+        "south": {"uv": [0, 0, 16, 4], "texture": "#side"},
+        "west": {"uv": [0, 0, 16, 4], "texture": "#side"},
+        "east": {"uv": [0, 0, 16, 4], "texture": "#side"}
+      }
+    },
+    {
+      "from": [4, 8, 4], "to": [12, 16, 12],
+      "faces": {
+        "up": {"uv": [0, 0, 8, 8], "texture": "#trunk"},
+        "north": {"uv": [8, 0, 16, 8], "texture": "#trunk"},
+        "south": {"uv": [8, 0, 16, 8], "texture": "#trunk"},
+        "west": {"uv": [8, 0, 16, 8], "texture": "#trunk"},
+        "east": {"uv": [8, 0, 16, 8], "texture": "#trunk"}
+      }
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": ["pp", "pp"],
+  "key": {"p": "minecraft:paper"},
+  "result": {"id": "buildcraftreborn:decorated_paper", "count": 1}
+}

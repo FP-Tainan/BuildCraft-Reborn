@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": ["sss", "scs", "sss"],
+  "key": {"s": "minecraft:smooth_stone", "c": "minecraft:redstone"},
+  "result": {"id": "buildcraftreborn:decorated_laser_back", "count": 8}
+}

@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [" i ", "igi", " i "],
+  "key": {"i": "minecraft:iron_ingot", "g": "#c:gears/stone"},
+  "result": {"id": "buildcraftreborn:gear_iron", "count": 1}
+}

@@ -30,6 +30,8 @@ public final class BCConfig {
     public double miningMultiplier = 1.0;
     /** Tarefas da pedreira por tick (BuildCraft: 4, de 1 a 20). */
     public int quarryMaxTasksPerTick = 4;
+    /** Gera fontes de água na rocha-mãe (BuildCraft: 2,5% dos chunks). */
+    public boolean waterSprings = true;
     /** Gera poços, lagos e biomas de petróleo no mundo. */
     public boolean oilWorldgen = true;
     /** Desenha os feixes dos lasers. */

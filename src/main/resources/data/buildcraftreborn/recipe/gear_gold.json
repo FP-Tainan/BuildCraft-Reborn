@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [" i ", "igi", " i "],
+  "key": {"i": "minecraft:gold_ingot", "g": "#c:gears/iron"},
+  "result": {"id": "buildcraftreborn:gear_gold", "count": 1}
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "buildcraftreborn:block/marker_torch",
+  "textures": {
+    "all": "buildcraftreborn:block/marker_volume"
+  }
+}

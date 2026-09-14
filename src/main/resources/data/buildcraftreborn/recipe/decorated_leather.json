@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": ["ll", "ll"],
+  "key": {"l": "minecraft:leather"},
+  "result": {"id": "buildcraftreborn:decorated_leather", "count": 1}
+}

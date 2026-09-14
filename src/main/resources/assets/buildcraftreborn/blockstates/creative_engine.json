@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "facing=up": {"model": "buildcraftreborn:block/creative_engine"},
+    "facing=down": {"model": "buildcraftreborn:block/creative_engine"},
+    "facing=north": {"model": "buildcraftreborn:block/creative_engine"},
+    "facing=south": {"model": "buildcraftreborn:block/creative_engine"},
+    "facing=west": {"model": "buildcraftreborn:block/creative_engine"},
+    "facing=east": {"model": "buildcraftreborn:block/creative_engine"}
+  }
+}
