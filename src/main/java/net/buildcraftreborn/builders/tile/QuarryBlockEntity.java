@@ -29,7 +29,9 @@ import net.minecraft.world.level.storage.ValueOutput;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Deque;
 import java.util.List;
 
 /**
@@ -49,6 +51,9 @@ public class QuarryBlockEntity extends BCBlockEntity implements ServerTicking, M
     public static final int MIN_HEIGHT = 4;
     private static final int CHECKS_PER_TASK = 512;
     private static final int SYNC_INTERVAL = 5;
+    private static final int RESCAN_CHECKS = 256;
+    private static final int MAX_PENDING = 64;
+    private static final int FRAME_CHECK_INTERVAL = 100;
 
     public enum Stage { FRAME, MINE, DONE }
 
@@ -64,6 +69,10 @@ public class QuarryBlockEntity extends BCBlockEntity implements ServerTicking, M
     private boolean chunksForced;
     private boolean dirty;
     private int syncTimer;
+    /** Blocos que apareceram onde a pedreira já tinha passado. */
+    private final Deque<BlockPos> pending = new ArrayDeque<>();
+    private @Nullable BlockPos rescanCursor;
+    private int frameCheckTimer;
     // cliente
     private @Nullable Vec3 shownDrill;
 
@@ -152,6 +161,17 @@ public class QuarryBlockEntity extends BCBlockEntity implements ServerTicking, M
     public void serverTick() {
         if (!(this.level instanceof ServerLevel server)) return;
         if (this.min == null || this.max == null) initArea();
+        if (this.stage != Stage.FRAME) {
+            if (++this.frameCheckTimer >= FRAME_CHECK_INTERVAL) {
+                this.frameCheckTimer = 0;
+                checkFrames(server);
+            }
+            if (this.stage != Stage.FRAME) rescan(server);
+        }
+        if (this.stage == Stage.DONE && !this.pending.isEmpty()) {
+            this.stage = Stage.MINE;
+            this.dirty = true;
+        }
         forceChunks(server, this.stage != Stage.DONE);
         for (int task = 0; task < BuildCraftReborn.config.quarryMaxTasksPerTick; task++) {
             if (!step(server)) break;
@@ -191,7 +211,8 @@ public class QuarryBlockEntity extends BCBlockEntity implements ServerTicking, M
                     return true;
                 }
                 this.stage = Stage.MINE;
-                this.cursor = new BlockPos(this.min.getX() + 1, this.max.getY(), this.min.getZ() + 1);
+                // armação consertada no meio do trabalho: continua de onde parou
+                if (this.cursor == null) this.cursor = new BlockPos(this.min.getX() + 1, this.max.getY(), this.min.getZ() + 1);
                 this.dirty = true;
                 return true;
             }
@@ -199,6 +220,22 @@ public class QuarryBlockEntity extends BCBlockEntity implements ServerTicking, M
                 if (this.max.getX() - this.min.getX() < 2 || this.max.getZ() - this.min.getZ() < 2) {
                     finish();
                     return false;
+                }
+                // blocos colocados de novo onde a pedreira já passou vêm antes da camada atual
+                while (!this.pending.isEmpty()) {
+                    BlockPos target = this.pending.peek();
+                    BlockState state = server.getBlockState(target);
+                    if (!canMine(server, target, state)) {
+                        this.pending.poll();
+                        continue;
+                    }
+                    if (!this.energy.use(MiningWellBlockEntity.breakEnergy(server, target, state) + MOVE_ENERGY)) return false;
+                    this.pending.poll();
+                    breakBlock(server, target, state);
+                    this.drill = target;
+                    this.minedBlocks++;
+                    this.dirty = true;
+                    return true;
                 }
                 for (int checks = 0; checks < CHECKS_PER_TASK; checks++) {
                     if (this.cursor.getY() < server.getMinY()
@@ -223,6 +260,55 @@ public class QuarryBlockEntity extends BCBlockEntity implements ServerTicking, M
             }
             default -> {
                 return false;
+            }
+        }
+    }
+
+    /**
+     * Confere aos poucos as camadas por onde a pedreira já passou (depois de concluída, a área toda) e põe
+     * na fila os blocos que alguém colocou de novo, como no BuildCraft original.
+     */
+    private void rescan(ServerLevel level) {
+        if (this.min == null || this.max == null || this.pending.size() >= MAX_PENDING) return;
+        if (this.max.getX() - this.min.getX() < 2 || this.max.getZ() - this.min.getZ() < 2) return;
+        int top = this.max.getY();
+        int bottom = this.stage == Stage.DONE
+                ? Math.max(level.getMinY(), this.worldPosition.getY() - BuildCraftReborn.config.miningMaxDepth)
+                : (this.cursor == null ? top + 1 : this.cursor.getY() + 1);
+        if (bottom > top) return;
+        if (this.rescanCursor == null || this.rescanCursor.getY() < bottom || this.rescanCursor.getY() > top) {
+            this.rescanCursor = new BlockPos(this.min.getX() + 1, top, this.min.getZ() + 1);
+        }
+        for (int checks = 0; checks < RESCAN_CHECKS && this.pending.size() < MAX_PENDING; checks++) {
+            BlockPos pos = this.rescanCursor;
+            if (level.isLoaded(pos) && canMine(level, pos, level.getBlockState(pos)) && !this.pending.contains(pos)) {
+                this.pending.add(pos);
+            }
+            int x = pos.getX() + 1;
+            int y = pos.getY();
+            int z = pos.getZ();
+            if (x > this.max.getX() - 1) {
+                x = this.min.getX() + 1;
+                z++;
+                if (z > this.max.getZ() - 1) {
+                    z = this.min.getZ() + 1;
+                    y = y - 1 < bottom ? top : y - 1;
+                }
+            }
+            this.rescanCursor = new BlockPos(x, y, z);
+        }
+    }
+
+    /** Peça de armação quebrada (e que dá para repor): volta a montar antes de continuar. */
+    private void checkFrames(ServerLevel level) {
+        for (BlockPos pos : frames()) {
+            if (!level.isLoaded(pos)) continue;
+            BlockState state = level.getBlockState(pos);
+            if (!state.is(BCBlocks.FRAME.get()) && state.getDestroySpeed(level, pos) >= 0) {
+                this.stage = Stage.FRAME;
+                this.frameIndex = 0;
+                this.dirty = true;
+                return;
             }
         }
     }

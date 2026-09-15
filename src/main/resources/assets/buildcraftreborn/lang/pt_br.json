@@ -78,5 +78,6 @@
   "block.buildcraftreborn.pipe_items_clay": "Tubo de Transporte de Argila",
   "block.buildcraftreborn.pipe_items_void": "Tubo de Transporte Vazio",
   "block.buildcraftreborn.pipe_items_obsidian": "Tubo de Transporte de Obsidiana",
-  "block.buildcraftreborn.pipe_structure_cobblestone": "Tubo de Estrutura de Pedregulho"
+  "block.buildcraftreborn.pipe_structure_cobblestone": "Tubo de Estrutura de Pedregulho",
+  "gui.buildcraftreborn.engine.power_label": "Potência:"
 }

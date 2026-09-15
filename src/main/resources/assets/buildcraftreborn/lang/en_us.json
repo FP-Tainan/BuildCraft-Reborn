@@ -78,5 +78,6 @@
   "block.buildcraftreborn.pipe_items_clay": "Clay Transport Pipe",
   "block.buildcraftreborn.pipe_items_void": "Void Transport Pipe",
   "block.buildcraftreborn.pipe_items_obsidian": "Obsidian Transport Pipe",
-  "block.buildcraftreborn.pipe_structure_cobblestone": "Cobblestone Structure Pipe"
+  "block.buildcraftreborn.pipe_structure_cobblestone": "Cobblestone Structure Pipe",
+  "gui.buildcraftreborn.engine.power_label": "Output:"
 }

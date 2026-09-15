@@ -13,6 +13,35 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 
 /** Sessão 4: a pedreira monta a armação na caixa dos marcadores e minera por dentro. */
 public class QuarryGameTest {
+    @GameTest(maxTicks = 400)
+    public void quarryComesBackForPlacedBlocks(GameTestHelper helper) {
+        BlockPos corner = new BlockPos(1, 2, 1);
+        helper.setBlock(corner, BCBlocks.MARKER_VOLUME.get());
+        helper.setBlock(new BlockPos(4, 2, 1), BCBlocks.MARKER_VOLUME.get());
+        helper.setBlock(new BlockPos(1, 2, 4), BCBlocks.MARKER_VOLUME.get());
+        ((MarkerBlockEntity) helper.getBlockEntity(corner, MarkerBlockEntity.class)).connectManually();
+        BlockPos first = new BlockPos(2, 1, 2);
+        BlockPos again = new BlockPos(3, 3, 3);
+        helper.setBlock(first, Blocks.STONE);
+        BlockPos quarryPos = new BlockPos(0, 2, 1);
+        helper.setBlock(quarryPos.south(), Blocks.CHEST);
+        helper.setBlock(quarryPos, BCBlocks.QUARRY.get());
+        QuarryBlockEntity quarry = (QuarryBlockEntity) helper.getBlockEntity(quarryPos, QuarryBlockEntity.class);
+        boolean[] placed = {false};
+        helper.onEachTick(() -> {
+            quarry.energy().receivePower(QuarryBlockEntity.MAX_INPUT, 220);
+            // depois que a pedreira passou da camada Y=3, alguém coloca um bloco lá
+            if (!placed[0] && quarry.stage() == QuarryBlockEntity.Stage.MINE && helper.getBlockState(first).isAir()) {
+                helper.setBlock(again, Blocks.STONE);
+                placed[0] = true;
+            }
+        });
+        helper.succeedWhen(() -> {
+            if (!placed[0]) helper.fail("a pedreira ainda não passou do primeiro bloco");
+            helper.assertBlockNotPresent(Blocks.STONE, again);
+        });
+    }
+
     @GameTest(maxTicks = 200)
     public void quarryBuildsFrameAndMines(GameTestHelper helper) {
         // caixa de marcadores: x 1..4, z 1..4 (a armação sobe até 4 de altura)

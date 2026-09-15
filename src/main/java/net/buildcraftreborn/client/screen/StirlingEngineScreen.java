@@ -30,10 +30,12 @@ public class StirlingEngineScreen extends BCScreen<StirlingEngineMenu> {
     protected void extractLabels(GuiGraphicsExtractor graphics, int mouseX, int mouseY) {
         graphics.text(this.font, this.title, 8, 6, 0xFF404040, false);
         graphics.text(this.font, this.playerInventoryTitle, 8, this.imageHeight - 94, 0xFF404040, false);
+        // potência à esquerda da chama (rótulo e valor em linhas separadas), calor à direita
         EngineStage stage = this.menu.stage();
-        graphics.text(this.font, Component.translatable("gui.buildcraftreborn.engine.power", EnergyUnits.formatPower(this.menu.power())),
-                104, 30, 0xFF404040, false);
-        graphics.text(this.font, Component.translatable("gui.buildcraftreborn.engine.stage." + stage.name).withStyle(stage.color),
-                104, 44, 0xFF404040, false);
+        graphics.text(this.font, Component.translatable("gui.buildcraftreborn.engine.power_label"), 8, 26, 0xFF404040, false);
+        graphics.text(this.font, Component.literal(EnergyUnits.formatPower(this.menu.power())), 8, 38, 0xFF404040, false);
+        Component heat = Component.translatable("gui.buildcraftreborn.engine.stage." + stage.name).withStyle(stage.color);
+        int heatX = Math.min(102, this.imageWidth - 7 - this.font.width(heat));
+        graphics.text(this.font, heat, heatX, 38, 0xFF404040, false);
     }
 }
