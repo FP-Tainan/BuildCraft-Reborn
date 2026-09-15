@@ -24,7 +24,8 @@
       "net.buildcraftreborn.test.SpecialPipeGameTest",
       "net.buildcraftreborn.test.StripesGameTest",
       "net.buildcraftreborn.test.FacadeGameTest",
-      "net.buildcraftreborn.test.PolishGameTest"
+      "net.buildcraftreborn.test.PolishGameTest",
+      "net.buildcraftreborn.test.MultimeterGameTest"
     ]
   }
 }
