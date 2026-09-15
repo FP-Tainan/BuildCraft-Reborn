@@ -1,0 +1,21 @@
+{
+  "textures": {
+    "particle": "buildcraftreborn:block/pipe/diamond_item",
+    "down": "buildcraftreborn:block/pipe/diamond_item_down",
+    "up": "buildcraftreborn:block/pipe/diamond_item_up",
+    "north": "buildcraftreborn:block/pipe/diamond_item_north",
+    "south": "buildcraftreborn:block/pipe/diamond_item_south",
+    "west": "buildcraftreborn:block/pipe/diamond_item_west",
+    "east": "buildcraftreborn:block/pipe/diamond_item_east"
+  },
+  "elements": [
+    {
+      "from": [4, 4, 4], "to": [12, 12, 12],
+      "faces": {
+        "down": {"uv": [4, 4, 12, 12], "texture": "#down"}, "up": {"uv": [4, 4, 12, 12], "texture": "#up"},
+        "north": {"uv": [4, 4, 12, 12], "texture": "#north"}, "south": {"uv": [4, 4, 12, 12], "texture": "#south"},
+        "west": {"uv": [4, 4, 12, 12], "texture": "#west"}, "east": {"uv": [4, 4, 12, 12], "texture": "#east"}
+      }
+    }
+  ]
+}

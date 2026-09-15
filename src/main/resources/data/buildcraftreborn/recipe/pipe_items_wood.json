@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": ["mgm"],
+  "key": {"m": "#minecraft:planks", "g": "minecraft:glass"},
+  "result": {"id": "buildcraftreborn:pipe_items_wood", "count": 8}
+}

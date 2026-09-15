@@ -82,6 +82,7 @@ public final class BuildCraftReborn implements ModInitializer {
         node.registerForBlockEntity((well, face) -> well.energy(), BCBlockEntities.MINING_WELL.get());
         node.registerForBlockEntity((workbench, face) -> workbench.energy(), BCBlockEntities.AUTO_WORKBENCH.get());
         node.registerForBlockEntity((quarry, face) -> quarry.energy(), BCBlockEntities.QUARRY.get());
+        node.registerForBlockEntity((pipe, face) -> pipe.energy(), BCBlockEntities.PIPE.get());
 
         var fluids = net.fabricmc.fabric.api.transfer.v1.fluid.FluidStorage.SIDED;
         fluids.registerForBlockEntity((tank, face) -> tank.tank(), BCBlockEntities.TANK.get());
@@ -90,5 +91,6 @@ public final class BuildCraftReborn implements ModInitializer {
 
         var items = net.fabricmc.fabric.api.transfer.v1.item.ItemStorage.SIDED;
         items.registerForBlockEntity((workbench, face) -> workbench.itemStorage(face), BCBlockEntities.AUTO_WORKBENCH.get());
+        items.registerForBlockEntity((pipe, face) -> pipe.insertion(face), BCBlockEntities.PIPE.get());
     }
 }

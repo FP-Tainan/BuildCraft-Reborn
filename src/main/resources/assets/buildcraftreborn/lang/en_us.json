@@ -66,5 +66,17 @@
   "tooltip.buildcraftreborn.quarry": "Mines the Land Mark area next to it (or 11×11 behind it) down to bedrock · 1,000 MV (works from 200 MV)",
   "message.buildcraftreborn.quarry.frame": "Quarry: building frame %s / %s",
   "message.buildcraftreborn.quarry.mine": "Quarry: %s blocks mined · layer Y %s",
-  "message.buildcraftreborn.quarry.done": "Quarry: finished · %s blocks mined"
+  "message.buildcraftreborn.quarry.done": "Quarry: finished · %s blocks mined",
+  "block.buildcraftreborn.pipe_items_wood": "Wooden Transport Pipe",
+  "block.buildcraftreborn.pipe_items_cobblestone": "Cobblestone Transport Pipe",
+  "block.buildcraftreborn.pipe_items_stone": "Stone Transport Pipe",
+  "block.buildcraftreborn.pipe_items_sandstone": "Sandstone Transport Pipe",
+  "block.buildcraftreborn.pipe_items_quartz": "Quartz Transport Pipe",
+  "block.buildcraftreborn.pipe_items_gold": "Golden Transport Pipe",
+  "block.buildcraftreborn.pipe_items_iron": "Iron Transport Pipe",
+  "block.buildcraftreborn.pipe_items_diamond": "Diamond Transport Pipe",
+  "block.buildcraftreborn.pipe_items_clay": "Clay Transport Pipe",
+  "block.buildcraftreborn.pipe_items_void": "Void Transport Pipe",
+  "block.buildcraftreborn.pipe_items_obsidian": "Obsidian Transport Pipe",
+  "block.buildcraftreborn.pipe_structure_cobblestone": "Cobblestone Structure Pipe"
 }

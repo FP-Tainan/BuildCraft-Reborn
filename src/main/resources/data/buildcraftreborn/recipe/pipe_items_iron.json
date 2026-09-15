@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": ["mgm"],
+  "key": {"m": "#c:ingots/iron", "g": "minecraft:glass"},
+  "result": {"id": "buildcraftreborn:pipe_items_iron", "count": 8}
+}

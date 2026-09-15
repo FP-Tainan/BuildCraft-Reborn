@@ -68,7 +68,24 @@ public final class BCBlocks {
             () -> new net.buildcraftreborn.builders.block.FrameBlock(BlockBehaviour.Properties.of().setId(BLOCKS.key("frame"))
                     .strength(0.5F, 6.0F).sound(SoundType.METAL).noLootTable()));
 
+    // ── transport: tubos ──────────────────────────────────────────────────
+    public static final java.util.Map<net.buildcraftreborn.transport.PipeType, RegistryObject<net.buildcraftreborn.transport.block.PipeBlock>> PIPES =
+            new java.util.EnumMap<>(net.buildcraftreborn.transport.PipeType.class);
+
+    static {
+        for (net.buildcraftreborn.transport.PipeType type : net.buildcraftreborn.transport.PipeType.values()) {
+            String name = type.blockId();
+            PIPES.put(type, BLOCKS.register(name, () -> type.directional()
+                    ? new net.buildcraftreborn.transport.block.DirectionalPipeBlock(pipe(name), type)
+                    : new net.buildcraftreborn.transport.block.PipeBlock(pipe(name), type)));
+        }
+    }
+
     private BCBlocks() {}
+
+    private static BlockBehaviour.Properties pipe(String name) {
+        return BlockBehaviour.Properties.of().setId(BLOCKS.key(name)).strength(0.25F).sound(SoundType.GLASS);
+    }
 
     private static BlockBehaviour.Properties machine(String name) {
         return BlockBehaviour.Properties.of().setId(BLOCKS.key(name)).strength(3.0F, 6.0F).sound(SoundType.METAL).requiresCorrectToolForDrops();

@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": ["mgm"],
+  "key": {"m": "#c:ingots/gold", "g": "minecraft:glass"},
+  "result": {"id": "buildcraftreborn:pipe_items_gold", "count": 8}
+}

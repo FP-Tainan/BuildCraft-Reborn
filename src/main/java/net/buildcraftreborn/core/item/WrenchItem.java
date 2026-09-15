@@ -38,6 +38,13 @@ public class WrenchItem extends Item {
             }
             return InteractionResult.PASS;
         }
+        BlockState clicked = level.getBlockState(pos);
+        if (clicked.getBlock() instanceof net.buildcraftreborn.lib.block.Wrenchable wrenchable) {
+            if (!level.isClientSide() && wrenchable.onWrench(level, pos, clicked, player)) {
+                level.playSound(null, pos, SoundEvents.IRON_TRAPDOOR_CLOSE, SoundSource.BLOCKS, 0.6F, 1.6F);
+            }
+            return InteractionResult.SUCCESS;
+        }
         if (!rotate(level, pos, true)) return InteractionResult.PASS;
         if (!level.isClientSide()) {
             rotate(level, pos, false);

@@ -110,7 +110,11 @@ Cada sessão termina com build verde, testes de jogo (gametests) e teste do usu�
 - Armação, pedreira com fila de tarefas (armação → mover broca → quebrar), área pelos marcadores ou
   11×11 padrão, broca e pórtico renderizados, carregamento de chunk, entrega em inventário ou tubo.
 
-### Sessão 5 — Tubos de itens
+### Sessão 5 — Tubos de itens ✅
+> Feita: madeira (puxa com energia, 1 CWh por item), pedregulho, pedra, arenito, quartzo, ouro, ferro
+> (saída pela chave), diamante (filtros), argila, vazio, obsidiana (suga itens) e estrutura. Itens
+> andam desenhados; pedreira, poço, funis e baús entregam direto nos tubos.
+
 - Bloco de tubo único com regras de conexão, modelo dinâmico (centro + braços + cor do vidro).
 - Itens viajando (agendados, sincronizados em lote, renderizados).
 - Tubos: estrutura, madeira, pedregulho, pedra, arenito, quartzo, ouro, ferro, diamante (GUI de filtro),

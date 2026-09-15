@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [{"type": "minecraft:item", "name": "buildcraftreborn:pipe_items_sandstone"}],
+      "conditions": [{"condition": "minecraft:survives_explosion"}]
+    }
+  ],
+  "random_sequence": "buildcraftreborn:blocks/pipe_items_sandstone"
+}

@@ -38,7 +38,7 @@ import java.util.List;
  * por bloco + 1 CWh de movimento da broca). Itens vão para os inventários ao lado. Mantém os chunks da
  * área carregados enquanto trabalha.
  */
-public class QuarryBlockEntity extends BCBlockEntity implements ServerTicking, MultimeterReadable {
+public class QuarryBlockEntity extends BCBlockEntity implements ServerTicking, MultimeterReadable, net.buildcraftreborn.lib.tile.ItemPipeConnectable {
     public static final int VOLTAGE = 1_000;
     /** Aceita desde os motores de 220 MV. */
     public static final int MIN_VOLTAGE = 200;

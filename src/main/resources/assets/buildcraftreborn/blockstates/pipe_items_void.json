@@ -1,0 +1,11 @@
+{
+  "multipart": [
+    {"apply": {"model": "buildcraftreborn:block/pipe_items_void_core"}},
+    {"when": {"down": "true"}, "apply": {"model": "buildcraftreborn:block/pipe_items_void_arm", "x": 90}},
+    {"when": {"up": "true"}, "apply": {"model": "buildcraftreborn:block/pipe_items_void_arm", "x": 270}},
+    {"when": {"north": "true"}, "apply": {"model": "buildcraftreborn:block/pipe_items_void_arm"}},
+    {"when": {"south": "true"}, "apply": {"model": "buildcraftreborn:block/pipe_items_void_arm", "y": 180}},
+    {"when": {"west": "true"}, "apply": {"model": "buildcraftreborn:block/pipe_items_void_arm", "y": 270}},
+    {"when": {"east": "true"}, "apply": {"model": "buildcraftreborn:block/pipe_items_void_arm", "y": 90}}
+  ]
+}

@@ -69,6 +69,16 @@ public final class BCItems {
     // ── builders ──────────────────────────────────────────────────────────
     public static final RegistryObject<BlockItem> QUARRY = described("quarry", BCBlocks.QUARRY);
 
+    // ── transport: tubos ──────────────────────────────────────────────────
+    public static final Map<net.buildcraftreborn.transport.PipeType, RegistryObject<BlockItem>> PIPES =
+            new EnumMap<>(net.buildcraftreborn.transport.PipeType.class);
+
+    static {
+        for (net.buildcraftreborn.transport.PipeType type : net.buildcraftreborn.transport.PipeType.values()) {
+            PIPES.put(type, block(type.blockId(), BCBlocks.PIPES.get(type)));
+        }
+    }
+
     private BCItems() {}
 
     private static RegistryObject<BlockItem> described(String name, RegistryObject<? extends Block> block) {

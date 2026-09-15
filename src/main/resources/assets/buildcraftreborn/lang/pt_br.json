@@ -66,5 +66,17 @@
   "tooltip.buildcraftreborn.quarry": "Minera a área dos Marcadores de Área encostados (ou 11×11 atrás dela) até a rocha-mãe · 1.000 MV (funciona a partir de 200 MV)",
   "message.buildcraftreborn.quarry.frame": "Pedreira: montando a armação %s / %s",
   "message.buildcraftreborn.quarry.mine": "Pedreira: %s blocos minerados · camada Y %s",
-  "message.buildcraftreborn.quarry.done": "Pedreira: concluída · %s blocos minerados"
+  "message.buildcraftreborn.quarry.done": "Pedreira: concluída · %s blocos minerados",
+  "block.buildcraftreborn.pipe_items_wood": "Tubo de Transporte de Madeira",
+  "block.buildcraftreborn.pipe_items_cobblestone": "Tubo de Transporte de Pedregulho",
+  "block.buildcraftreborn.pipe_items_stone": "Tubo de Transporte de Pedra",
+  "block.buildcraftreborn.pipe_items_sandstone": "Tubo de Transporte de Arenito",
+  "block.buildcraftreborn.pipe_items_quartz": "Tubo de Transporte de Quartzo",
+  "block.buildcraftreborn.pipe_items_gold": "Tubo de Transporte de Ouro",
+  "block.buildcraftreborn.pipe_items_iron": "Tubo de Transporte de Ferro",
+  "block.buildcraftreborn.pipe_items_diamond": "Tubo de Transporte de Diamante",
+  "block.buildcraftreborn.pipe_items_clay": "Tubo de Transporte de Argila",
+  "block.buildcraftreborn.pipe_items_void": "Tubo de Transporte Vazio",
+  "block.buildcraftreborn.pipe_items_obsidian": "Tubo de Transporte de Obsidiana",
+  "block.buildcraftreborn.pipe_structure_cobblestone": "Tubo de Estrutura de Pedregulho"
 }

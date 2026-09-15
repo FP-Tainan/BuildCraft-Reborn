@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": ["mgm"],
+  "key": {"m": "minecraft:clay_ball", "g": "minecraft:glass"},
+  "result": {"id": "buildcraftreborn:pipe_items_clay", "count": 8}
+}

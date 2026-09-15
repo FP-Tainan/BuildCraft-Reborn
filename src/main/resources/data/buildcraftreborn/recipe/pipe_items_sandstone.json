@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": ["mgm"],
+  "key": {"m": "minecraft:sandstone", "g": "minecraft:glass"},
+  "result": {"id": "buildcraftreborn:pipe_items_sandstone", "count": 8}
+}

@@ -25,7 +25,7 @@ import java.util.List;
  * Poço de mineração do BuildCraft: cava direto para baixo, deixando o tubo no caminho. Cada bloco
  * custa dureza × 16 CWh (pedra: 24 CWh); os itens vão para os inventários ao lado.
  */
-public class MiningWellBlockEntity extends BCBlockEntity implements ServerTicking, MultimeterReadable {
+public class MiningWellBlockEntity extends BCBlockEntity implements ServerTicking, MultimeterReadable, net.buildcraftreborn.lib.tile.ItemPipeConnectable {
     private static final int INTERVAL = 5;
 
     private final MachineEnergy energy = new MachineEnergy(this, 220, EnergyUnits.fromCWh(500), 10_000);

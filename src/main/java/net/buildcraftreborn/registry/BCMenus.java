@@ -25,5 +25,8 @@ public final class BCMenus {
     public static final RegistryObject<ExtendedMenuType<net.buildcraftreborn.factory.AutoWorkbenchMenu, net.minecraft.core.BlockPos>> AUTO_WORKBENCH =
             MENUS.register("auto_workbench", () -> new ExtendedMenuType<>(net.buildcraftreborn.factory.AutoWorkbenchMenu::new, net.minecraft.core.BlockPos.STREAM_CODEC));
 
+    public static final RegistryObject<ExtendedMenuType<net.buildcraftreborn.transport.PipeFilterMenu, net.minecraft.core.BlockPos>> PIPE_FILTER =
+            MENUS.register("pipe_filter", () -> new ExtendedMenuType<>(net.buildcraftreborn.transport.PipeFilterMenu::new, net.minecraft.core.BlockPos.STREAM_CODEC));
+
     private BCMenus() {}
 }
