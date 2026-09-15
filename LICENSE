@@ -1,87 +1,354 @@
-Minecraft Mod Public License
-============================
+# Community Mod License – Free Access & Share-Alike 1.0
 
-Version 1.0.1
+**CML-FASA-1.0**
 
-0. Definitions
---------------
+Copyright (c) 2026
 
-Minecraft: Denotes a copy of the Minecraft game licensed by Mojang AB
+## 1. Purpose
 
-User: Anybody that interacts with the software in one of the following ways:
-   - play
-   - decompile
-   - recompile or compile
-   - modify
-   - distribute
+This license exists to preserve community-created game modifications as freely accessible community projects.
 
-Mod: The mod code designated by the present license, in source form, binary
-form, as obtained standalone, as part of a wider distribution or resulting from
-the compilation of the original or modified sources.
+The guiding principle of this license is:
 
-Dependency: Code required for the mod to work properly. This includes 
-dependencies required to compile the code as well as any file or modification
-that is explicitely or implicitely required for the mod to be working.
+**Development may be financially supported. Access to the Mod may not be sold.**
 
-1. Scope
---------
+The Mod may be used, studied, modified, forked, maintained, improved, and redistributed, provided that the requirements of this license are followed.
 
-The present license is granted to any user of the mod. As a prerequisite, 
-a user must own a legally acquired copy of Minecraft
+---
 
-2. Liability
-------------
+## 2. Definitions
 
-This mod is provided 'as is' with no warranties, implied or otherwise. The owner
-of this mod takes no responsibility for any damages incurred from the use of
-this mod. This mod alters fundamental parts of the Minecraft game, parts of
-Minecraft may not work with this mod installed. All damages caused from the use
-or misuse of this mad fall on the user.
+For the purposes of this license:
 
-3. Play rights
---------------
+**"Mod"** means the software, source code, compiled files, original assets, configuration files, documentation, and other materials distributed under this license.
 
-The user is allowed to install this mod on a client or a server and to play 
-without restriction.
+**"Source Code"** means the preferred form of the Mod for making modifications, including any build scripts or configuration files reasonably necessary to build the Mod.
 
-4. Modification rights
-----------------------
+**"Derivative Work"** means any modified version, fork, continuation, port, adaptation, or other work based substantially on the Mod.
 
-The user has the right to decompile the source code, look at either the 
-decompiled version or the original source code, and to modify it.
+**"Distribution"** means making the Mod or a Derivative Work available to another person, whether through GitHub, Modrinth, CurseForge, another platform, a modpack, launcher, direct download, or any other method.
 
-5. Derivation rights
---------------------
+**"Paid Access"** means requiring payment, subscription, donation, purchase, financial contribution, or other monetary consideration in exchange for access to the Mod, a Derivative Work, a build, version, feature, update, or download.
 
-The user has the rights to derive code from this mod, that is to say to
-write code that extends or instanciate the mod classes or interfaces, refer to
-its objects, or calls its functions. This code is known as "derived" code, and 
-can be licensed under a license different from this mod.
+---
 
-6. Distribution of original or modified copy rights
----------------------------------------------------
+## 3. Permission
 
-Is subject to distribution rights this entire mod in its various forms. This
-include:
-   - original binary or source forms of this mod files
-   - modified versions of these binaries or source files, as well as binaries
-     resulting from source modifications
-   - patch to its source or binary files
-   - any copy of a portion of its binary source files
+You are permitted to:
 
-The user is allowed to redistribute this mod partially, in totality, or 
-included in a distribution.
+* use the Mod;
+* download and install the Mod;
+* study the Source Code;
+* modify the Mod;
+* create private modifications;
+* create public forks;
+* port the Mod to other compatible versions or platforms;
+* continue development if the original project becomes inactive or discontinued;
+* distribute the original Mod;
+* distribute Derivative Works;
+* include the Mod in freely accessible modpacks;
+* contribute improvements to the project.
 
-When distributing binary files, the user must provide means to obtain its 
-entire set of sources or modified sources at no costs.
+These permissions are worldwide, royalty-free, non-exclusive, and continue for as long as you comply with this license.
 
-All distributions of this mod must remain licensed under the MMPL.
+---
 
-All dependencies that this mod have on other mods or classes must be licensed
-under conditions comparable to this version of MMPL, with the exception of the
-Minecraft code and the mod loading framework (e.g. ModLoader, ModLoaderMP or
-Bukkit).
+## 4. Free Access Requirement
 
-Modified version of binaries and sources, as well as files containing sections
-copied from this mod, should be distributed under the terms of the present
-license.
+The Mod and every publicly distributed Derivative Work must remain freely accessible.
+
+You may not require payment to:
+
+* download the Mod;
+* download a Derivative Work;
+* access a release;
+* access a beta, alpha, preview, snapshot, or development build;
+* access updates;
+* access additional features;
+* access compatibility patches;
+* access ports;
+* access bug fixes;
+* unlock functionality contained in the Mod.
+
+A person who financially supports development must not receive exclusive access to the Mod or to functionality that is withheld from the general public because others did not pay.
+
+There must always be a legitimate method of obtaining publicly distributed versions of the Mod without payment.
+
+---
+
+## 5. Prohibited Monetization
+
+You may not sell, rent, license for a fee, or place the Mod or a Derivative Work behind a paywall.
+
+The following practices are specifically prohibited:
+
+* selling copies of the Mod;
+* selling copies of a Derivative Work;
+* charging for downloads;
+* requiring a paid subscription to download the Mod;
+* requiring Patreon, Ko-fi, crowdfunding, or other financial support to access the Mod;
+* offering paid early access to builds;
+* offering paid beta or development builds;
+* creating a paid "Premium", "Pro", or similar version;
+* charging money to unlock features of the Mod;
+* charging for updates or compatibility versions;
+* selling access to a fork;
+* selling access to Source Code;
+* distributing the Mod exclusively through a paid service;
+* including the Mod in a paid modpack, launcher, package, or product where payment is required to obtain the Mod.
+
+You may not circumvent this section by describing a payment as a "donation", "support", "membership", "tip", or similar term when that payment is actually required to obtain access.
+
+---
+
+## 6. Permitted Financial Support
+
+Receiving money for supporting development is permitted when payment is **not required to obtain the Mod**.
+
+The following are explicitly permitted:
+
+### 6.1 Voluntary Donations
+
+Developers and contributors may accept voluntary donations through services such as:
+
+* Patreon;
+* Ko-fi;
+* GitHub Sponsors;
+* Pix;
+* PayPal;
+* Apoia.se;
+* or similar services.
+
+Donations must not be required to download or use the Mod.
+
+Donors may receive recognition, credits, community roles, or similar non-software rewards, provided that access to the Mod or its features is not restricted.
+
+### 6.2 Crowdfunding
+
+Crowdfunding or community fundraising to finance development is permitted.
+
+For example, a developer may raise funds to:
+
+* continue development;
+* port the Mod to a new Minecraft version;
+* implement new features;
+* fix bugs;
+* create new content;
+* maintain infrastructure;
+* compensate contributors for development work.
+
+However, the resulting Mod, update, feature, or build must be made available to the community without requiring payment.
+
+Financial contributors may not receive exclusive or permanently early access to builds or features as a condition of their contribution.
+
+### 6.3 Platform Revenue
+
+Revenue-sharing or creator-reward programs from distribution platforms are permitted.
+
+This includes, but is not limited to, programs offered by platforms such as:
+
+* CurseForge;
+* Modrinth;
+* or similar mod distribution platforms.
+
+Receiving advertising revenue, creator rewards, download incentives, or other platform-funded compensation is permitted as long as users can access the Mod without being required to pay for it.
+
+### 6.4 Sponsorships and Development Funding
+
+Developers may receive sponsorships, grants, commissions, or other funding to work on the Mod.
+
+A person or organization may financially sponsor the development of a feature.
+
+However, any feature incorporated into a publicly distributed version of the Mod must be available to the community under the same terms as the rest of the Mod.
+
+Payment may compensate the developer's work.
+
+Payment may not purchase exclusive ownership or exclusive access to community releases of the Mod.
+
+---
+
+## 7. Videos, Livestreams, and Other Content
+
+You may create, publish, and monetize content involving the Mod.
+
+This includes:
+
+* YouTube videos;
+* Twitch streams;
+* livestreams;
+* tutorials;
+* reviews;
+* showcases;
+* screenshots;
+* articles;
+* guides;
+* social media content;
+* other transformative or informational content.
+
+Advertising revenue, sponsorship revenue, subscriptions, memberships, donations, and other income generated from such content are permitted.
+
+A content creator is being compensated for the content they create, not for distributing access to the Mod.
+
+This permission does not allow a content creator to sell or paywall the Mod itself.
+
+---
+
+## 8. Public Source Requirement
+
+If you publicly distribute a Derivative Work, you must also make its complete Source Code publicly available without charge.
+
+The Source Code must be available through a reasonable public method, such as a public Git repository.
+
+The source must correspond to the version being distributed.
+
+You may not distribute a public fork or modified build while keeping its modifications proprietary or secret.
+
+Private modifications that are not distributed to others do not need to be published.
+
+---
+
+## 9. Share-Alike Requirement
+
+Every Derivative Work that is publicly distributed must remain licensed under:
+
+**Community Mod License – Free Access & Share-Alike 1.0**
+
+You may not relicense a Derivative Work under terms that remove or weaken the freedoms or restrictions established by this license.
+
+In particular, you may not convert a fork or continuation into proprietary or closed-source software.
+
+---
+
+## 10. Attribution
+
+Any publicly distributed Derivative Work must preserve reasonable attribution to the original project and its contributors.
+
+The original copyright notices and this license must not be removed.
+
+A Derivative Work should clearly state that it is based on or derived from the original project.
+
+Modified versions must not falsely claim to be the official original project or imply endorsement by the original author.
+
+---
+
+## 11. Project Continuation and Abandonment
+
+The discontinuation, inactivity, or abandonment of the original project does not terminate this license.
+
+If the original author stops maintaining the Mod, any member of the community may fork, maintain, port, update, improve, and redistribute the project in accordance with this license.
+
+No additional permission from the original author is required.
+
+Any such continuation must remain freely accessible, publicly sourced when distributed, and licensed under the same terms.
+
+The purpose of this section is to ensure that the Mod may continue to exist and evolve through the community even after official development ends.
+
+---
+
+## 12. Modpacks
+
+The Mod may be included in modpacks without additional permission when:
+
+* access to the modpack does not require payment;
+* the Mod itself is not sold;
+* this license and required attribution are preserved;
+* the Mod is not falsely represented as being created by the modpack author.
+
+Voluntary donations, advertising revenue, or platform-generated revenue associated with a freely accessible modpack are permitted.
+
+A modpack may not require payment specifically to obtain access to this Mod.
+
+---
+
+## 13. Servers
+
+The Mod may be used on public or private game servers.
+
+Servers may receive donations, subscriptions, sponsorships, or other funding for server operation.
+
+However, this license does not permit a server operator to sell copies of the Mod or falsely claim ownership of it.
+
+Use of the Mod on a monetized server does not, by itself, violate this license, provided that the Mod itself remains freely obtainable and is not sold or paywalled.
+
+---
+
+## 14. Contributions
+
+By intentionally submitting source code, assets, documentation, or other material for inclusion in the Mod, you agree that your contribution may be distributed under this license.
+
+Contributors retain copyright in their original contributions unless they explicitly transfer those rights.
+
+Contributions incorporated into the project remain subject to this license when distributed as part of the Mod.
+
+---
+
+## 15. Third-Party Material
+
+This license applies only to material that the copyright holder has the legal right to license.
+
+Third-party libraries, assets, source code, APIs, dependencies, trademarks, game assets, and other materials remain subject to their respective licenses and terms.
+
+Nothing in this license grants rights that the licensor does not own or have authority to grant.
+
+When third-party material is included in the project, its original license takes precedence for that material.
+
+---
+
+## 16. No Transfer of Ownership
+
+This license grants permission to use, modify, and distribute the Mod under the conditions described above.
+
+It does not transfer copyright ownership.
+
+Contributors and copyright holders retain ownership of their respective original work.
+
+---
+
+## 17. No Warranty
+
+THE MOD IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.
+
+TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, THE AUTHORS AND COPYRIGHT HOLDERS SHALL NOT BE LIABLE FOR ANY CLAIM, DAMAGE, LOSS, OR OTHER LIABILITY ARISING FROM THE USE, MODIFICATION, OR DISTRIBUTION OF THE MOD.
+
+---
+
+## 18. Termination
+
+Your rights under this license automatically terminate if you materially violate its terms.
+
+If the violation can be corrected, your rights may be restored when:
+
+1. the violation is stopped;
+2. paid or restricted access is removed;
+3. any required Source Code is made publicly available;
+4. the Mod or Derivative Work is brought back into compliance with this license.
+
+Repeated or intentional violations may require explicit permission from the relevant copyright holder for restoration of rights.
+
+---
+
+## 19. No Additional Restrictions
+
+You may not impose additional legal or technical restrictions that prevent recipients from exercising the rights granted by this license.
+
+You may not use DRM, access controls, license keys, authentication systems, or similar mechanisms for the purpose of enforcing Paid Access to the Mod or a Derivative Work.
+
+---
+
+## 20. Core Principle
+
+This license should be interpreted consistently with the following principle:
+
+**Mods are created by the community, for the community.**
+
+Developers deserve support for their time, effort, creativity, and continued work.
+
+Content creators deserve compensation for the content they produce.
+
+Platforms may reward developers for contributing to their communities.
+
+Community members may voluntarily fund the development of projects they value.
+
+But access to the Mod itself must not become a product that users are required to purchase.
+
+**Support the developers. Fund the development. Keep the Mod free.**
