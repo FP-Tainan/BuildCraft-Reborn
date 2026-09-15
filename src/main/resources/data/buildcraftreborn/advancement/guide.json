@@ -1,0 +1,11 @@
+{
+  "parent": "buildcraftreborn:root",
+  "criteria": {"has": {"trigger": "minecraft:inventory_changed", "conditions": {"items": [{"items": "buildcraftreborn:guide"}]}}},
+  "display": {
+    
+    "icon": {"id": "buildcraftreborn:guide"},
+    "title": {"translate": "advancements.buildcraftreborn.guide.title"},
+    "description": {"translate": "advancements.buildcraftreborn.guide.description"}
+  },
+  "requirements": [["has"]]
+}

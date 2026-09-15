@@ -1,0 +1,11 @@
+{
+  "parent": "buildcraftreborn:laser_power",
+  "criteria": {"has": {"trigger": "minecraft:inventory_changed", "conditions": {"items": [{"items": ["buildcraftreborn:assembly_table", "buildcraftreborn:advanced_crafting_table"]}]}}},
+  "display": {
+    "frame": "goal",
+    "icon": {"id": "buildcraftreborn:assembly_table"},
+    "title": {"translate": "advancements.buildcraftreborn.precision_crafting.title"},
+    "description": {"translate": "advancements.buildcraftreborn.precision_crafting.description"}
+  },
+  "requirements": [["has"]]
+}

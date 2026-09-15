@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": ["wdw", "wcw", "wpw"],
+  "key": {"w": "#minecraft:planks", "d": "buildcraftreborn:pipe_items_diamond", "c": "minecraft:chest", "p": "minecraft:piston"},
+  "result": {"id": "buildcraftreborn:filtered_buffer", "count": 1}
+}

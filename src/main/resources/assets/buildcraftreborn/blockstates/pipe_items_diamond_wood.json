@@ -1,0 +1,17 @@
+{
+  "multipart": [
+    {"apply": {"model": "buildcraftreborn:block/pipe_items_diamond_wood_core"}},
+    {"when": {"down": "true", "special": "down"}, "apply": {"model": "buildcraftreborn:block/pipe_items_diamond_wood_arm_special", "x": 90}},
+    {"when": {"down": "true", "special": "up|north|south|west|east"}, "apply": {"model": "buildcraftreborn:block/pipe_items_diamond_wood_arm", "x": 90}},
+    {"when": {"up": "true", "special": "up"}, "apply": {"model": "buildcraftreborn:block/pipe_items_diamond_wood_arm_special", "x": 270}},
+    {"when": {"up": "true", "special": "down|north|south|west|east"}, "apply": {"model": "buildcraftreborn:block/pipe_items_diamond_wood_arm", "x": 270}},
+    {"when": {"north": "true", "special": "north"}, "apply": {"model": "buildcraftreborn:block/pipe_items_diamond_wood_arm_special"}},
+    {"when": {"north": "true", "special": "down|up|south|west|east"}, "apply": {"model": "buildcraftreborn:block/pipe_items_diamond_wood_arm"}},
+    {"when": {"south": "true", "special": "south"}, "apply": {"model": "buildcraftreborn:block/pipe_items_diamond_wood_arm_special", "y": 180}},
+    {"when": {"south": "true", "special": "down|up|north|west|east"}, "apply": {"model": "buildcraftreborn:block/pipe_items_diamond_wood_arm", "y": 180}},
+    {"when": {"west": "true", "special": "west"}, "apply": {"model": "buildcraftreborn:block/pipe_items_diamond_wood_arm_special", "y": 270}},
+    {"when": {"west": "true", "special": "down|up|north|south|east"}, "apply": {"model": "buildcraftreborn:block/pipe_items_diamond_wood_arm", "y": 270}},
+    {"when": {"east": "true", "special": "east"}, "apply": {"model": "buildcraftreborn:block/pipe_items_diamond_wood_arm_special", "y": 90}},
+    {"when": {"east": "true", "special": "down|up|north|south|west"}, "apply": {"model": "buildcraftreborn:block/pipe_items_diamond_wood_arm", "y": 90}}
+  ]
+}

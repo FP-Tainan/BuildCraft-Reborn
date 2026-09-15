@@ -1,0 +1,16 @@
+{
+  "parent": "buildcraftreborn:black_gold",
+  "criteria": {
+    "oil": {
+      "conditions": {"block": "buildcraftreborn:oil"},
+      "trigger": "minecraft:enter_block"
+    }
+  },
+  "display": {
+    "description": {"translate": "advancements.buildcraftreborn.sticky_dipping.description"},
+    "hidden": true,
+    "icon": {"id": "buildcraftreborn:oil_bucket"},
+    "title": {"translate": "advancements.buildcraftreborn.sticky_dipping.title"}
+  },
+  "requirements": [["oil"]]
+}

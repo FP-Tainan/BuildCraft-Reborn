@@ -1,0 +1,9 @@
+{
+  "model": {
+    "type": "minecraft:condition",
+    "property": "minecraft:has_component",
+    "component": "minecraft:custom_data",
+    "on_true": {"type": "minecraft:model", "model": "buildcraftreborn:item/gate_copier_full"},
+    "on_false": {"type": "minecraft:model", "model": "buildcraftreborn:item/gate_copier_empty"}
+  }
+}

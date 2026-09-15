@@ -1,0 +1,6 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": ["buildcraftreborn:pipe_items_diamond_wood", "minecraft:lapis_block"],
+  "result": {"id": "buildcraftreborn:pipe_items_emzuli", "count": 1}
+}

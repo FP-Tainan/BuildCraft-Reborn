@@ -35,7 +35,7 @@ import java.util.List;
  * ligados. O lado por onde o fluido entrou fica 3 segundos sem receber de volta, para não ficar
  * indo e voltando. Madeira puxa de tanques e máquinas gastando 1 CWh a cada 1.000 CL.
  */
-public class FluidPipeBlockEntity extends BCBlockEntity implements MultimeterReadable {
+public class FluidPipeBlockEntity extends BCBlockEntity implements MultimeterReadable, net.buildcraftreborn.transport.plug.PlugHolder {
     public static final long CAPACITY_CL = 1_000;
     /** 1 CW·tick por CL: 1 CWh a cada 1.000 CL (BuildCraft: 1 MJ a cada 1.000 mB). */
     public static final long ENERGY_PER_CL = 1;
@@ -52,16 +52,36 @@ public class FluidPipeBlockEntity extends BCBlockEntity implements MultimeterRea
         }
     };
     private final @Nullable MachineEnergy energy;
+    private final net.buildcraftreborn.transport.plug.PipePlugs plugs = new net.buildcraftreborn.transport.plug.PipePlugs(this);
     private boolean dirty;
     private int syncTimer;
     private double shownRatio = -1;
     /** Vazão recente em CL por tick (média móvel) e o fluido que passou: o tubo de passagem fica quase vazio no fim do tick. */
     private float flow;
     private FluidVariant flowVariant = FluidVariant.blank();
+    private int filterMode = PipeBlockEntity.MODE_WHITELIST;
+    private final net.minecraft.world.inventory.ContainerData data = new net.minecraft.world.inventory.ContainerData() {
+        @Override
+        public int get(int index) {
+            return switch (index) {
+                case PipeBlockEntity.DATA_MODE -> FluidPipeBlockEntity.this.filterMode;
+                default -> 0;
+            };
+        }
+
+        @Override
+        public void set(int index, int value) {
+        }
+
+        @Override
+        public int getCount() {
+            return PipeBlockEntity.DATA_COUNT;
+        }
+    };
 
     public FluidPipeBlockEntity(BlockPos pos, BlockState state) {
         super(BCBlockEntities.FLUID_PIPE.get(), pos, state);
-        this.energy = state.getBlock() instanceof PipeBlock pipe && pipe.type() == PipeType.WOOD
+        this.energy = state.getBlock() instanceof PipeBlock pipe && (pipe.type() == PipeType.WOOD || pipe.type() == PipeType.DIAMOND_WOOD)
                 ? new MachineEnergy(this, 220, EnergyUnits.fromCWh(16), 4_000, 1) : null;
     }
 
@@ -90,6 +110,18 @@ public class FluidPipeBlockEntity extends BCBlockEntity implements MultimeterRea
         return this.energy;
     }
 
+    @Override
+    public net.buildcraftreborn.transport.plug.PipePlugs plugs() {
+        return this.plugs;
+    }
+
+    @Override
+    public void preRemoveSideEffects(BlockPos pos, BlockState state) {
+        super.preRemoveSideEffects(pos, state);
+        if (this.level == null || this.level.isClientSide()) return;
+        for (ItemStack gate : this.plugs.drops()) net.minecraft.world.level.block.Block.popResource(this.level, pos, gate);
+    }
+
     private void onFluidChanged() {
         this.dirty = true;
         setChanged();
@@ -98,11 +130,12 @@ public class FluidPipeBlockEntity extends BCBlockEntity implements MultimeterRea
     // ── tick (servidor) ───────────────────────────────────────────────────
     public void tick() {
         if (this.level == null) return;
+        if (!this.plugs.isEmpty()) this.plugs.tick(this.level, this.worldPosition);
         for (int i = 0; i < this.inputCooldown.length; i++) {
             if (this.inputCooldown[i] > 0) this.inputCooldown[i]--;
         }
         PipeType type = type();
-        if (type == PipeType.WOOD) extract();
+        if (type == PipeType.WOOD || type == PipeType.DIAMOND_WOOD) extract();
         FluidVariant passing = this.tank.variant;
         long through;
         if (type == PipeType.VOID) {
@@ -134,13 +167,42 @@ public class FluidPipeBlockEntity extends BCBlockEntity implements MultimeterRea
         long max = Math.min(BCTank.fromCL(Math.min(type().fluidRateCL(), affordableCL)), BCTank.fromCL(CAPACITY_CL) - this.tank.amount);
         if (max <= 0) return;
         try (Transaction transaction = Transaction.openOuter()) {
-            long moved = StorageUtil.move(storage, this.tank, variant -> true, max, transaction);
+            long moved = StorageUtil.move(storage, this.tank, this::acceptsExtraction, max, transaction);
             transaction.commit();
             if (moved > 0) {
                 this.energy.use(Math.max(1, BCTank.toCL(moved)) * ENERGY_PER_CL);
                 this.inputCooldown[source.ordinal()] = INPUT_COOLDOWN;
             }
         }
+    }
+
+    /** Madeira-diamante: fluidos dos recipientes nos 9 filtros, em lista branca (vazia = tudo) ou negra. */
+    private boolean acceptsExtraction(FluidVariant variant) {
+        if (type() != PipeType.DIAMOND_WOOD) return true;
+        boolean any = false;
+        boolean listed = false;
+        for (int slot = 0; slot < PipeBlockEntity.FILTER_WIDTH; slot++) {
+            ItemStack stack = this.filters.getItem(slot);
+            if (stack.isEmpty()) continue;
+            any = true;
+            Storage<FluidVariant> contents = ContainerItemContext.withConstant(stack).find(FluidStorage.ITEM);
+            if (contents == null) continue;
+            for (StorageView<FluidVariant> view : contents) {
+                if (!view.isResourceBlank() && view.getResource().equals(variant)) listed = true;
+            }
+        }
+        return this.filterMode == PipeBlockEntity.MODE_BLACKLIST ? !listed : !any || listed;
+    }
+
+    public void setFilterMode(int mode) {
+        if (mode != PipeBlockEntity.MODE_WHITELIST && mode != PipeBlockEntity.MODE_BLACKLIST) return;
+        this.filterMode = mode;
+        setChanged();
+    }
+
+    /** Dados da tela (mesma ordem do tubo de itens): modo, filtro atual e se há filtro. */
+    public net.minecraft.world.inventory.ContainerData data() {
+        return this.data;
     }
 
     private void updateFlow(long throughCL, FluidVariant passing) {
@@ -162,7 +224,7 @@ public class FluidPipeBlockEntity extends BCBlockEntity implements MultimeterRea
         Direction special = state().hasProperty(DirectionalPipeBlock.SPECIAL) ? state().getValue(DirectionalPipeBlock.SPECIAL) : null;
         for (Direction direction : Direction.values()) {
             if (!connected(direction) || this.inputCooldown[direction.ordinal()] > 0) continue;
-            if (type == PipeType.WOOD && direction == special) continue;
+            if ((type == PipeType.WOOD || type == PipeType.DIAMOND_WOOD) && direction == special) continue;
             if (type == PipeType.IRON && direction != special) continue;
             Storage<FluidVariant> target = FluidStorage.SIDED.find(this.level, this.worldPosition.relative(direction), direction.getOpposite());
             if (target == null || !accepts(target)) continue;
@@ -301,10 +363,12 @@ public class FluidPipeBlockEntity extends BCBlockEntity implements MultimeterRea
         this.tank.save(output, "Tank");
         output.store("FlowFluid", FluidVariant.CODEC, this.flowVariant);
         output.putFloat("Flow", this.flow);
+        output.putInt("FilterMode", this.filterMode);
         List<ItemStack> filterList = new ArrayList<>(PipeBlockEntity.FILTER_SLOTS);
         for (int slot = 0; slot < PipeBlockEntity.FILTER_SLOTS; slot++) filterList.add(this.filters.getItem(slot));
         output.store("Filters", ItemStack.OPTIONAL_CODEC.listOf(), filterList);
         if (this.energy != null) this.energy.save(output);
+        this.plugs.save(output);
     }
 
     @Override
@@ -313,10 +377,12 @@ public class FluidPipeBlockEntity extends BCBlockEntity implements MultimeterRea
         this.tank.load(input, "Tank");
         this.flowVariant = input.read("FlowFluid", FluidVariant.CODEC).orElse(FluidVariant.blank());
         this.flow = input.getFloatOr("Flow", 0.0F);
+        this.filterMode = input.getIntOr("FilterMode", PipeBlockEntity.MODE_WHITELIST);
         List<ItemStack> filterList = input.read("Filters", ItemStack.OPTIONAL_CODEC.listOf()).orElse(List.of());
         for (int slot = 0; slot < PipeBlockEntity.FILTER_SLOTS; slot++) {
             this.filters.setItem(slot, slot < filterList.size() ? filterList.get(slot) : ItemStack.EMPTY);
         }
         if (this.energy != null) this.energy.load(input);
+        this.plugs.load(input);
     }
 }

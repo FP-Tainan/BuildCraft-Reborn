@@ -1,0 +1,9 @@
+{
+  "model": {
+    "type": "minecraft:condition",
+    "property": "minecraft:has_component",
+    "component": "buildcraftreborn:schematic_state",
+    "on_true": {"type": "minecraft:model", "model": "buildcraftreborn:item/schematic_single_used"},
+    "on_false": {"type": "minecraft:model", "model": "buildcraftreborn:item/schematic_single_clean"}
+  }
+}

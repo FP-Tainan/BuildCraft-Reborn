@@ -1,0 +1,11 @@
+{
+  "parent": "buildcraftreborn:wrenched",
+  "criteria": {"has": {"trigger": "minecraft:inventory_changed", "conditions": {"items": [{"items": "buildcraftreborn:gear_wood"}, {"items": "buildcraftreborn:gear_stone"}, {"items": "buildcraftreborn:gear_iron"}, {"items": "buildcraftreborn:gear_gold"}, {"items": "buildcraftreborn:gear_diamond"}]}}},
+  "display": {
+    "frame": "goal",
+    "icon": {"id": "buildcraftreborn:gear_diamond"},
+    "title": {"translate": "advancements.buildcraftreborn.gears.title"},
+    "description": {"translate": "advancements.buildcraftreborn.gears.description"}
+  },
+  "requirements": [["has"]]
+}

@@ -1,0 +1,11 @@
+{
+  "parent": "buildcraftreborn:shaping_the_world",
+  "criteria": {"has": {"trigger": "minecraft:inventory_changed", "conditions": {"items": [{"items": "buildcraftreborn:architect_table"}]}}},
+  "display": {
+    
+    "icon": {"id": "buildcraftreborn:architect_table"},
+    "title": {"translate": "advancements.buildcraftreborn.architect.title"},
+    "description": {"translate": "advancements.buildcraftreborn.architect.description"}
+  },
+  "requirements": [["has"]]
+}

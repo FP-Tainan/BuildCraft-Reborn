@@ -1,0 +1,11 @@
+{
+  "parent": "buildcraftreborn:architect",
+  "criteria": {"has": {"trigger": "minecraft:inventory_changed", "conditions": {"items": [{"items": "buildcraftreborn:builder"}]}}},
+  "display": {
+    "frame": "goal",
+    "icon": {"id": "buildcraftreborn:builder"},
+    "title": {"translate": "advancements.buildcraftreborn.start_of_something_big.title"},
+    "description": {"translate": "advancements.buildcraftreborn.start_of_something_big.description"}
+  },
+  "requirements": [["has"]]
+}

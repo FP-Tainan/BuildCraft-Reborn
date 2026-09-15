@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": ["g", "b"],
+  "key": {"g": "buildcraftreborn:gelled_water", "b": "minecraft:bucket"},
+  "result": {"id": "minecraft:water_bucket", "count": 1}
+}

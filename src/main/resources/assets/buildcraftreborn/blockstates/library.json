@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": {"model": "buildcraftreborn:block/library"},
+    "facing=east": {"model": "buildcraftreborn:block/library", "y": 90},
+    "facing=south": {"model": "buildcraftreborn:block/library", "y": 180},
+    "facing=west": {"model": "buildcraftreborn:block/library", "y": 270}
+  }
+}

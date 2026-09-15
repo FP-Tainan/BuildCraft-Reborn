@@ -1,0 +1,11 @@
+{
+  "parent": "buildcraftreborn:engine",
+  "criteria": {"has": {"trigger": "minecraft:inventory_changed", "conditions": {"items": [{"items": "buildcraftreborn:combustion_engine"}]}}},
+  "display": {
+    "frame": "goal",
+    "icon": {"id": "buildcraftreborn:combustion_engine"},
+    "title": {"translate": "advancements.buildcraftreborn.powering_up.title"},
+    "description": {"translate": "advancements.buildcraftreborn.powering_up.description"}
+  },
+  "requirements": [["has"]]
+}

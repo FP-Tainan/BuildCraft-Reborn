@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [" s ", "srs", " s "],
+  "key": {"s": "minecraft:sand", "r": "buildcraftreborn:oil_residue_bucket"},
+  "result": {"id": "buildcraftreborn:water_gelifier", "count": 4}
+}

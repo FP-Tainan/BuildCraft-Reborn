@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": ["rtr", "tgt"],
+  "key": {"r": "minecraft:redstone_torch", "t": "buildcraftreborn:tank", "g": "#c:gears/diamond"},
+  "result": {"id": "buildcraftreborn:distiller", "count": 1}
+}

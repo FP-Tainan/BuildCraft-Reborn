@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "pattern": ["www", " g ", "GpG"],
+  "key": {"w": "#c:ingots/iron", "g": "minecraft:glass", "G": "#c:gears/iron", "p": "minecraft:piston"},
+  "result": {"id": "buildcraftreborn:combustion_engine", "count": 1}
+}

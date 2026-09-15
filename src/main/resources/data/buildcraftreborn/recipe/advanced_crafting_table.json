@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "pattern": ["OtO", "OcO", "OrO"],
+  "key": {"O": "minecraft:obsidian", "t": "minecraft:crafting_table", "c": "minecraft:chest", "r": "buildcraftreborn:redstone_chipset"},
+  "result": {"id": "buildcraftreborn:advanced_crafting_table", "count": 1}
+}

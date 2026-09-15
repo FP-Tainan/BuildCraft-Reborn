@@ -16,8 +16,27 @@ import net.minecraft.world.level.block.state.BlockState;
  * renderizadores (pistão do motor, nível do tanque, broca da pedreira) enxergarem o estado.
  */
 public abstract class BCBlockEntity extends BlockEntity {
+    /** Ticks que ainda faltam desligados por uma porta lógica ("desligar máquina"). */
+    private int gateDisabledTicks;
+
     protected BCBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
+    }
+
+    /** Porta lógica pedindo para a máquina parar; vale enquanto a ação continuar ativa. */
+    public void disableFromGate() {
+        this.gateDisabledTicks = 2;
+    }
+
+    public boolean gateDisabled() {
+        return this.gateDisabledTicks > 0;
+    }
+
+    /** Chamado pelo ticker: se a porta desligou, gasta um tick e pula a lógica. */
+    public boolean consumeGateDisable() {
+        if (this.gateDisabledTicks <= 0) return false;
+        this.gateDisabledTicks--;
+        return true;
     }
 
     /** Marca para salvar e manda o estado atual para os jogadores que veem o bloco. */

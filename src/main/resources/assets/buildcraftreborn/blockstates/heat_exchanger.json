@@ -1,0 +1,24 @@
+{
+  "multipart": [
+    {"when": {"part": "start", "facing": "east"}, "apply": {"model": "buildcraftreborn:block/heat_exchanger_joiner", "y": 0}},
+    {"when": {"part": "start", "facing": "east", "connected": "false"}, "apply": {"model": "buildcraftreborn:block/heat_exchanger_cap", "y": 0}},
+    {"when": {"part": "end", "facing": "east"}, "apply": {"model": "buildcraftreborn:block/heat_exchanger_joiner", "x": 180, "y": 180}},
+    {"when": {"part": "end", "facing": "east", "connected": "false"}, "apply": {"model": "buildcraftreborn:block/heat_exchanger_cap", "x": 180, "y": 180}},
+    {"when": {"part": "middle", "facing": "east"}, "apply": {"model": "buildcraftreborn:block/heat_exchanger_middle", "y": 0}},
+    {"when": {"part": "start", "facing": "south"}, "apply": {"model": "buildcraftreborn:block/heat_exchanger_joiner", "y": 90}},
+    {"when": {"part": "start", "facing": "south", "connected": "false"}, "apply": {"model": "buildcraftreborn:block/heat_exchanger_cap", "y": 90}},
+    {"when": {"part": "end", "facing": "south"}, "apply": {"model": "buildcraftreborn:block/heat_exchanger_joiner", "x": 180, "y": 270}},
+    {"when": {"part": "end", "facing": "south", "connected": "false"}, "apply": {"model": "buildcraftreborn:block/heat_exchanger_cap", "x": 180, "y": 270}},
+    {"when": {"part": "middle", "facing": "south"}, "apply": {"model": "buildcraftreborn:block/heat_exchanger_middle", "y": 90}},
+    {"when": {"part": "start", "facing": "west"}, "apply": {"model": "buildcraftreborn:block/heat_exchanger_joiner", "y": 180}},
+    {"when": {"part": "start", "facing": "west", "connected": "false"}, "apply": {"model": "buildcraftreborn:block/heat_exchanger_cap", "y": 180}},
+    {"when": {"part": "end", "facing": "west"}, "apply": {"model": "buildcraftreborn:block/heat_exchanger_joiner", "x": 180, "y": 0}},
+    {"when": {"part": "end", "facing": "west", "connected": "false"}, "apply": {"model": "buildcraftreborn:block/heat_exchanger_cap", "x": 180, "y": 0}},
+    {"when": {"part": "middle", "facing": "west"}, "apply": {"model": "buildcraftreborn:block/heat_exchanger_middle", "y": 0}},
+    {"when": {"part": "start", "facing": "north"}, "apply": {"model": "buildcraftreborn:block/heat_exchanger_joiner", "y": 270}},
+    {"when": {"part": "start", "facing": "north", "connected": "false"}, "apply": {"model": "buildcraftreborn:block/heat_exchanger_cap", "y": 270}},
+    {"when": {"part": "end", "facing": "north"}, "apply": {"model": "buildcraftreborn:block/heat_exchanger_joiner", "x": 180, "y": 90}},
+    {"when": {"part": "end", "facing": "north", "connected": "false"}, "apply": {"model": "buildcraftreborn:block/heat_exchanger_cap", "x": 180, "y": 90}},
+    {"when": {"part": "middle", "facing": "north"}, "apply": {"model": "buildcraftreborn:block/heat_exchanger_middle", "y": 90}}
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "parent": "buildcraftreborn:engine",
+  "criteria": {"has": {"trigger": "minecraft:inventory_changed", "conditions": {"items": [{"items": "buildcraftreborn:auto_workbench"}]}}},
+  "display": {
+    
+    "icon": {"id": "buildcraftreborn:auto_workbench"},
+    "title": {"translate": "advancements.buildcraftreborn.lazy_crafting.title"},
+    "description": {"translate": "advancements.buildcraftreborn.lazy_crafting.description"}
+  },
+  "requirements": [["has"]]
+}

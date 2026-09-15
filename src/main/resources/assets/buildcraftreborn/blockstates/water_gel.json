@@ -1,0 +1,11 @@
+{
+  "variants": {
+    "stage=0": {"model": "buildcraftreborn:block/water_gel_0"},
+    "stage=1": {"model": "buildcraftreborn:block/water_gel_1"},
+    "stage=2": {"model": "buildcraftreborn:block/water_gel_2"},
+    "stage=3": {"model": "buildcraftreborn:block/water_gel_3"},
+    "stage=4": {"model": "buildcraftreborn:block/water_gel_4"},
+    "stage=5": {"model": "buildcraftreborn:block/water_gel_5"},
+    "stage=6": {"model": "buildcraftreborn:block/water_gel_6"}
+  }
+}

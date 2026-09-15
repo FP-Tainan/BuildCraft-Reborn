@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [{"type": "minecraft:item", "name": "buildcraftreborn:library"}],
+      "conditions": [{"condition": "minecraft:survives_explosion"}]
+    }
+  ],
+  "random_sequence": "buildcraftreborn:blocks/library"
+}

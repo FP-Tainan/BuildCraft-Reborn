@@ -1,0 +1,11 @@
+{
+  "parent": "buildcraftreborn:pipe_dream",
+  "criteria": {"has": {"trigger": "minecraft:inventory_changed", "conditions": {"items": [{"items": ["buildcraftreborn:pipe_items_lapis", "buildcraftreborn:pipe_items_daizuli", "buildcraftreborn:lens"]}]}}},
+  "display": {
+    "frame": "goal",
+    "icon": {"id": "buildcraftreborn:pipe_items_daizuli"},
+    "title": {"translate": "advancements.buildcraftreborn.categorizing_with_colors.title"},
+    "description": {"translate": "advancements.buildcraftreborn.categorizing_with_colors.description"}
+  },
+  "requirements": [["has"]]
+}

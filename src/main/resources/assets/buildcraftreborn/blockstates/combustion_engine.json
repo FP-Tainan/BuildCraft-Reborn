@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "facing=up": {"model": "buildcraftreborn:block/combustion_engine"},
+    "facing=down": {"model": "buildcraftreborn:block/combustion_engine"},
+    "facing=north": {"model": "buildcraftreborn:block/combustion_engine"},
+    "facing=south": {"model": "buildcraftreborn:block/combustion_engine"},
+    "facing=west": {"model": "buildcraftreborn:block/combustion_engine"},
+    "facing=east": {"model": "buildcraftreborn:block/combustion_engine"}
+  }
+}

@@ -1,0 +1,4 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {"layer0": "buildcraftreborn:item/fuel_mixed_heavy_hot_bucket"}
+}

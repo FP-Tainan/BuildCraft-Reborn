@@ -1,0 +1,11 @@
+{
+  "parent": "buildcraftreborn:pipe_logic",
+  "criteria": {"has": {"trigger": "minecraft:inventory_changed", "conditions": {"items": [{"items": ["buildcraftreborn:plug_pulsar", "buildcraftreborn:plug_light_sensor", "buildcraftreborn:plug_timer", "buildcraftreborn:facade", "buildcraftreborn:lens"]}]}}},
+  "display": {
+    
+    "icon": {"id": "buildcraftreborn:plug_pulsar"},
+    "title": {"translate": "advancements.buildcraftreborn.plugging_the_gap.title"},
+    "description": {"translate": "advancements.buildcraftreborn.plugging_the_gap.description"}
+  },
+  "requirements": [["has"]]
+}

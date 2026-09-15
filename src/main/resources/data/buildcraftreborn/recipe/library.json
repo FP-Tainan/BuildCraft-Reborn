@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": ["bBb", "rCr", "bgb"],
+  "key": {"b": "minecraft:black_dye", "B": "minecraft:bookshelf", "r": "minecraft:redstone", "C": "minecraft:chest", "g": "#c:gears/gold"},
+  "result": {"id": "buildcraftreborn:library", "count": 1}
+}

@@ -1,18 +1,24 @@
 package net.buildcraftreborn.energy.engine;
 
+import net.buildcraftreborn.energy.fluid.BCFuels;
 import net.buildcraftreborn.lib.block.BCDirectionalBlock;
 import net.buildcraftreborn.lib.block.WrenchInteractable;
 import net.buildcraftreborn.registry.BCBlockEntities;
 import net.craftenergy.fabric.CraftEnergyApi;
 import net.fabricmc.fabric.api.menu.v1.ExtendedMenuProvider;
+import net.fabricmc.fabric.api.transfer.v1.fluid.FluidStorageUtil;
+import net.fabricmc.fabric.api.transfer.v1.item.ItemVariant;
+import net.fabricmc.fabric.api.transfer.v1.transaction.Transaction;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.EntityBlock;
@@ -35,7 +41,9 @@ public class EngineBlock extends BCDirectionalBlock implements EntityBlock, Wren
         /** Motor Stirling: 1.000 CW a 220 MV queimando combustível sólido. */
         STIRLING,
         /** Motor criativo: potência e tensão escolhidas, sem combustível. */
-        CREATIVE
+        CREATIVE,
+        /** Motor a combustão: até 8.000 CW a 1.000 MV queimando combustível líquido; precisa de refrigerante. */
+        COMBUSTION
     }
 
     private final Kind kind;
@@ -106,26 +114,8 @@ public class EngineBlock extends BCDirectionalBlock implements EntityBlock, Wren
         if (!(level.getBlockEntity(pos) instanceof EngineBlockEntity engine)) return InteractionResult.PASS;
         if (level.isClientSide()) return InteractionResult.SUCCESS;
         switch (this.kind) {
-            case STIRLING -> {
-                if (player instanceof ServerPlayer serverPlayer) {
-                    serverPlayer.openMenu(new ExtendedMenuProvider<BlockPos>() {
-                        @Override
-                        public BlockPos getScreenOpeningData(ServerPlayer opener) {
-                            return pos;
-                        }
-
-                        @Override
-                        public Component getDisplayName() {
-                            return state.getBlock().getName();
-                        }
-
-                        @Override
-                        public AbstractContainerMenu createMenu(int containerId, Inventory inventory, Player opener) {
-                            return new StirlingEngineMenu(containerId, inventory, engine);
-                        }
-                    });
-                }
-            }
+            case STIRLING -> openMenu(player, state, pos, (containerId, inventory) -> new StirlingEngineMenu(containerId, inventory, engine));
+            case COMBUSTION -> openMenu(player, state, pos, (containerId, inventory) -> new CombustionEngineMenu(containerId, inventory, engine));
             case CREATIVE -> {
                 engine.cycleCreativeVoltage();
                 player.sendOverlayMessage(engine.creativeDescription());
@@ -133,6 +123,48 @@ public class EngineBlock extends BCDirectionalBlock implements EntityBlock, Wren
             case REDSTONE -> player.sendOverlayMessage(engine.statusDescription());
         }
         return InteractionResult.SUCCESS;
+    }
+
+    private static void openMenu(Player player, BlockState state, BlockPos pos,
+                                 java.util.function.BiFunction<Integer, Inventory, AbstractContainerMenu> factory) {
+        if (!(player instanceof ServerPlayer serverPlayer)) return;
+        serverPlayer.openMenu(new ExtendedMenuProvider<BlockPos>() {
+            @Override
+            public BlockPos getScreenOpeningData(ServerPlayer opener) {
+                return pos;
+            }
+
+            @Override
+            public Component getDisplayName() {
+                return state.getBlock().getName();
+            }
+
+            @Override
+            public AbstractContainerMenu createMenu(int containerId, Inventory inventory, Player opener) {
+                return factory.apply(containerId, inventory);
+            }
+        });
+    }
+
+    /** Motor a combustão: baldes enchem os tanques (ou tiram o resíduo) e gelo vira refrigerante. */
+    @Override
+    protected InteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player,
+                                          InteractionHand hand, BlockHitResult hit) {
+        if (this.kind == Kind.COMBUSTION && level.getBlockEntity(pos) instanceof EngineBlockEntity engine && engine.combustion() != null) {
+            if (FluidStorageUtil.interactWithFluidStorage(engine.combustion().fluidStorage(), player, hand)) return InteractionResult.SUCCESS;
+            if (BCFuels.solidCoolant(stack.getItem()) != null) {
+                if (!level.isClientSide()) {
+                    try (Transaction transaction = Transaction.openOuter()) {
+                        if (engine.combustion().itemStorage().insert(ItemVariant.of(stack), 1, transaction) == 1) {
+                            transaction.commit();
+                            if (!player.getAbilities().instabuild) stack.shrink(1);
+                        }
+                    }
+                }
+                return InteractionResult.SUCCESS;
+            }
+        }
+        return super.useItemOn(stack, state, level, pos, player, hand, hit);
     }
 
     /** Agachado com a chave: no motor criativo, dobra a potência. */

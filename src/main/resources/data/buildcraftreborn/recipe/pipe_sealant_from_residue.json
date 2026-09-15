@@ -1,0 +1,6 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": ["buildcraftreborn:oil_residue_bucket"],
+  "result": {"id": "buildcraftreborn:pipe_sealant", "count": 8}
+}

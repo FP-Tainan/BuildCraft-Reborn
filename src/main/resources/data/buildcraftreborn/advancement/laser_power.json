@@ -1,0 +1,11 @@
+{
+  "parent": "buildcraftreborn:engine",
+  "criteria": {"has": {"trigger": "minecraft:inventory_changed", "conditions": {"items": [{"items": "buildcraftreborn:laser"}]}}},
+  "display": {
+    
+    "icon": {"id": "buildcraftreborn:laser"},
+    "title": {"translate": "advancements.buildcraftreborn.laser_power.title"},
+    "description": {"translate": "advancements.buildcraftreborn.laser_power.description"}
+  },
+  "requirements": [["has"]]
+}

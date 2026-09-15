@@ -1,0 +1,6 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": ["minecraft:paper", "minecraft:paper", "minecraft:redstone"],
+  "result": {"id": "buildcraftreborn:schematic_single", "count": 1}
+}

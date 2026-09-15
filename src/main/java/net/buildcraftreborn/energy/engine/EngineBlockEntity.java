@@ -43,9 +43,13 @@ public class EngineBlockEntity extends BCBlockEntity implements MultimeterReadab
     public static final int DATA_ENERGY = 1;
     public static final int DATA_STAGE = 2;
     public static final int DATA_POWER = 3;
-    public static final int DATA_COUNT = 4;
+    /** Calor do motor a combustão em décimos de CCº. */
+    public static final int DATA_HEAT = 4;
+    public static final int DATA_COUNT = 5;
 
     private final Source source = new Source();
+    /** Tanques e calor do motor a combustão; nulo nos outros motores. */
+    private final @Nullable CombustionEngine combustion;
     private final SimpleContainer fuel = new SimpleContainer(1) {
         @Override
         public boolean canPlaceItem(int slot, ItemStack stack) {
@@ -82,6 +86,7 @@ public class EngineBlockEntity extends BCBlockEntity implements MultimeterReadab
                 case DATA_ENERGY -> (int) (heatLevel() * 1000);
                 case DATA_STAGE -> EngineBlockEntity.this.stage.ordinal();
                 case DATA_POWER -> (int) Math.min(Short.MAX_VALUE, EngineBlockEntity.this.lastDraw);
+                case DATA_HEAT -> EngineBlockEntity.this.combustion == null ? 0 : (int) Math.round(EngineBlockEntity.this.combustion.heat() * 10);
                 default -> 0;
             };
         }
@@ -98,6 +103,8 @@ public class EngineBlockEntity extends BCBlockEntity implements MultimeterReadab
 
     public EngineBlockEntity(BlockPos pos, BlockState state) {
         super(BCBlockEntities.ENGINE.get(), pos, state);
+        this.combustion = state.getBlock() instanceof EngineBlock engine && engine.kind() == EngineBlock.Kind.COMBUSTION
+                ? new CombustionEngine(this::setChanged) : null;
     }
 
     public EngineBlock.Kind kind() {
@@ -129,6 +136,7 @@ public class EngineBlockEntity extends BCBlockEntity implements MultimeterReadab
                 this.heat = Math.clamp(this.heat + (this.powered && this.lastDraw > 0 ? 0.0002 : -0.001), 0.0, 0.8);
             }
             case STIRLING -> tickStirling();
+            case COMBUSTION -> tickCombustion();
             case CREATIVE -> {
                 if (this.powered) this.energy = creativeOutput();
             }
@@ -147,6 +155,8 @@ public class EngineBlockEntity extends BCBlockEntity implements MultimeterReadab
         } else if (this.lastDraw > 0 || this.burnTime > 0) {
             setChanged();
         }
+        // tanques do motor a combustão aparecem na tela do cliente
+        if (this.combustion != null && this.level.getGameTime() % 10 == 0 && this.combustion.consumeDirty()) syncToClient();
     }
 
     private void tickStirling() {
@@ -171,24 +181,36 @@ public class EngineBlockEntity extends BCBlockEntity implements MultimeterReadab
         }
     }
 
+    private void tickCombustion() {
+        if (this.combustion == null) return;
+        long generated = this.combustion.tick(this.powered, this.energy < CombustionEngine.CAPACITY);
+        this.energy = Math.min(CombustionEngine.CAPACITY, this.energy + generated);
+    }
+
     /** Fração de calor: Stirling pelo buffer cheio, redstone pelo próprio calor, criativo sempre frio. */
     public double heatLevel() {
         return switch (kind()) {
             case REDSTONE -> this.heat;
             case STIRLING -> (double) this.energy / STIRLING_CAPACITY;
+            case COMBUSTION -> this.combustion == null ? 0.0 : this.combustion.heatLevel();
             case CREATIVE -> 0.0;
         };
     }
 
     // ── energia ───────────────────────────────────────────────────────────
     public int outputVoltage() {
-        return kind() == EngineBlock.Kind.CREATIVE ? CREATIVE_VOLTAGES[this.creativeVoltage] : LOW_VOLTAGE;
+        return switch (kind()) {
+            case CREATIVE -> CREATIVE_VOLTAGES[this.creativeVoltage];
+            case COMBUSTION -> CombustionEngine.VOLTAGE;
+            default -> LOW_VOLTAGE;
+        };
     }
 
     public long maxOutput() {
         return switch (kind()) {
             case REDSTONE -> REDSTONE_OUTPUT;
             case STIRLING -> STIRLING_OUTPUT;
+            case COMBUSTION -> CombustionEngine.MAX_OUTPUT;
             case CREATIVE -> creativeOutput();
         };
     }
@@ -264,6 +286,10 @@ public class EngineBlockEntity extends BCBlockEntity implements MultimeterReadab
         return this.burnTime;
     }
 
+    public @Nullable CombustionEngine combustion() {
+        return this.combustion;
+    }
+
     public EnergySource source() {
         return this.source;
     }
@@ -271,6 +297,10 @@ public class EngineBlockEntity extends BCBlockEntity implements MultimeterReadab
     @Override
     public void multimeterReading(List<Double> values, List<String> units) {
         MultimeterReadable.electric(values, units, outputVoltage(), this.lastDraw);
+        if (this.combustion != null) {
+            values.add((double) this.combustion.fuelTank().amountCL());
+            units.add("CL");
+        }
     }
 
     @Override
@@ -291,6 +321,7 @@ public class EngineBlockEntity extends BCBlockEntity implements MultimeterReadab
         output.putInt("CreativeVoltage", this.creativeVoltage);
         output.putBoolean("Active", this.active);
         output.store("Fuel", ItemStack.OPTIONAL_CODEC, this.fuel.getItem(0));
+        if (this.combustion != null) this.combustion.save(output);
     }
 
     @Override
@@ -304,6 +335,7 @@ public class EngineBlockEntity extends BCBlockEntity implements MultimeterReadab
         this.creativeVoltage = Math.clamp(input.getIntOr("CreativeVoltage", 0), 0, CREATIVE_VOLTAGES.length - 1);
         this.active = input.getBooleanOr("Active", false);
         this.fuel.setItem(0, input.read("Fuel", ItemStack.OPTIONAL_CODEC).orElse(ItemStack.EMPTY));
+        if (this.combustion != null) this.combustion.load(input);
         this.stage = EngineStage.of(heatLevel());
     }
 }

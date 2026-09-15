@@ -1,0 +1,9 @@
+{
+  "model": {
+    "type": "minecraft:condition",
+    "property": "minecraft:has_component",
+    "component": "buildcraftreborn:snapshot",
+    "on_true": {"type": "minecraft:model", "model": "buildcraftreborn:item/template_used"},
+    "on_false": {"type": "minecraft:model", "model": "buildcraftreborn:item/template_clean"}
+  }
+}

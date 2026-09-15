@@ -1,0 +1,11 @@
+{
+  "parent": "buildcraftreborn:shaping_the_world",
+  "criteria": {"has": {"trigger": "minecraft:inventory_changed", "conditions": {"items": [{"items": "buildcraftreborn:filler"}]}}},
+  "display": {
+    
+    "icon": {"id": "buildcraftreborn:filler"},
+    "title": {"translate": "advancements.buildcraftreborn.building_for_the_future.title"},
+    "description": {"translate": "advancements.buildcraftreborn.building_for_the_future.description"}
+  },
+  "requirements": [["has"]]
+}

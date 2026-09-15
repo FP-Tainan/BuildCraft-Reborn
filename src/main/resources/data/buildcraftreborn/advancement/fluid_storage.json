@@ -1,0 +1,11 @@
+{
+  "parent": "buildcraftreborn:engine",
+  "criteria": {"has": {"trigger": "minecraft:inventory_changed", "conditions": {"items": [{"items": "buildcraftreborn:tank"}]}}},
+  "display": {
+    
+    "icon": {"id": "buildcraftreborn:tank"},
+    "title": {"translate": "advancements.buildcraftreborn.fluid_storage.title"},
+    "description": {"translate": "advancements.buildcraftreborn.fluid_storage.description"}
+  },
+  "requirements": [["has"]]
+}

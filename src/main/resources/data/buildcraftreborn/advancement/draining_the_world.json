@@ -1,0 +1,11 @@
+{
+  "parent": "buildcraftreborn:fluid_storage",
+  "criteria": {"has": {"trigger": "minecraft:inventory_changed", "conditions": {"items": [{"items": "buildcraftreborn:pump"}]}}},
+  "display": {
+    
+    "icon": {"id": "buildcraftreborn:pump"},
+    "title": {"translate": "advancements.buildcraftreborn.draining_the_world.title"},
+    "description": {"translate": "advancements.buildcraftreborn.draining_the_world.description"}
+  },
+  "requirements": [["has"]]
+}

@@ -128,42 +128,104 @@ Cada sessão termina com build verde, testes de jogo (gametests) e teste do usu�
 - Fluxo de fluido por seções e renderização; versões de fluido dos tubos (madeira, pedregulho, pedra,
   arenito, quartzo, ferro, ouro, diamante, argila, vazio).
 
-### Sessão 7 — Petróleo e combustão
+### Sessão 7 — Petróleo e combustão ✅ (aguardando teste)
+> Feita: 10 fluidos × 3 temperaturas com balde e textura gerada por cor, pegajosos e inflamáveis; registro de
+> combustíveis/refrigerantes; motor a combustão (1.000 MV, tanques de combustível, refrigerante e resíduo, calor
+> ideal 100 CCº, superaquece sem água, gelo vira água). Glóbulo de petróleo ficou de fora (era só ícone).
+
 - 10 fluidos × 3 temperaturas, baldes, texturas geradas por cor, fluidos pegajosos e inflamáveis.
 - Registro de combustíveis e refrigerantes; motor a combustão (3 tanques: combustível, refrigerante,
   resíduo); glóbulo de petróleo.
 
-### Sessão 8 — Petróleo no mundo
+### Sessão 8 — Petróleo no mundo ✅ (aguardando teste)
+> Feita: poços grandes e médios (esfera, jorro, tubo até a fonte de petróleo) e lagos com tentáculos; desertos,
+> badlands e oceanos fazem o papel dos biomas de petróleo (×10, configurável), porque o 26.2 não tem API de
+> biomas do overworld; conquistas "Ouro Negro" e "Mergulho Pegajoso".
+
 - Biomas "Campo de Petróleo" (deserto e oceano), poços com jorro, esferas subterrâneas, lagos,
   fonte de petróleo e conquista "ouro negro".
 
-### Sessão 9 — Refino
+### Sessão 9 — Refino ✅ (aguardando teste)
+> Feita: destilador (10 receitas por temperatura, gás sai por cima e líquido por baixo, fluido desenhado nos
+> tanques), trocador de calor multibloco (início, 1 a 3 meios, fim; 5/10/20 CL/t depois de 6 s esquentando),
+> gelificador de água, gel que se espalha e água gelificada. Folha de plástico ficou de fora (sem receita no BC 8).
+
 - Destilador (10 receitas por temperatura), trocador de calor multibloco (início, meio, fim),
   gel de água, folha de plástico.
 
-### Sessão 10 — Silício: laser e mesas
+### Sessão 10 — Silício: laser e mesas ✅ (aguardando teste)
+> Feita: laser (1.000 MV, bateria de 1.024 CWh, até 4.000 CW, cone de 6 blocos, feixe com cor pela potência),
+> mesa de montagem (receitas marcadas em rodízio, chipsets de redstone/ferro/ouro/quartzo/diamante com a energia
+> do BuildCraft), mesa de trabalho avançada (molde 3×3, 500 CWh por item). Lentes, pulsar e portas lógicas ficam
+> para as Sessões 11 e 14.
+
 - Laser alimentado por Craft Energy com feixe renderizado, mesa de montagem (chipsets, lentes, pulsar,
   fios), mesa de trabalho avançada.
 
-### Sessão 11 — Portas lógicas e fios
+### Sessão 11 — Portas lógicas e fios ✅ (aguardando teste)
+> Feita: porta lógica encaixável na face do tubo (tapa a ligação; agachado tira), 4 materiais × AND/OR × 4
+> modificadores num item só, tela original com gatilhos/ações/parâmetros/grupos, saída de redstone pelo tubo.
+> Gatilhos: sempre, redstone, inventário e tanque (vazio/contém/espaço/cheio/abaixo de 25-50-75%), estágio do
+> motor, conteúdo do tubo, sinal no fio, luz, temporizador; ações: redstone, sinal no fio, pulsar constante/único.
+> Fios de 16 cores nos cantos do tubo (rede calculada por tick, sem arquivo no mundo), pulsar (1 CWh por segundo
+> em tubos de madeira/obsidiana, clique liga o manual), sensor de luz, temporizador e copiador de portas. Receitas
+> na mesa de montagem (que agora mostra as receitas possíveis primeiro). Também: energia guardada alta/baixa no
+> vizinho e a ação "desligar máquina" (pedreira, preenchedor, bomba, destilador, mesas...).
+
 - Sistema de gatilhos e ações (core, tubos, silício), porta lógica encaixável no tubo com GUI,
   materiais e modificadores, AND/OR, fio de tubo (rede salva no mundo), pulsar, sensor de luz,
   temporizador, copiador de portas.
 
-### Sessão 12 — Preenchedor (Filler)
+### Sessão 12 — Preenchedor (Filler) ✅ (aguardando teste)
+> Feita: preenchedor com caixa dos marcadores, 19 padrões (nenhum, limpar, preencher, caixa, armação, pirâmide,
+> escada, esfera e partes, 8 formas 2D) com parâmetros na tela original, escavar/inverter, 27 slots de material,
+> bateria de 16.000 CWh. Receita do BuildCraft 7 (no 8 ele não tinha receita). Planejador de preenchimento e travar
+> padrão por porta lógica ficam para depois.
+
 - 22 padrões (limpar, preencher, caixa, armação, pirâmide, escada, formas 2D, esferas),
   GUI de padrão com parâmetros, planejador de preenchimento na caixa de volume.
 
-### Sessão 13 — Construção: arquiteto, construtor, biblioteca
+### Sessão 13 — Construção: arquiteto, construtor, biblioteca ✅ (aguardando teste)
+> Parte B: biblioteca eletrônica (pasta `buildcraftreborn/library` comum a todos os mundos; enviar/baixar em
+> 2,5 s, lista com rolagem, apagar só no criativo), substituidor (troca um bloco por outro na planta com dois
+> esquemas de bloco único, mantendo direção e outras propriedades), esquema de bloco único (clique num bloco
+> guarda; agachado no ar limpa) e caminho de marcadores atrás do construtor (constrói em cada ponto da linha).
+> Biblioteca, substituidor e esquema não tinham receita no BC 8 e ganharam receitas novas.
+> Parte A: molde e planta (arquivo por hash dentro do mundo, o item só guarda nome/autor/hash; nome dado
+> renomeando o item em branco na bigorna), mesa do arquiteto (caixa dos marcadores, 900/300 blocos por tick, sem
+> energia), construtor (constrói atrás de si girado pela direção, quebra de cima para baixo e coloca de baixo para
+> cima, 27 slots + 4 tanques de 8.000 CL para água/lava, lista do que falta, 16.000 CWh), regras de blocos refeitas
+> em Java para os estados do 26.2. Receitas de molde, planta e arquiteto do BuildCraft; o construtor não tinha
+> receita no BC 8, então ganhou uma nova. Parte B: biblioteca, substituidor, esquema de bloco único, caminho.
+
 - Moldes (templates) e plantas (blueprints), mesa do arquiteto, construtor (com fluidos e caminho),
   biblioteca eletrônica, substituidor, esquema de bloco único, regras de blocos refeitas para 26.2.
 
-### Sessão 14 — Tubos especiais, stripes e fachadas
+### Sessão 14 — Tubos especiais, stripes e fachadas ✅ (aguardando teste)
+> Parte A: itens pintados (caixinha colorida em volta do item), tubo lápis (pinta; chave troca a cor, agachado
+> volta), daizuli (itens da cor só saem pela face especial; chave no centro troca a cor, num braço move a face),
+> madeira-diamante (1 item por vez, lista branca/negra/rodízio, tela original), emzuli (4 presets com filtro e
+> pintura, ligados por porta lógica), lentes e filtros coloridos (mesa de montagem, 500 CWh) e ações de porta
+> "pintar itens" e "predefinição de extração".
+> Parte B: tubo stripes (256 CWh; quebra o bloco da ponta e manda os drops de volta, usa itens com um jogador
+> falso — coloca blocos, planta, ara —, tubo de itens na ponta estende a linha e tubo vazio recolhe), buffer
+> filtrado (9 filtros + 9 slots, tela original) e tubo de fluidos de madeira-diamante (lista branca/negra de
+> recipientes).
+> Parte C: fachadas (qualquer bloco inteiro sem block entity, e vidros; a sólida tapa a ligação, a vazada deixa
+> ligar; desenhadas com o próprio modelo do bloco). Receita especial na bancada: 3 tubos de estrutura + o bloco =
+> 6 fachadas; uma fachada sozinha alterna vazada. Fachadas de fase (por cor de fio) ficaram de fora.
+
 - Tubos lápis, daizuli, emzuli, madeira-diamante; buffer filtrado; lente/filtro e adaptador de energia.
 - Tubo stripes (usa itens no mundo, estende o tubo).
 - **Fachadas** (cobrir o tubo com o visual de qualquer bloco) — a parte mais difícil de renderização.
 
-### Sessão 15 — Polimento e publicação
+### Sessão 15 — Polimento e publicação 🔶 (parte feita, aguardando teste)
+> Feito: livro guia (12 capítulos escritos para este port, em inglês e português; receita: livro +
+> engrenagem de madeira; todo jogador ganha um ao entrar pela primeira vez), 26 conquistas com os
+> nomes do BuildCraft (gatilho de inventário) e revisão de receitas (todo item tem receita de bancada, de mesa de
+> montagem ou vem de fluido/criativo). Pendente, depende de decisão: EMI/REI e Jade/WTHIT (dependências novas no
+> Gradle) e a página do CurseForge. O planejador de zonas era da robótica, que ficou fora do port.
+
 - Livro guia (111 páginas convertidas + PT-BR), conquistas, receitas no EMI/REI, informações no
   Jade/WTHIT, planejador de zonas (opcional), revisão de receitas, página do CurseForge.
 

@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "pattern": [" m ", "mrm", " b "],
+  "key": {"m": "minecraft:iron_ingot", "r": "minecraft:redstone", "b": "minecraft:cobblestone"},
+  "result": {"id": "buildcraftreborn:gate", "count": 1, "components": {"buildcraftreborn:gate_variant": 4}}
+}

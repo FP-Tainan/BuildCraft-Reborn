@@ -1,0 +1,11 @@
+{
+  "parent": "buildcraftreborn:engine",
+  "criteria": {"has": {"trigger": "minecraft:inventory_changed", "conditions": {"items": [{"items": "buildcraftreborn:quarry"}]}}},
+  "display": {
+    "frame": "goal",
+    "icon": {"id": "buildcraftreborn:quarry"},
+    "title": {"translate": "advancements.buildcraftreborn.shaping_the_world.title"},
+    "description": {"translate": "advancements.buildcraftreborn.shaping_the_world.description"}
+  },
+  "requirements": [["has"]]
+}

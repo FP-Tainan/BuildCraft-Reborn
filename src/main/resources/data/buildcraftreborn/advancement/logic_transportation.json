@@ -1,0 +1,11 @@
+{
+  "parent": "buildcraftreborn:pipe_logic",
+  "criteria": {"has": {"trigger": "minecraft:inventory_changed", "conditions": {"items": [{"items": ["buildcraftreborn:wire_black", "buildcraftreborn:wire_blue", "buildcraftreborn:wire_brown", "buildcraftreborn:wire_cyan", "buildcraftreborn:wire_gray", "buildcraftreborn:wire_green", "buildcraftreborn:wire_light_blue", "buildcraftreborn:wire_light_gray", "buildcraftreborn:wire_lime", "buildcraftreborn:wire_magenta", "buildcraftreborn:wire_orange", "buildcraftreborn:wire_pink", "buildcraftreborn:wire_purple", "buildcraftreborn:wire_red", "buildcraftreborn:wire_white", "buildcraftreborn:wire_yellow"]}]}}},
+  "display": {
+    
+    "icon": {"id": "buildcraftreborn:wire_red"},
+    "title": {"translate": "advancements.buildcraftreborn.logic_transportation.title"},
+    "description": {"translate": "advancements.buildcraftreborn.logic_transportation.description"}
+  },
+  "requirements": [["has"]]
+}

@@ -34,13 +34,13 @@ public class DirectionalPipeBlock extends PipeBlock implements Wrenchable {
         builder.add(SPECIAL);
     }
 
-    /** Ferro: qualquer lado ligado. Madeira: um lado ligado que não seja outro tubo (um inventário). */
+    /** Ferro: qualquer lado ligado. Madeira (e extratores): um lado ligado que não seja outro tubo (um inventário). */
     public boolean isValidSpecial(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
         if (!state.getValue(CONNECTIONS.get(direction))) return false;
-        return type() != PipeType.WOOD || !(level.getBlockState(pos.relative(direction)).getBlock() instanceof PipeBlock);
+        return !type().extractsItems() || !(level.getBlockState(pos.relative(direction)).getBlock() instanceof PipeBlock);
     }
 
-    private BlockState fixSpecial(BlockState state, BlockGetter level, BlockPos pos) {
+    protected BlockState fixSpecial(BlockState state, BlockGetter level, BlockPos pos) {
         if (isValidSpecial(state, level, pos, state.getValue(SPECIAL))) return state;
         for (Direction direction : Direction.values()) {
             if (isValidSpecial(state, level, pos, direction)) return state.setValue(SPECIAL, direction);

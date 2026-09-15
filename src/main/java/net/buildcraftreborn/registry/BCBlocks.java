@@ -25,7 +25,12 @@ public final class BCBlocks {
 
     // ── core: fonte e decoração ───────────────────────────────────────────
     public static final RegistryObject<SpringBlock> WATER_SPRING = BLOCKS.register("water_spring",
-            () -> new SpringBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BEDROCK).setId(BLOCKS.key("water_spring"))));
+            () -> new SpringBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BEDROCK).setId(BLOCKS.key("water_spring")),
+                    () -> net.minecraft.world.level.material.Fluids.WATER));
+    /** Fonte de petróleo: fica embaixo dos poços grandes e repõe o petróleo que a bomba tira. */
+    public static final RegistryObject<SpringBlock> OIL_SPRING = BLOCKS.register("oil_spring",
+            () -> new SpringBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BEDROCK).setId(BLOCKS.key("oil_spring")),
+                    () -> net.buildcraftreborn.energy.fluid.BCFluids.get(net.buildcraftreborn.energy.fluid.BCFluids.Kind.OIL).fluid()));
     public static final RegistryObject<Block> DECORATED_DESTROY = decorated("decorated_destroy");
     public static final RegistryObject<Block> DECORATED_BLUEPRINT = decorated("decorated_blueprint");
     public static final RegistryObject<Block> DECORATED_TEMPLATE = decorated("decorated_template");
@@ -43,6 +48,9 @@ public final class BCBlocks {
     public static final RegistryObject<EngineBlock> CREATIVE_ENGINE = BLOCKS.register("creative_engine",
             () -> new EngineBlock(BlockBehaviour.Properties.of().setId(BLOCKS.key("creative_engine"))
                     .strength(3.0F, 6.0F).sound(SoundType.METAL), EngineBlock.Kind.CREATIVE));
+    public static final RegistryObject<EngineBlock> COMBUSTION_ENGINE = BLOCKS.register("combustion_engine",
+            () -> new EngineBlock(BlockBehaviour.Properties.of().setId(BLOCKS.key("combustion_engine"))
+                    .strength(3.0F, 6.0F).sound(SoundType.METAL).requiresCorrectToolForDrops(), EngineBlock.Kind.COMBUSTION));
 
     // ── factory ───────────────────────────────────────────────────────────
     public static final RegistryObject<net.buildcraftreborn.factory.block.TankBlock> TANK = BLOCKS.register("tank",
@@ -60,13 +68,47 @@ public final class BCBlocks {
     public static final RegistryObject<net.buildcraftreborn.factory.block.MiningPipeBlock> MINING_PIPE = BLOCKS.register("mining_pipe",
             () -> new net.buildcraftreborn.factory.block.MiningPipeBlock(BlockBehaviour.Properties.of().setId(BLOCKS.key("mining_pipe"))
                     .strength(1.0F, 6.0F).sound(SoundType.METAL).noLootTable()));
+    public static final RegistryObject<net.buildcraftreborn.factory.block.DistillerBlock> DISTILLER = BLOCKS.register("distiller",
+            () -> new net.buildcraftreborn.factory.block.DistillerBlock(BlockBehaviour.Properties.of().setId(BLOCKS.key("distiller"))
+                    .strength(2.0F, 6.0F).sound(SoundType.METAL)));
+    public static final RegistryObject<net.buildcraftreborn.factory.block.HeatExchangerBlock> HEAT_EXCHANGER = BLOCKS.register("heat_exchanger",
+            () -> new net.buildcraftreborn.factory.block.HeatExchangerBlock(BlockBehaviour.Properties.of().setId(BLOCKS.key("heat_exchanger"))
+                    .strength(2.0F, 6.0F).sound(SoundType.METAL)));
+    public static final RegistryObject<net.buildcraftreborn.factory.block.WaterGelBlock> WATER_GEL = BLOCKS.register("water_gel",
+            () -> new net.buildcraftreborn.factory.block.WaterGelBlock(BlockBehaviour.Properties.of().setId(BLOCKS.key("water_gel"))
+                    .strength(0.4F).sound(SoundType.SLIME_BLOCK)));
 
     // ── builders ──────────────────────────────────────────────────────────
     public static final RegistryObject<net.buildcraftreborn.builders.block.QuarryBlock> QUARRY = BLOCKS.register("quarry",
             () -> new net.buildcraftreborn.builders.block.QuarryBlock(machine("quarry")));
+    public static final RegistryObject<net.buildcraftreborn.builders.block.FillerBlock> FILLER = BLOCKS.register("filler",
+            () -> new net.buildcraftreborn.builders.block.FillerBlock(machine("filler")));
     public static final RegistryObject<net.buildcraftreborn.builders.block.FrameBlock> FRAME = BLOCKS.register("frame",
             () -> new net.buildcraftreborn.builders.block.FrameBlock(BlockBehaviour.Properties.of().setId(BLOCKS.key("frame"))
                     .strength(0.5F, 6.0F).sound(SoundType.METAL).noLootTable()));
+
+    // ── silicon ───────────────────────────────────────────────────────────
+    public static final RegistryObject<net.buildcraftreborn.silicon.block.LaserBlock> LASER = BLOCKS.register("laser",
+            () -> new net.buildcraftreborn.silicon.block.LaserBlock(machine("laser")));
+    public static final RegistryObject<net.buildcraftreborn.silicon.block.LaserTableBlock> ASSEMBLY_TABLE = BLOCKS.register("assembly_table",
+            () -> new net.buildcraftreborn.silicon.block.LaserTableBlock(machine("assembly_table"),
+                    net.buildcraftreborn.silicon.block.LaserTableBlock.Kind.ASSEMBLY));
+    public static final RegistryObject<net.buildcraftreborn.silicon.block.LaserTableBlock> ADVANCED_CRAFTING_TABLE = BLOCKS.register("advanced_crafting_table",
+            () -> new net.buildcraftreborn.silicon.block.LaserTableBlock(machine("advanced_crafting_table"),
+                    net.buildcraftreborn.silicon.block.LaserTableBlock.Kind.ADVANCED_CRAFTING));
+
+    // ── builders: arquiteto e construtor ──────────────────────────────────
+    public static final RegistryObject<net.buildcraftreborn.builders.block.ArchitectTableBlock> ARCHITECT_TABLE = BLOCKS.register("architect_table",
+            () -> new net.buildcraftreborn.builders.block.ArchitectTableBlock(machine("architect_table")));
+    public static final RegistryObject<net.buildcraftreborn.builders.block.BuilderBlock> BUILDER = BLOCKS.register("builder",
+            () -> new net.buildcraftreborn.builders.block.BuilderBlock(machine("builder")));
+    public static final RegistryObject<net.buildcraftreborn.builders.block.LibraryBlock> LIBRARY = BLOCKS.register("library",
+            () -> new net.buildcraftreborn.builders.block.LibraryBlock(machine("library")));
+    public static final RegistryObject<net.buildcraftreborn.builders.block.ReplacerBlock> REPLACER = BLOCKS.register("replacer",
+            () -> new net.buildcraftreborn.builders.block.ReplacerBlock(machine("replacer")));
+
+    public static final RegistryObject<net.buildcraftreborn.transport.block.FilteredBufferBlock> FILTERED_BUFFER = BLOCKS.register("filtered_buffer",
+            () -> new net.buildcraftreborn.transport.block.FilteredBufferBlock(machine("filtered_buffer")));
 
     // ── transport: tubos ──────────────────────────────────────────────────
     public static final java.util.Map<net.buildcraftreborn.transport.PipeType, RegistryObject<net.buildcraftreborn.transport.block.PipeBlock>> PIPES =
@@ -75,7 +117,11 @@ public final class BCBlocks {
     static {
         for (net.buildcraftreborn.transport.PipeType type : net.buildcraftreborn.transport.PipeType.values()) {
             String name = type.blockId();
-            PIPES.put(type, BLOCKS.register(name, () -> type.directional()
+            PIPES.put(type, BLOCKS.register(name, () -> type == net.buildcraftreborn.transport.PipeType.LAPIS
+                    ? new net.buildcraftreborn.transport.block.ColoredPipeBlock(pipe(name), type, net.buildcraftreborn.transport.PipeFlow.ITEM)
+                    : type == net.buildcraftreborn.transport.PipeType.DAIZULI
+                    ? new net.buildcraftreborn.transport.block.DaizuliPipeBlock(pipe(name), type, net.buildcraftreborn.transport.PipeFlow.ITEM)
+                    : type.directional()
                     ? new net.buildcraftreborn.transport.block.DirectionalPipeBlock(pipe(name), type, net.buildcraftreborn.transport.PipeFlow.ITEM)
                     : new net.buildcraftreborn.transport.block.PipeBlock(pipe(name), type, net.buildcraftreborn.transport.PipeFlow.ITEM)));
         }

@@ -1,0 +1,14 @@
+{
+  "criteria": {
+    "tick": {"trigger": "minecraft:tick"}
+  },
+  "display": {
+    "announce_to_chat": false,
+    "background": "minecraft:gui/advancements/backgrounds/stone",
+    "description": {"translate": "advancements.buildcraftreborn.root.description"},
+    "icon": {"id": "buildcraftreborn:wrench"},
+    "show_toast": false,
+    "title": {"translate": "advancements.buildcraftreborn.root.title"}
+  },
+  "requirements": [["tick"]]
+}

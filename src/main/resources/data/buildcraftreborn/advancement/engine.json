@@ -1,0 +1,11 @@
+{
+  "parent": "buildcraftreborn:root",
+  "criteria": {"has": {"trigger": "minecraft:inventory_changed", "conditions": {"items": [{"items": ["buildcraftreborn:redstone_engine", "buildcraftreborn:stirling_engine", "buildcraftreborn:combustion_engine"]}]}}},
+  "display": {
+    
+    "icon": {"id": "buildcraftreborn:redstone_engine"},
+    "title": {"translate": "advancements.buildcraftreborn.engine.title"},
+    "description": {"translate": "advancements.buildcraftreborn.engine.description"}
+  },
+  "requirements": [["has"]]
+}

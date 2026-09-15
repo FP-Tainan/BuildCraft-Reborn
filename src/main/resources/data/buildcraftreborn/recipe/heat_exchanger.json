@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": ["igi", "###", "igi"],
+  "key": {"i": "#c:ingots/iron", "g": "#c:gears/iron", "#": "minecraft:glass"},
+  "result": {"id": "buildcraftreborn:heat_exchanger", "count": 1}
+}

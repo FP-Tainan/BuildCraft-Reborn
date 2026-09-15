@@ -32,8 +32,17 @@ public final class BCConfig {
     public int quarryMaxTasksPerTick = 4;
     /** Gera fontes de água na rocha-mãe (BuildCraft: 2,5% dos chunks). */
     public boolean waterSprings = true;
-    /** Gera poços, lagos e biomas de petróleo no mundo. */
+    /** Gera poços, lagos e fontes de petróleo no mundo. */
     public boolean oilWorldgen = true;
+    /** Multiplicador geral da quantidade de poços de petróleo (BuildCraft: 1). */
+    public double oilGenerationRate = 1.0;
+    /**
+     * Desertos, badlands e oceanos fazem o papel dos biomas de petróleo do BuildCraft: poços grandes e
+     * médios multiplicados por este valor (no original os biomas próprios eram ×30).
+     */
+    public double oilFieldMultiplier = 10.0;
+    /** Poços jorram petróleo acima do chão. */
+    public boolean oilSpouts = true;
     /** Desenha os feixes dos lasers. */
     public boolean renderLaserBeams = true;
 
@@ -70,5 +79,7 @@ public final class BCConfig {
         this.miningMaxDepth = Math.clamp(this.miningMaxDepth, 8, 4096);
         this.miningMultiplier = Math.clamp(this.miningMultiplier, 0.1, 100.0);
         this.quarryMaxTasksPerTick = Math.clamp(this.quarryMaxTasksPerTick, 1, 20);
+        this.oilGenerationRate = Math.clamp(this.oilGenerationRate, 0.0, 100.0);
+        this.oilFieldMultiplier = Math.clamp(this.oilFieldMultiplier, 1.0, 100.0);
     }
 }

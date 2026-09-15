@@ -1,0 +1,14 @@
+{
+  "parent": "minecraft:block/block",
+  "textures": {"particle": "buildcraftreborn:block/pipe/diamond_wood_fluid_clear", "pipe": "buildcraftreborn:block/pipe/diamond_wood_fluid_clear"},
+  "elements": [
+    {
+      "from": [4, 4, 0], "to": [12, 12, 16],
+      "faces": {
+        "down": {"uv": [4, 0, 12, 16], "texture": "#pipe"}, "up": {"uv": [4, 0, 12, 16], "texture": "#pipe"},
+        "west": {"uv": [0, 4, 16, 12], "texture": "#pipe"}, "east": {"uv": [0, 4, 16, 12], "texture": "#pipe"},
+        "north": {"uv": [4, 4, 12, 12], "texture": "#pipe"}, "south": {"uv": [4, 4, 12, 12], "texture": "#pipe"}
+      }
+    }
+  ]
+}

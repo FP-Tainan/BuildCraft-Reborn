@@ -13,6 +13,8 @@ public interface ServerTicking {
     static <T extends BlockEntity> BlockEntityTicker<T> ticker(Level level) {
         if (level.isClientSide()) return null;
         return (BlockEntityTicker<T>) (BlockEntityTicker<BlockEntity>) (tickLevel, pos, state, blockEntity) -> {
+            // porta lógica com "desligar máquina" apontada para cá: pula o tick
+            if (blockEntity instanceof BCBlockEntity machine && machine.consumeGateDisable()) return;
             if (blockEntity instanceof ServerTicking ticking) ticking.serverTick();
         };
     }

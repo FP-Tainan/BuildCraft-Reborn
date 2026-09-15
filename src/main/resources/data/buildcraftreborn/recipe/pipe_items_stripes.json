@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": ["lgr"],
+  "key": {"l": "#c:gears/gold", "g": "minecraft:glass", "r": "#c:gears/gold"},
+  "result": {"id": "buildcraftreborn:pipe_items_stripes", "count": 8}
+}

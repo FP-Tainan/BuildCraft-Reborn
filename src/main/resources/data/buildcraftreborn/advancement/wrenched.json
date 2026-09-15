@@ -1,0 +1,11 @@
+{
+  "parent": "buildcraftreborn:root",
+  "criteria": {"has": {"trigger": "minecraft:inventory_changed", "conditions": {"items": [{"items": "buildcraftreborn:wrench"}]}}},
+  "display": {
+    
+    "icon": {"id": "buildcraftreborn:wrench"},
+    "title": {"translate": "advancements.buildcraftreborn.wrenched.title"},
+    "description": {"translate": "advancements.buildcraftreborn.wrenched.description"}
+  },
+  "requirements": [["has"]]
+}

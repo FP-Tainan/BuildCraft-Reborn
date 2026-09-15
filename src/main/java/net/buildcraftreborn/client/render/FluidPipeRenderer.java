@@ -34,6 +34,7 @@ public class FluidPipeRenderer implements BlockEntityRenderer<FluidPipeBlockEnti
         FluidVariant variant = FluidVariant.blank();
         float level;
         final boolean[] arms = new boolean[6];
+        final java.util.List<PipePlugRenderer.PlugView> plugs = new java.util.ArrayList<>();
     }
 
     public FluidPipeRenderer(BlockEntityRendererProvider.Context context) {
@@ -48,6 +49,7 @@ public class FluidPipeRenderer implements BlockEntityRenderer<FluidPipeBlockEnti
     public void extractRenderState(FluidPipeBlockEntity pipe, State state, float partialTick, Vec3 cameraPos,
                                    @Nullable ModelFeatureRenderer.CrumblingOverlay crumbling) {
         BlockEntityRenderState.extractBase(pipe, state, crumbling);
+        PipePlugRenderer.extract(pipe, state.plugs);
         state.variant = pipe.shownVariant();
         state.level = (float) pipe.shownRatio();
         for (Direction direction : Direction.values()) state.arms[direction.ordinal()] = pipe.connected(direction);
@@ -56,6 +58,7 @@ public class FluidPipeRenderer implements BlockEntityRenderer<FluidPipeBlockEnti
 
     @Override
     public void submit(State state, PoseStack pose, SubmitNodeCollector collector, CameraRenderState camera) {
+        PipePlugRenderer.submit(state.plugs, pose, collector, state.lightCoords);
         if (state.variant.isBlank() || state.level <= 0.01F) return;
         TextureAtlasSprite sprite = Minecraft.getInstance().getModelManager().getFluidStateModelSet()
                 .get(state.variant.getFluid().defaultFluidState()).stillMaterial().sprite();

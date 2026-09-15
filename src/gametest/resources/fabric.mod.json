@@ -12,7 +12,19 @@
       "net.buildcraftreborn.test.FactoryGameTest",
       "net.buildcraftreborn.test.QuarryGameTest",
       "net.buildcraftreborn.test.TransportGameTest",
-      "net.buildcraftreborn.test.FluidTransportGameTest"
+      "net.buildcraftreborn.test.FluidTransportGameTest",
+      "net.buildcraftreborn.test.CombustionGameTest",
+      "net.buildcraftreborn.test.OilWorldGameTest",
+      "net.buildcraftreborn.test.RefineryGameTest",
+      "net.buildcraftreborn.test.SiliconGameTest",
+      "net.buildcraftreborn.test.FillerGameTest",
+      "net.buildcraftreborn.test.GateGameTest",
+      "net.buildcraftreborn.test.WireGameTest",
+      "net.buildcraftreborn.test.BuilderGameTest",
+      "net.buildcraftreborn.test.SpecialPipeGameTest",
+      "net.buildcraftreborn.test.StripesGameTest",
+      "net.buildcraftreborn.test.FacadeGameTest",
+      "net.buildcraftreborn.test.PolishGameTest"
     ]
   }
 }

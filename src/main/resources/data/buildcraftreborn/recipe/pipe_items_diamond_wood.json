@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": ["lgr"],
+  "key": {"l": "#minecraft:planks", "g": "minecraft:glass", "r": "minecraft:diamond"},
+  "result": {"id": "buildcraftreborn:pipe_items_diamond_wood", "count": 8}
+}

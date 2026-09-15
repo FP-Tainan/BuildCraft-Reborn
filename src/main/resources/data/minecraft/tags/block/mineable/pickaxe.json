@@ -1,5 +1,10 @@
 {
   "values": [
+    "buildcraftreborn:filtered_buffer",
+    "buildcraftreborn:library",
+    "buildcraftreborn:replacer",
+    "buildcraftreborn:architect_table",
+    "buildcraftreborn:builder",
     "buildcraftreborn:decorated_destroy",
     "buildcraftreborn:decorated_blueprint",
     "buildcraftreborn:decorated_template",

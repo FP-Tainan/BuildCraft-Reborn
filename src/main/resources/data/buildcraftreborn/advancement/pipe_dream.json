@@ -1,0 +1,11 @@
+{
+  "parent": "buildcraftreborn:root",
+  "criteria": {"has": {"trigger": "minecraft:inventory_changed", "conditions": {"items": [{"items": ["buildcraftreborn:pipe_items_clay", "buildcraftreborn:pipe_items_cobblestone", "buildcraftreborn:pipe_items_daizuli", "buildcraftreborn:pipe_items_diamond", "buildcraftreborn:pipe_items_diamond_wood", "buildcraftreborn:pipe_items_emzuli", "buildcraftreborn:pipe_items_gold", "buildcraftreborn:pipe_items_iron", "buildcraftreborn:pipe_items_lapis", "buildcraftreborn:pipe_items_obsidian", "buildcraftreborn:pipe_items_quartz", "buildcraftreborn:pipe_items_sandstone", "buildcraftreborn:pipe_items_stone", "buildcraftreborn:pipe_items_stripes", "buildcraftreborn:pipe_items_void", "buildcraftreborn:pipe_items_wood"]}]}}},
+  "display": {
+    
+    "icon": {"id": "buildcraftreborn:pipe_items_cobblestone"},
+    "title": {"translate": "advancements.buildcraftreborn.pipe_dream.title"},
+    "description": {"translate": "advancements.buildcraftreborn.pipe_dream.description"}
+  },
+  "requirements": [["has"]]
+}

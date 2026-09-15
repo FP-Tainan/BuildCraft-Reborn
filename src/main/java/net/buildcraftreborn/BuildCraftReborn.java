@@ -39,7 +39,12 @@ public final class BuildCraftReborn implements ModInitializer {
     public static final RegistryObject<CreativeModeTab> TAB = TABS.register(MODID, () -> FabricCreativeModeTab.builder()
             .title(Component.translatable("itemGroup.buildcraftreborn"))
             .icon(() -> new ItemStack(BCItems.WRENCH.get()))
-            .displayItems((params, output) -> BCItems.ITEMS.getEntries().forEach(entry -> output.accept(entry.get())))
+            .displayItems((params, output) -> {
+                BCItems.ITEMS.getEntries().forEach(entry -> output.accept(entry.get()));
+                net.buildcraftreborn.transport.gate.GateItem.addCreativeVariants(output);
+                net.buildcraftreborn.transport.plug.LensItem.addCreativeVariants(output);
+                net.buildcraftreborn.transport.plug.FacadeItem.addCreativeVariants(output);
+            })
             .build());
 
     public static Identifier id(String path) {
@@ -51,28 +56,49 @@ public final class BuildCraftReborn implements ModInitializer {
         config = BCConfig.load(FabricLoader.getInstance().getConfigDir().resolve(MODID + ".json"));
 
         BCComponents.COMPONENTS.register();
+        // fluidos antes de blocos e itens: a classe põe os blocos e baldes do petróleo nesses registros
+        net.buildcraftreborn.energy.fluid.BCFluids.FLUIDS.register();
         BCBlocks.BLOCKS.register();
         BCItems.ITEMS.register();
         BCBlockEntities.BLOCK_ENTITIES.register();
         BCMenus.MENUS.register();
         BCFeatures.FEATURES.register();
+        net.buildcraftreborn.registry.BCRecipes.RECIPE_SERIALIZERS.register();
         TABS.register();
 
         // motores: saída de energia pela frente e combustível do Stirling por funis e tubos
         net.craftenergy.fabric.CraftEnergyApi.NODE.registerForBlockEntity((engine, face) -> engine.energyNode(face), BCBlockEntities.ENGINE.get());
         net.fabricmc.fabric.api.transfer.v1.item.ItemStorage.SIDED.registerForBlockEntity(
                 (engine, face) -> engine.kind() == net.buildcraftreborn.energy.engine.EngineBlock.Kind.STIRLING
-                        ? net.fabricmc.fabric.api.transfer.v1.item.ContainerStorage.of(engine.fuel(), face) : null,
+                        ? net.fabricmc.fabric.api.transfer.v1.item.ContainerStorage.of(engine.fuel(), face)
+                        : engine.combustion() != null ? engine.combustion().itemStorage() : null,
                 BCBlockEntities.ENGINE.get());
 
         registerFactoryStorages();
+        registerFuels();
+        net.buildcraftreborn.core.item.GuideBookItem.init();
 
         if (config.waterSprings) {
             BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(), GenerationStep.Decoration.UNDERGROUND_DECORATION,
                     ResourceKey.create(Registries.PLACED_FEATURE, id("water_spring")));
         }
+        if (config.oilWorldgen) {
+            // roda uma vez por chunk; a própria feature sorteia os poços e respeita a configuração
+            BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(), GenerationStep.Decoration.LAKES,
+                    ResourceKey.create(Registries.PLACED_FEATURE, id("oil_well")));
+        }
 
         LOGGER.info("BuildCraft Reborn carregado");
+    }
+
+    /** Petróleo: combustíveis e refrigerantes do motor a combustão; fluidos inflamáveis pegam fogo. */
+    private static void registerFuels() {
+        net.buildcraftreborn.energy.fluid.BCFuels.init();
+        net.buildcraftreborn.factory.refinery.RefineryRecipes.init();
+        var flammable = net.fabricmc.fabric.api.registry.FlammableBlockRegistry.getDefaultInstance();
+        for (net.buildcraftreborn.energy.fluid.BCFluids.Entry entry : net.buildcraftreborn.energy.fluid.BCFluids.all()) {
+            if (entry.kind().flammable) flammable.add(entry.block().get(), 30, 60);
+        }
     }
 
     /** Máquinas do factory: energia por todas as faces, fluidos e itens pelo Transfer API. */
@@ -84,16 +110,31 @@ public final class BuildCraftReborn implements ModInitializer {
         node.registerForBlockEntity((quarry, face) -> quarry.energy(), BCBlockEntities.QUARRY.get());
         node.registerForBlockEntity((pipe, face) -> pipe.energy(), BCBlockEntities.PIPE.get());
         node.registerForBlockEntity((pipe, face) -> pipe.energy(), BCBlockEntities.FLUID_PIPE.get());
+        node.registerForBlockEntity((distiller, face) -> distiller.energy(), BCBlockEntities.DISTILLER.get());
+        node.registerForBlockEntity((laser, face) -> laser.energy(), BCBlockEntities.LASER.get());
+        node.registerForBlockEntity((filler, face) -> filler.energy(), BCBlockEntities.FILLER.get());
 
         var fluids = net.fabricmc.fabric.api.transfer.v1.fluid.FluidStorage.SIDED;
 
         fluids.registerForBlockEntity((pipe, face) -> pipe.storage(face), BCBlockEntities.FLUID_PIPE.get());
+        fluids.registerForBlockEntity((engine, face) -> engine.combustion() != null ? engine.combustion().fluidStorage() : null,
+                BCBlockEntities.ENGINE.get());
         fluids.registerForBlockEntity((tank, face) -> tank.tank(), BCBlockEntities.TANK.get());
         fluids.registerForBlockEntity((pump, face) -> pump.tank(), BCBlockEntities.PUMP.get());
         fluids.registerForBlockEntity((gate, face) -> gate.tank(), BCBlockEntities.FLOOD_GATE.get());
+        fluids.registerForBlockEntity((distiller, face) -> distiller.storage(face), BCBlockEntities.DISTILLER.get());
+        fluids.registerForBlockEntity((exchanger, face) -> exchanger.storage(face), BCBlockEntities.HEAT_EXCHANGER.get());
 
         var items = net.fabricmc.fabric.api.transfer.v1.item.ItemStorage.SIDED;
         items.registerForBlockEntity((workbench, face) -> workbench.itemStorage(face), BCBlockEntities.AUTO_WORKBENCH.get());
         items.registerForBlockEntity((pipe, face) -> pipe.insertion(face), BCBlockEntities.PIPE.get());
+        items.registerForBlockEntity((table, face) -> table.itemStorage(face), BCBlockEntities.ASSEMBLY_TABLE.get());
+        items.registerForBlockEntity((table, face) -> table.itemStorage(face), BCBlockEntities.ADVANCED_CRAFTING_TABLE.get());
+        items.registerForBlockEntity((filler, face) -> filler.itemStorage(face), BCBlockEntities.FILLER.get());
+        items.registerForBlockEntity((table, face) -> table.itemStorage(face), BCBlockEntities.ARCHITECT_TABLE.get());
+        items.registerForBlockEntity((builder, face) -> builder.itemStorage(face), BCBlockEntities.BUILDER.get());
+        items.registerForBlockEntity((buffer, face) -> buffer.itemStorage(face), BCBlockEntities.FILTERED_BUFFER.get());
+        node.registerForBlockEntity((builder, face) -> builder.energy(), BCBlockEntities.BUILDER.get());
+        fluids.registerForBlockEntity((builder, face) -> builder.fluidStorage(), BCBlockEntities.BUILDER.get());
     }
 }

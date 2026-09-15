@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "particle": "buildcraftreborn:block/builder/side",
+    "down": "buildcraftreborn:block/builder/bottom",
+    "up": "buildcraftreborn:block/builder/top",
+    "north": "buildcraftreborn:block/builder/front",
+    "south": "buildcraftreborn:block/builder/back",
+    "east": "buildcraftreborn:block/builder/side",
+    "west": "buildcraftreborn:block/builder/side"
+  }
+}

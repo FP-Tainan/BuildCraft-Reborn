@@ -70,6 +70,7 @@ public class EngineRenderer implements BlockEntityRenderer<EngineBlockEntity, En
             case REDSTONE -> "redstone";
             case STIRLING -> "stirling";
             case CREATIVE -> "creative";
+            case COMBUSTION -> "combustion";
         };
         Identifier back = texture("engine/" + kind + "_back");
         Identifier side = texture("engine/" + kind + "_side");

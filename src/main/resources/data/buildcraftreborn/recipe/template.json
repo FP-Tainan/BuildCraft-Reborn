@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": ["ppp", "pbp", "ppp"],
+  "key": {"p": "minecraft:paper", "b": "minecraft:black_dye"},
+  "result": {"id": "buildcraftreborn:template", "count": 1}
+}

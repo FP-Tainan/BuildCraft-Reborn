@@ -28,7 +28,12 @@ public class PipeItemRenderer implements BlockEntityRenderer<PipeBlockEntity, Pi
     public static final class State extends BlockEntityRenderState {
         final List<ItemStackRenderState> stacks = new ArrayList<>();
         final List<Vec3> positions = new ArrayList<>();
+        final List<PipePlugRenderer.PlugView> plugs = new ArrayList<>();
+        /** Cor (ARGB) da caixinha em volta de cada item pintado; 0 sem cor. */
+        final List<Integer> colours = new ArrayList<>();
     }
+
+    private static final net.minecraft.resources.Identifier COLOUR_BOX = net.buildcraftreborn.BuildCraftReborn.id("textures/entity/pipe/colour_item_box.png");
 
     public PipeItemRenderer(BlockEntityRendererProvider.Context context) {
         this.resolver = context.itemModelResolver();
@@ -45,6 +50,8 @@ public class PipeItemRenderer implements BlockEntityRenderer<PipeBlockEntity, Pi
         BlockEntityRenderState.extractBase(pipe, state, crumbling);
         state.stacks.clear();
         state.positions.clear();
+        state.colours.clear();
+        PipePlugRenderer.extract(pipe, state.plugs);
         int seed = 0;
         for (PipeBlockEntity.TravellingItem item : pipe.items()) {
             float progress = Math.min(item.to == null ? 0.5F : 1.0F, item.progress + item.speed * partialTick);
@@ -53,6 +60,7 @@ public class PipeItemRenderer implements BlockEntityRenderer<PipeBlockEntity, Pi
             if (stack.isEmpty()) continue;
             state.stacks.add(stack);
             state.positions.add(position(item.from, item.to, progress));
+            state.colours.add(net.buildcraftreborn.transport.PipeColours.argb(item.colour));
         }
     }
 
@@ -67,8 +75,15 @@ public class PipeItemRenderer implements BlockEntityRenderer<PipeBlockEntity, Pi
 
     @Override
     public void submit(State state, PoseStack pose, SubmitNodeCollector collector, CameraRenderState camera) {
+        PipePlugRenderer.submit(state.plugs, pose, collector, state.lightCoords);
         for (int i = 0; i < state.stacks.size(); i++) {
             Vec3 position = state.positions.get(i);
+            int colour = state.colours.get(i);
+            if (colour != 0) {
+                float x = (float) position.x, y = (float) position.y, z = (float) position.z;
+                PipePlugRenderer.cube(pose, collector, COLOUR_BOX, state.lightCoords, colour, true, true, x - 0.2F, y - 0.2F, z - 0.2F,
+                        x + 0.2F, y + 0.2F, z + 0.2F);
+            }
             pose.pushPose();
             pose.translate(position.x, position.y - 0.15, position.z);
             pose.scale(SCALE, SCALE, SCALE);

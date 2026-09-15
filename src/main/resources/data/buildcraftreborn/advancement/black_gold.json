@@ -1,0 +1,16 @@
+{
+  "parent": "buildcraftreborn:root",
+  "criteria": {
+    "oil_bucket": {
+      "conditions": {"items": [{"items": "buildcraftreborn:oil_bucket"}]},
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {"translate": "advancements.buildcraftreborn.black_gold.description"},
+    "frame": "goal",
+    "icon": {"id": "buildcraftreborn:oil_bucket"},
+    "title": {"translate": "advancements.buildcraftreborn.black_gold.title"}
+  },
+  "requirements": [["oil_bucket"]]
+}

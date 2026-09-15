@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": ["btb", "rcr", "bgb"],
+  "key": {"b": "minecraft:black_dye", "t": "buildcraftreborn:blueprint", "r": "minecraft:redstone", "c": "minecraft:crafting_table", "g": "#c:gears/iron"},
+  "result": {"id": "buildcraftreborn:replacer", "count": 1}
+}

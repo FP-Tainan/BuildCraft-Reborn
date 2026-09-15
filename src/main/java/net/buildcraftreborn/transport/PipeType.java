@@ -16,6 +16,11 @@ public enum PipeType {
     CLAY("clay", "Clay"),
     VOID("void", "Void"),
     OBSIDIAN("obsidian", "Obsidian"),
+    LAPIS("lapis", "Lapis"),
+    DAIZULI("daizuli", "Daizuli"),
+    DIAMOND_WOOD("diamond_wood", "Wooden Diamond"),
+    EMZULI("emzuli", "Emzuli"),
+    STRIPES("stripes", "Stripes"),
     STRUCTURE("structure", "Structure");
 
     /** Velocidade normal (blocos por tick) e a dos itens que acabaram de sair de um tubo de madeira. */
@@ -41,7 +46,17 @@ public enum PipeType {
 
     /** Materiais que também existem como tubo de fluido (obsidiana e estrutura não). */
     public boolean hasFluidPipe() {
-        return this != OBSIDIAN && this != STRUCTURE;
+        return this != OBSIDIAN && this != STRUCTURE && this != LAPIS && this != DAIZULI && this != EMZULI && this != STRIPES;
+    }
+
+    /** Puxam itens do inventário da direção especial (madeira, madeira-diamante e emzuli). */
+    public boolean extractsItems() {
+        return this == WOOD || this == DIAMOND_WOOD || this == EMZULI;
+    }
+
+    /** Guardam uma cor no estado do bloco (lápis pinta, daizuli separa). */
+    public boolean colored() {
+        return this == LAPIS || this == DAIZULI;
     }
 
     public String fluidBlockId() {
@@ -51,7 +66,7 @@ public enum PipeType {
     /** Vazão do tubo de fluido em CL por tick (BuildCraft: 1×, 2×, 4× e 8× a vazão base). */
     public long fluidRateCL() {
         return switch (this) {
-            case WOOD, COBBLESTONE -> 40;
+            case WOOD, COBBLESTONE, DIAMOND_WOOD -> 40;
             case STONE, SANDSTONE -> 80;
             case QUARTZ, IRON, CLAY -> 160;
             case GOLD, DIAMOND, VOID -> 320;
@@ -61,11 +76,11 @@ public enum PipeType {
 
     /** Ferro (saída escolhida) e madeira (inventário de onde puxa) têm uma direção especial. */
     public boolean directional() {
-        return this == IRON || this == WOOD;
+        return this == IRON || extractsItems() || this == DAIZULI;
     }
 
     public boolean usesEnergy() {
-        return this == WOOD || this == OBSIDIAN;
+        return extractsItems() || this == OBSIDIAN || this == STRIPES;
     }
 
     /** Pedregulho, pedra e quartzo não se ligam a um tubo diferente desse grupo. */
@@ -83,7 +98,8 @@ public enum PipeType {
     }
 
     public static boolean canPipesConnect(PipeType a, PipeType b) {
-        if (a == WOOD && b == WOOD) return false;
+        if (a.extractsItems() && b.extractsItems()) return false;
+        if (a == STRIPES && b == STRIPES) return false;
         return !(a.separate() && b.separate() && a != b);
     }
 

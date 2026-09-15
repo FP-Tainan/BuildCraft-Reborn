@@ -1,0 +1,11 @@
+{
+  "parent": "buildcraftreborn:pipe_dream",
+  "criteria": {"has": {"trigger": "minecraft:inventory_changed", "conditions": {"items": [{"items": "buildcraftreborn:gate"}]}}},
+  "display": {
+    
+    "icon": {"id": "buildcraftreborn:gate"},
+    "title": {"translate": "advancements.buildcraftreborn.pipe_logic.title"},
+    "description": {"translate": "advancements.buildcraftreborn.pipe_logic.description"}
+  },
+  "requirements": [["has"]]
+}

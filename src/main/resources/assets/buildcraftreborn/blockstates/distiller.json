@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=west": {"model": "buildcraftreborn:block/distiller"},
+    "facing=north": {"model": "buildcraftreborn:block/distiller", "y": 90},
+    "facing=east": {"model": "buildcraftreborn:block/distiller", "y": 180},
+    "facing=south": {"model": "buildcraftreborn:block/distiller", "y": 270}
+  }
+}

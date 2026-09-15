@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "pattern": ["OdO", "OrO", "OgO"],
+  "key": {"O": "minecraft:obsidian", "d": "#c:gems/diamond", "r": "minecraft:redstone", "g": "#c:gears/diamond"},
+  "result": {"id": "buildcraftreborn:assembly_table", "count": 1}
+}

@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "pattern": ["rro", "rdd", "rro"],
+  "key": {"r": "minecraft:redstone", "d": "#c:gems/diamond", "o": "minecraft:obsidian"},
+  "result": {"id": "buildcraftreborn:laser", "count": 1}
+}

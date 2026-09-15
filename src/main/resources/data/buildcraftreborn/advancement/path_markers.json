@@ -1,0 +1,11 @@
+{
+  "parent": "buildcraftreborn:markers",
+  "criteria": {"has": {"trigger": "minecraft:inventory_changed", "conditions": {"items": [{"items": "buildcraftreborn:marker_path"}]}}},
+  "display": {
+    
+    "icon": {"id": "buildcraftreborn:marker_path"},
+    "title": {"translate": "advancements.buildcraftreborn.path_markers.title"},
+    "description": {"translate": "advancements.buildcraftreborn.path_markers.description"}
+  },
+  "requirements": [["has"]]
+}

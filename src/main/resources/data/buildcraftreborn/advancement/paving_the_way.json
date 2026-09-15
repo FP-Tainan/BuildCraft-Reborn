@@ -1,0 +1,11 @@
+{
+  "parent": "buildcraftreborn:start_of_something_big",
+  "criteria": {"has": {"trigger": "minecraft:inventory_changed", "conditions": {"items": [{"items": ["buildcraftreborn:library", "buildcraftreborn:replacer"]}]}}},
+  "display": {
+    
+    "icon": {"id": "buildcraftreborn:library"},
+    "title": {"translate": "advancements.buildcraftreborn.paving_the_way.title"},
+    "description": {"translate": "advancements.buildcraftreborn.paving_the_way.description"}
+  },
+  "requirements": [["has"]]
+}

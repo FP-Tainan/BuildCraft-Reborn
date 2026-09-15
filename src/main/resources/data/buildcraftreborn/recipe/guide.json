@@ -1,0 +1,6 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": ["minecraft:book", "buildcraftreborn:gear_wood"],
+  "result": {"id": "buildcraftreborn:guide", "count": 1}
+}

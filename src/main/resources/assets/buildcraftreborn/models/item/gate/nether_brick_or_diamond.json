@@ -1,0 +1,1 @@
+{"parent": "minecraft:item/generated", "textures": {"layer0": "buildcraftreborn:item/gate/gate_logic_or", "layer1": "buildcraftreborn:item/gate/gate_material_nether_brick", "layer2": "buildcraftreborn:item/gate/gate_modifier_diamond"}}

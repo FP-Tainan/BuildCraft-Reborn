@@ -1,0 +1,11 @@
+{
+  "parent": "buildcraftreborn:pipe_dream",
+  "criteria": {"has": {"trigger": "minecraft:inventory_changed", "conditions": {"items": [{"items": "buildcraftreborn:pipe_sealant"}]}}},
+  "display": {
+    
+    "icon": {"id": "buildcraftreborn:pipe_sealant"},
+    "title": {"translate": "advancements.buildcraftreborn.sealing_fluids.title"},
+    "description": {"translate": "advancements.buildcraftreborn.sealing_fluids.description"}
+  },
+  "requirements": [["has"]]
+}

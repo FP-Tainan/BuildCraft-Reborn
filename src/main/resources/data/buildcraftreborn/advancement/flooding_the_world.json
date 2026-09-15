@@ -1,0 +1,11 @@
+{
+  "parent": "buildcraftreborn:fluid_storage",
+  "criteria": {"has": {"trigger": "minecraft:inventory_changed", "conditions": {"items": [{"items": "buildcraftreborn:flood_gate"}]}}},
+  "display": {
+    
+    "icon": {"id": "buildcraftreborn:flood_gate"},
+    "title": {"translate": "advancements.buildcraftreborn.flooding_the_world.title"},
+    "description": {"translate": "advancements.buildcraftreborn.flooding_the_world.description"}
+  },
+  "requirements": [["has"]]
+}

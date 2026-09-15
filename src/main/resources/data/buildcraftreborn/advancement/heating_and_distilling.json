@@ -1,0 +1,11 @@
+{
+  "parent": "buildcraftreborn:black_gold",
+  "criteria": {"has": {"trigger": "minecraft:inventory_changed", "conditions": {"items": [{"items": "buildcraftreborn:distiller"}, {"items": "buildcraftreborn:heat_exchanger"}]}}},
+  "display": {
+    "frame": "goal",
+    "icon": {"id": "buildcraftreborn:distiller"},
+    "title": {"translate": "advancements.buildcraftreborn.heating_and_distilling.title"},
+    "description": {"translate": "advancements.buildcraftreborn.heating_and_distilling.description"}
+  },
+  "requirements": [["has"]]
+}

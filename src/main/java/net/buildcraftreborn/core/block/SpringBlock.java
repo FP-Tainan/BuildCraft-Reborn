@@ -5,19 +5,27 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.Fluids;
+import net.minecraft.world.level.material.FlowingFluid;
+
+import java.util.function.Supplier;
 
 /**
- * Fonte de água do BuildCraft: fica no lugar da rocha-mãe e a cada 5 ticks repõe a água logo acima,
- * então uma bomba em cima dela nunca seca.
+ * Fonte do BuildCraft (água ou petróleo): fica no lugar da rocha-mãe e a cada 5 ticks repõe o fluido
+ * logo acima, então uma bomba em cima dela nunca seca.
  */
 public class SpringBlock extends Block {
     public static final int TICK_RATE = 5;
 
-    public SpringBlock(Properties properties) {
+    private final Supplier<? extends FlowingFluid> fluid;
+
+    public SpringBlock(Properties properties, Supplier<? extends FlowingFluid> fluid) {
         super(properties);
+        this.fluid = fluid;
+    }
+
+    public FlowingFluid fluid() {
+        return this.fluid.get();
     }
 
     @Override
@@ -28,10 +36,11 @@ public class SpringBlock extends Block {
 
     @Override
     protected void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
+        FlowingFluid source = fluid();
         BlockPos above = pos.above();
         BlockState aboveState = level.getBlockState(above);
-        if (aboveState.isAir() || aboveState.getFluidState().getType() == Fluids.FLOWING_WATER) {
-            level.setBlock(above, Blocks.WATER.defaultBlockState(), Block.UPDATE_ALL);
+        if (aboveState.isAir() || aboveState.getFluidState().getType() == source.getFlowing()) {
+            level.setBlock(above, source.defaultFluidState().createLegacyBlock(), Block.UPDATE_ALL);
         }
         level.scheduleTick(pos, this, TICK_RATE);
     }
