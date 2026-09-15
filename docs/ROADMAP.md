@@ -102,7 +102,11 @@ Cada sessão termina com build verde, testes de jogo (gametests) e teste do usu�
 - Tubo de mineração, poço de mineração, bomba (busca de fluido até 64 blocos, água infinita).
 - Comporta (flood gate), bancada automática.
 
-### Sessão 4 — Pedreira (Quarry)
+### Sessão 4 — Pedreira (Quarry) ✅
+> Feita: área pelos Marcadores de Área (ou 11×11 atrás), armação de 24 CWh por peça, mineração até a
+> rocha-mãe com dureza × 16 CWh + 1 CWh por bloco, pórtico e broca com lasers, chunks carregados.
+> Nominal 1.000 MV, mas aceita a partir de 200 MV enquanto não existe o motor a combustão.
+
 - Armação, pedreira com fila de tarefas (armação → mover broca → quebrar), área pelos marcadores ou
   11×11 padrão, broca e pórtico renderizados, carregamento de chunk, entrega em inventário ou tubo.
 

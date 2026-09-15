@@ -2,6 +2,7 @@ package net.buildcraftreborn.client;
 
 import net.buildcraftreborn.client.render.EngineRenderer;
 import net.buildcraftreborn.client.render.MarkerRenderer;
+import net.buildcraftreborn.client.render.QuarryRenderer;
 import net.buildcraftreborn.client.render.TankRenderer;
 import net.buildcraftreborn.client.screen.AutoWorkbenchScreen;
 import net.buildcraftreborn.client.screen.ListScreen;
@@ -23,5 +24,6 @@ public final class BuildCraftRebornClient implements ClientModInitializer {
         BlockEntityRendererRegistry.register(BCBlockEntities.MARKER.get(), MarkerRenderer::new);
         BlockEntityRendererRegistry.register(BCBlockEntities.ENGINE.get(), EngineRenderer::new);
         BlockEntityRendererRegistry.register(BCBlockEntities.TANK.get(), TankRenderer::new);
+        BlockEntityRendererRegistry.register(BCBlockEntities.QUARRY.get(), QuarryRenderer::new);
     }
 }

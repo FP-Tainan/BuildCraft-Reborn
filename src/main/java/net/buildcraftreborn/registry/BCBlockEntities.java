@@ -35,5 +35,9 @@ public final class BCBlockEntities {
     public static final RegistryObject<BlockEntityType<net.buildcraftreborn.factory.tile.AutoWorkbenchBlockEntity>> AUTO_WORKBENCH = BLOCK_ENTITIES.register("auto_workbench",
             () -> new BlockEntityType<>(net.buildcraftreborn.factory.tile.AutoWorkbenchBlockEntity::new, Set.of(BCBlocks.AUTO_WORKBENCH.get())));
 
+    // ── builders ──────────────────────────────────────────────────────────
+    public static final RegistryObject<BlockEntityType<net.buildcraftreborn.builders.tile.QuarryBlockEntity>> QUARRY = BLOCK_ENTITIES.register("quarry",
+            () -> new BlockEntityType<>(net.buildcraftreborn.builders.tile.QuarryBlockEntity::new, Set.of(BCBlocks.QUARRY.get())));
+
     private BCBlockEntities() {}
 }

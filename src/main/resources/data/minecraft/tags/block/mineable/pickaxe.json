@@ -9,6 +9,8 @@
     "buildcraftreborn:pump",
     "buildcraftreborn:mining_well",
     "buildcraftreborn:flood_gate",
-    "buildcraftreborn:mining_pipe"
+    "buildcraftreborn:mining_pipe",
+    "buildcraftreborn:quarry",
+    "buildcraftreborn:frame"
   ]
 }

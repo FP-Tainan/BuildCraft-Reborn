@@ -66,6 +66,9 @@ public final class BCItems {
     public static final RegistryObject<BlockItem> FLOOD_GATE = described("flood_gate", BCBlocks.FLOOD_GATE);
     public static final RegistryObject<BlockItem> AUTO_WORKBENCH = described("auto_workbench", BCBlocks.AUTO_WORKBENCH);
 
+    // ── builders ──────────────────────────────────────────────────────────
+    public static final RegistryObject<BlockItem> QUARRY = described("quarry", BCBlocks.QUARRY);
+
     private BCItems() {}
 
     private static RegistryObject<BlockItem> described(String name, RegistryObject<? extends Block> block) {

@@ -19,16 +19,29 @@ public class MachineEnergy implements EnergySink {
     private long stored;
     private long lastReceived;
 
+    /** Menor tensão aceita; negativo usa a nominal menos a tolerância. */
+    private final int minVoltage;
+
     public MachineEnergy(BlockEntity owner, int voltage, long capacity, long maxInput) {
+        this(owner, voltage, capacity, maxInput, -1);
+    }
+
+    public MachineEnergy(BlockEntity owner, int voltage, long capacity, long maxInput, int minVoltage) {
         this.owner = owner;
         this.voltage = voltage;
         this.capacity = capacity;
         this.maxInput = maxInput;
+        this.minVoltage = minVoltage;
     }
 
     @Override
     public int nominalVoltage() {
         return this.voltage;
+    }
+
+    @Override
+    public int minimumVoltage() {
+        return this.minVoltage > 0 ? this.minVoltage : EnergySink.super.minimumVoltage();
     }
 
     @Override

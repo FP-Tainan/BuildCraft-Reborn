@@ -60,5 +60,11 @@
   "tooltip.buildcraftreborn.pump": "Drains fluid below it · 10 CWh per bucket at 220 MV",
   "tooltip.buildcraftreborn.mining_well": "Digs straight down · hardness × 16 CWh per block at 220 MV",
   "tooltip.buildcraftreborn.flood_gate": "Fills the area below and around it with its fluid",
-  "tooltip.buildcraftreborn.auto_workbench": "Crafts the ghost recipe from its materials · 40 CWh per item at 220 MV"
+  "tooltip.buildcraftreborn.auto_workbench": "Crafts the ghost recipe from its materials · 40 CWh per item at 220 MV",
+  "block.buildcraftreborn.quarry": "Quarry",
+  "block.buildcraftreborn.frame": "Frame",
+  "tooltip.buildcraftreborn.quarry": "Mines the Land Mark area next to it (or 11×11 behind it) down to bedrock · 1,000 MV (works from 200 MV)",
+  "message.buildcraftreborn.quarry.frame": "Quarry: building frame %s / %s",
+  "message.buildcraftreborn.quarry.mine": "Quarry: %s blocks mined · layer Y %s",
+  "message.buildcraftreborn.quarry.done": "Quarry: finished · %s blocks mined"
 }

@@ -60,5 +60,11 @@
   "tooltip.buildcraftreborn.pump": "Bombeia o fluido abaixo dela · 10 CWh por balde a 220 MV",
   "tooltip.buildcraftreborn.mining_well": "Cava direto para baixo · dureza × 16 CWh por bloco a 220 MV",
   "tooltip.buildcraftreborn.flood_gate": "Enche a área abaixo e ao redor com o fluido guardado",
-  "tooltip.buildcraftreborn.auto_workbench": "Fabrica a receita fantasma com os materiais · 40 CWh por item a 220 MV"
+  "tooltip.buildcraftreborn.auto_workbench": "Fabrica a receita fantasma com os materiais · 40 CWh por item a 220 MV",
+  "block.buildcraftreborn.quarry": "Pedreira",
+  "block.buildcraftreborn.frame": "Armação",
+  "tooltip.buildcraftreborn.quarry": "Minera a área dos Marcadores de Área encostados (ou 11×11 atrás dela) até a rocha-mãe · 1.000 MV (funciona a partir de 200 MV)",
+  "message.buildcraftreborn.quarry.frame": "Pedreira: montando a armação %s / %s",
+  "message.buildcraftreborn.quarry.mine": "Pedreira: %s blocos minerados · camada Y %s",
+  "message.buildcraftreborn.quarry.done": "Pedreira: concluída · %s blocos minerados"
 }

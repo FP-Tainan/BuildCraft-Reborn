@@ -61,6 +61,13 @@ public final class BCBlocks {
             () -> new net.buildcraftreborn.factory.block.MiningPipeBlock(BlockBehaviour.Properties.of().setId(BLOCKS.key("mining_pipe"))
                     .strength(1.0F, 6.0F).sound(SoundType.METAL).noLootTable()));
 
+    // ── builders ──────────────────────────────────────────────────────────
+    public static final RegistryObject<net.buildcraftreborn.builders.block.QuarryBlock> QUARRY = BLOCKS.register("quarry",
+            () -> new net.buildcraftreborn.builders.block.QuarryBlock(machine("quarry")));
+    public static final RegistryObject<net.buildcraftreborn.builders.block.FrameBlock> FRAME = BLOCKS.register("frame",
+            () -> new net.buildcraftreborn.builders.block.FrameBlock(BlockBehaviour.Properties.of().setId(BLOCKS.key("frame"))
+                    .strength(0.5F, 6.0F).sound(SoundType.METAL).noLootTable()));
+
     private BCBlocks() {}
 
     private static BlockBehaviour.Properties machine(String name) {
