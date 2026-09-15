@@ -1,0 +1,11 @@
+{
+  "multipart": [
+    {"apply": {"model": "buildcraftreborn:block/pipe_fluids_gold_core"}},
+    {"when": {"down": "true"}, "apply": {"model": "buildcraftreborn:block/pipe_fluids_gold_arm", "x": 90}},
+    {"when": {"up": "true"}, "apply": {"model": "buildcraftreborn:block/pipe_fluids_gold_arm", "x": 270}},
+    {"when": {"north": "true"}, "apply": {"model": "buildcraftreborn:block/pipe_fluids_gold_arm"}},
+    {"when": {"south": "true"}, "apply": {"model": "buildcraftreborn:block/pipe_fluids_gold_arm", "y": 180}},
+    {"when": {"west": "true"}, "apply": {"model": "buildcraftreborn:block/pipe_fluids_gold_arm", "y": 270}},
+    {"when": {"east": "true"}, "apply": {"model": "buildcraftreborn:block/pipe_fluids_gold_arm", "y": 90}}
+  ]
+}

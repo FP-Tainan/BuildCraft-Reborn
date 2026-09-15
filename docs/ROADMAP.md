@@ -120,7 +120,11 @@ Cada sessão termina com build verde, testes de jogo (gametests) e teste do usu�
 - Tubos: estrutura, madeira, pedregulho, pedra, arenito, quartzo, ouro, ferro, diamante (GUI de filtro),
   argila, vazio, obsidiana. Selante.
 
-### Sessão 6 — Tubos de fluidos
+### Sessão 6 — Tubos de fluidos ✅
+> Feita: madeira (puxa com energia, 1 CWh a cada 1.000 CL), pedregulho, pedra, arenito, quartzo, ouro,
+> ferro (saída pela chave), diamante (filtros com recipientes), argila, vazio. Vazão 40/80/160/320 CL/t,
+> fluido desenhado dentro do tubo conforme a vazão, vedação (corante verde ou slime).
+
 - Fluxo de fluido por seções e renderização; versões de fluido dos tubos (madeira, pedregulho, pedra,
   arenito, quartzo, ferro, ouro, diamante, argila, vazio).
 

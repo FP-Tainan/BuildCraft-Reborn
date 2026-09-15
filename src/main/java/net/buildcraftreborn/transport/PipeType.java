@@ -39,6 +39,26 @@ public enum PipeType {
         return this != STRUCTURE;
     }
 
+    /** Materiais que também existem como tubo de fluido (obsidiana e estrutura não). */
+    public boolean hasFluidPipe() {
+        return this != OBSIDIAN && this != STRUCTURE;
+    }
+
+    public String fluidBlockId() {
+        return "pipe_fluids_" + this.material;
+    }
+
+    /** Vazão do tubo de fluido em CL por tick (BuildCraft: 1×, 2×, 4× e 8× a vazão base). */
+    public long fluidRateCL() {
+        return switch (this) {
+            case WOOD, COBBLESTONE -> 40;
+            case STONE, SANDSTONE -> 80;
+            case QUARTZ, IRON, CLAY -> 160;
+            case GOLD, DIAMOND, VOID -> 320;
+            default -> 0;
+        };
+    }
+
     /** Ferro (saída escolhida) e madeira (inventário de onde puxa) têm uma direção especial. */
     public boolean directional() {
         return this == IRON || this == WOOD;

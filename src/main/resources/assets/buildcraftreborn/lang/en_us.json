@@ -79,5 +79,16 @@
   "block.buildcraftreborn.pipe_items_void": "Void Transport Pipe",
   "block.buildcraftreborn.pipe_items_obsidian": "Obsidian Transport Pipe",
   "block.buildcraftreborn.pipe_structure_cobblestone": "Cobblestone Structure Pipe",
-  "gui.buildcraftreborn.engine.power_label": "Output:"
+  "gui.buildcraftreborn.engine.power_label": "Output:",
+  "item.buildcraftreborn.pipe_sealant": "Pipe Sealant",
+  "block.buildcraftreborn.pipe_fluids_wood": "Wooden Fluid Pipe",
+  "block.buildcraftreborn.pipe_fluids_cobblestone": "Cobblestone Fluid Pipe",
+  "block.buildcraftreborn.pipe_fluids_stone": "Stone Fluid Pipe",
+  "block.buildcraftreborn.pipe_fluids_sandstone": "Sandstone Fluid Pipe",
+  "block.buildcraftreborn.pipe_fluids_quartz": "Quartz Fluid Pipe",
+  "block.buildcraftreborn.pipe_fluids_gold": "Golden Fluid Pipe",
+  "block.buildcraftreborn.pipe_fluids_iron": "Iron Fluid Pipe",
+  "block.buildcraftreborn.pipe_fluids_diamond": "Diamond Fluid Pipe",
+  "block.buildcraftreborn.pipe_fluids_clay": "Clay Fluid Pipe",
+  "block.buildcraftreborn.pipe_fluids_void": "Void Fluid Pipe"
 }

@@ -83,8 +83,11 @@ public final class BuildCraftReborn implements ModInitializer {
         node.registerForBlockEntity((workbench, face) -> workbench.energy(), BCBlockEntities.AUTO_WORKBENCH.get());
         node.registerForBlockEntity((quarry, face) -> quarry.energy(), BCBlockEntities.QUARRY.get());
         node.registerForBlockEntity((pipe, face) -> pipe.energy(), BCBlockEntities.PIPE.get());
+        node.registerForBlockEntity((pipe, face) -> pipe.energy(), BCBlockEntities.FLUID_PIPE.get());
 
         var fluids = net.fabricmc.fabric.api.transfer.v1.fluid.FluidStorage.SIDED;
+
+        fluids.registerForBlockEntity((pipe, face) -> pipe.storage(face), BCBlockEntities.FLUID_PIPE.get());
         fluids.registerForBlockEntity((tank, face) -> tank.tank(), BCBlockEntities.TANK.get());
         fluids.registerForBlockEntity((pump, face) -> pump.tank(), BCBlockEntities.PUMP.get());
         fluids.registerForBlockEntity((gate, face) -> gate.tank(), BCBlockEntities.FLOOD_GATE.get());

@@ -1,0 +1,11 @@
+{
+  "multipart": [
+    {"apply": {"model": "buildcraftreborn:block/pipe_fluids_diamond_core"}},
+    {"when": {"down": "true"}, "apply": {"model": "buildcraftreborn:block/pipe_fluids_diamond_arm_down", "x": 90}},
+    {"when": {"up": "true"}, "apply": {"model": "buildcraftreborn:block/pipe_fluids_diamond_arm_up", "x": 270}},
+    {"when": {"north": "true"}, "apply": {"model": "buildcraftreborn:block/pipe_fluids_diamond_arm_north"}},
+    {"when": {"south": "true"}, "apply": {"model": "buildcraftreborn:block/pipe_fluids_diamond_arm_south", "y": 180}},
+    {"when": {"west": "true"}, "apply": {"model": "buildcraftreborn:block/pipe_fluids_diamond_arm_west", "y": 270}},
+    {"when": {"east": "true"}, "apply": {"model": "buildcraftreborn:block/pipe_fluids_diamond_arm_east", "y": 90}}
+  ]
+}

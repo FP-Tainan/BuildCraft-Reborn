@@ -43,6 +43,9 @@ public final class BCBlockEntities {
     public static final RegistryObject<BlockEntityType<net.buildcraftreborn.transport.tile.PipeBlockEntity>> PIPE = BLOCK_ENTITIES.register("pipe",
             () -> new BlockEntityType<>(net.buildcraftreborn.transport.tile.PipeBlockEntity::new,
                     BCBlocks.PIPES.values().stream().<net.minecraft.world.level.block.Block>map(RegistryObject::get).collect(java.util.stream.Collectors.toSet())));
+    public static final RegistryObject<BlockEntityType<net.buildcraftreborn.transport.tile.FluidPipeBlockEntity>> FLUID_PIPE = BLOCK_ENTITIES.register("fluid_pipe",
+            () -> new BlockEntityType<>(net.buildcraftreborn.transport.tile.FluidPipeBlockEntity::new,
+                    BCBlocks.FLUID_PIPES.values().stream().<net.minecraft.world.level.block.Block>map(RegistryObject::get).collect(java.util.stream.Collectors.toSet())));
 
     private BCBlockEntities() {}
 }

@@ -11,7 +11,8 @@
       "net.buildcraftreborn.test.EngineGameTest",
       "net.buildcraftreborn.test.FactoryGameTest",
       "net.buildcraftreborn.test.QuarryGameTest",
-      "net.buildcraftreborn.test.TransportGameTest"
+      "net.buildcraftreborn.test.TransportGameTest",
+      "net.buildcraftreborn.test.FluidTransportGameTest"
     ]
   }
 }

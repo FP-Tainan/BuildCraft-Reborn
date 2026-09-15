@@ -79,6 +79,15 @@ public final class BCItems {
         }
     }
 
+    /** Vedação: tubo de itens + vedação = tubo de fluidos. */
+    public static final RegistryObject<Item> PIPE_SEALANT = simple("pipe_sealant");
+    public static final Map<net.buildcraftreborn.transport.PipeType, RegistryObject<BlockItem>> FLUID_PIPES =
+            new EnumMap<>(net.buildcraftreborn.transport.PipeType.class);
+
+    static {
+        BCBlocks.FLUID_PIPES.forEach((type, pipe) -> FLUID_PIPES.put(type, block(type.fluidBlockId(), pipe)));
+    }
+
     private BCItems() {}
 
     private static RegistryObject<BlockItem> described(String name, RegistryObject<? extends Block> block) {

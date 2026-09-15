@@ -76,8 +76,22 @@ public final class BCBlocks {
         for (net.buildcraftreborn.transport.PipeType type : net.buildcraftreborn.transport.PipeType.values()) {
             String name = type.blockId();
             PIPES.put(type, BLOCKS.register(name, () -> type.directional()
-                    ? new net.buildcraftreborn.transport.block.DirectionalPipeBlock(pipe(name), type)
-                    : new net.buildcraftreborn.transport.block.PipeBlock(pipe(name), type)));
+                    ? new net.buildcraftreborn.transport.block.DirectionalPipeBlock(pipe(name), type, net.buildcraftreborn.transport.PipeFlow.ITEM)
+                    : new net.buildcraftreborn.transport.block.PipeBlock(pipe(name), type, net.buildcraftreborn.transport.PipeFlow.ITEM)));
+        }
+    }
+
+    /** Tubos de fluidos (sem obsidiana e estrutura). */
+    public static final java.util.Map<net.buildcraftreborn.transport.PipeType, RegistryObject<net.buildcraftreborn.transport.block.PipeBlock>> FLUID_PIPES =
+            new java.util.EnumMap<>(net.buildcraftreborn.transport.PipeType.class);
+
+    static {
+        for (net.buildcraftreborn.transport.PipeType type : net.buildcraftreborn.transport.PipeType.values()) {
+            if (!type.hasFluidPipe()) continue;
+            String name = type.fluidBlockId();
+            FLUID_PIPES.put(type, BLOCKS.register(name, () -> type.directional()
+                    ? new net.buildcraftreborn.transport.block.DirectionalPipeBlock(pipe(name), type, net.buildcraftreborn.transport.PipeFlow.FLUID)
+                    : new net.buildcraftreborn.transport.block.PipeBlock(pipe(name), type, net.buildcraftreborn.transport.PipeFlow.FLUID)));
         }
     }
 

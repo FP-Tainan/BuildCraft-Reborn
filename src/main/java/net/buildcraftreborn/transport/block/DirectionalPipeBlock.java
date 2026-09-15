@@ -24,8 +24,8 @@ import org.jetbrains.annotations.Nullable;
 public class DirectionalPipeBlock extends PipeBlock implements Wrenchable {
     public static final EnumProperty<Direction> SPECIAL = EnumProperty.create("special", Direction.class);
 
-    public DirectionalPipeBlock(Properties properties, PipeType type) {
-        super(properties, type);
+    public DirectionalPipeBlock(Properties properties, PipeType type, net.buildcraftreborn.transport.PipeFlow flow) {
+        super(properties, type, flow);
     }
 
     @Override

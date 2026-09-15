@@ -34,7 +34,7 @@ public class PipeFilterMenu extends BCMenu {
 
     @Override
     public boolean stillValid(Player player) {
-        return player.level().getBlockEntity(this.pos) instanceof PipeBlockEntity
+        return player.level().getBlockState(this.pos).getBlock() instanceof net.buildcraftreborn.transport.block.PipeBlock
                 && player.distanceToSqr(this.pos.getX() + 0.5, this.pos.getY() + 0.5, this.pos.getZ() + 0.5) <= 64.0;
     }
 }

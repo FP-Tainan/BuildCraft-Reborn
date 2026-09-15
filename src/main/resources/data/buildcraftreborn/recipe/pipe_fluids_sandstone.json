@@ -1,0 +1,6 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": ["buildcraftreborn:pipe_items_sandstone", "buildcraftreborn:pipe_sealant"],
+  "result": {"id": "buildcraftreborn:pipe_fluids_sandstone", "count": 1}
+}

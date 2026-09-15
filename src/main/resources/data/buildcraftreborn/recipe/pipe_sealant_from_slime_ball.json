@@ -1,0 +1,6 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": ["minecraft:slime_ball"],
+  "result": {"id": "buildcraftreborn:pipe_sealant", "count": 1}
+}

@@ -3,9 +3,12 @@ package net.buildcraftreborn.transport.block;
 import net.buildcraftreborn.lib.tile.ItemPipeConnectable;
 import net.buildcraftreborn.registry.BCBlockEntities;
 import net.buildcraftreborn.transport.PipeFilterMenu;
+import net.buildcraftreborn.transport.PipeFlow;
 import net.buildcraftreborn.transport.PipeType;
+import net.buildcraftreborn.transport.tile.FluidPipeBlockEntity;
 import net.buildcraftreborn.transport.tile.PipeBlockEntity;
 import net.fabricmc.fabric.api.menu.v1.ExtendedMenuProvider;
+import net.fabricmc.fabric.api.transfer.v1.fluid.FluidStorage;
 import net.fabricmc.fabric.api.transfer.v1.item.ItemStorage;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -40,8 +43,9 @@ import java.util.EnumMap;
 import java.util.Map;
 
 /**
- * Tubo do BuildCraft: um núcleo com braços para os vizinhos que ele aceita (outros tubos compatíveis
- * e inventórios). Os itens que passam por ele ficam no {@link PipeBlockEntity}.
+ * Tubo do BuildCraft: um núcleo com braços para os vizinhos que ele aceita (tubos compatíveis do mesmo
+ * tipo de fluxo e inventários ou tanques). O conteúdo fica no {@link PipeBlockEntity} (itens) ou no
+ * {@link FluidPipeBlockEntity} (fluidos).
  */
 public class PipeBlock extends Block implements EntityBlock {
     public static final Map<Direction, BooleanProperty> CONNECTIONS = new EnumMap<>(Direction.class);
@@ -64,10 +68,12 @@ public class PipeBlock extends Block implements EntityBlock {
     }
 
     private final PipeType type;
+    private final PipeFlow flow;
 
-    public PipeBlock(Properties properties, PipeType type) {
+    public PipeBlock(Properties properties, PipeType type, PipeFlow flow) {
         super(properties.noOcclusion());
         this.type = type;
+        this.flow = flow;
         BlockState state = this.stateDefinition.any();
         for (BooleanProperty property : CONNECTIONS.values()) state = state.setValue(property, false);
         registerDefaultState(state);
@@ -77,18 +83,28 @@ public class PipeBlock extends Block implements EntityBlock {
         return this.type;
     }
 
+    public PipeFlow flow() {
+        return this.flow;
+    }
+
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(BlockStateProperties.DOWN, BlockStateProperties.UP, BlockStateProperties.NORTH,
                 BlockStateProperties.SOUTH, BlockStateProperties.WEST, BlockStateProperties.EAST);
     }
 
-    /** Se o tubo de {@code type} em {@code pos} liga para {@code direction}. */
-    public static boolean canConnect(BlockGetter level, BlockPos pos, PipeType type, Direction direction) {
+    /** Se o tubo em {@code pos} liga para {@code direction}. */
+    public static boolean canConnect(BlockGetter level, BlockPos pos, PipeType type, PipeFlow flow, Direction direction) {
         BlockPos other = pos.relative(direction);
         BlockState neighbor = level.getBlockState(other);
-        if (neighbor.getBlock() instanceof PipeBlock pipe) return PipeType.canPipesConnect(type, pipe.type);
+        if (neighbor.getBlock() instanceof PipeBlock pipe) {
+            boolean sameFlow = pipe.flow == flow || type == PipeType.STRUCTURE || pipe.type == PipeType.STRUCTURE;
+            return sameFlow && PipeType.canPipesConnect(type, pipe.type);
+        }
         if (!type.connectsToInventories()) return false;
+        if (flow == PipeFlow.FLUID) {
+            return level instanceof Level world && FluidStorage.SIDED.find(world, other, direction.getOpposite()) != null;
+        }
         BlockEntity blockEntity = level.getBlockEntity(other);
         if (blockEntity instanceof ItemPipeConnectable || blockEntity instanceof Container) return true;
         return level instanceof Level world && ItemStorage.SIDED.find(world, other, direction.getOpposite()) != null;
@@ -96,7 +112,7 @@ public class PipeBlock extends Block implements EntityBlock {
 
     protected BlockState withConnections(BlockState state, BlockGetter level, BlockPos pos) {
         for (Map.Entry<Direction, BooleanProperty> entry : CONNECTIONS.entrySet()) {
-            state = state.setValue(entry.getValue(), canConnect(level, pos, this.type, entry.getKey()));
+            state = state.setValue(entry.getValue(), canConnect(level, pos, this.type, this.flow, entry.getKey()));
         }
         return state;
     }
@@ -116,7 +132,7 @@ public class PipeBlock extends Block implements EntityBlock {
     @Override
     protected BlockState updateShape(BlockState state, LevelReader level, ScheduledTickAccess ticks, BlockPos pos, Direction direction,
                                      BlockPos neighborPos, BlockState neighbor, RandomSource random) {
-        return state.setValue(CONNECTIONS.get(direction), canConnect(level, pos, this.type, direction));
+        return state.setValue(CONNECTIONS.get(direction), canConnect(level, pos, this.type, this.flow, direction));
     }
 
     @Override
@@ -130,20 +146,30 @@ public class PipeBlock extends Block implements EntityBlock {
 
     @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-        return new PipeBlockEntity(pos, state);
+        return this.flow == PipeFlow.FLUID ? new FluidPipeBlockEntity(pos, state) : new PipeBlockEntity(pos, state);
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> type) {
-        if (type != BCBlockEntities.PIPE.get() || !this.type.carriesItems()) return null;
-        return (BlockEntityTicker<T>) (BlockEntityTicker<PipeBlockEntity>) (tickLevel, pos, tickState, pipe) -> pipe.tick();
+        if (!this.type.carriesItems()) return null;
+        if (type == BCBlockEntities.PIPE.get()) {
+            return (BlockEntityTicker<T>) (BlockEntityTicker<PipeBlockEntity>) (tickLevel, pos, tickState, pipe) -> pipe.tick();
+        }
+        if (type == BCBlockEntities.FLUID_PIPE.get() && !level.isClientSide()) {
+            return (BlockEntityTicker<T>) (BlockEntityTicker<FluidPipeBlockEntity>) (tickLevel, pos, tickState, pipe) -> pipe.tick();
+        }
+        return null;
     }
 
     /** Tubo de diamante: abre os filtros. */
     @Override
     protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hit) {
-        if (this.type != PipeType.DIAMOND || !(level.getBlockEntity(pos) instanceof PipeBlockEntity pipe)) return InteractionResult.PASS;
+        if (this.type != PipeType.DIAMOND) return InteractionResult.PASS;
+        BlockEntity blockEntity = level.getBlockEntity(pos);
+        Container filters = blockEntity instanceof PipeBlockEntity pipe ? pipe.filters()
+                : blockEntity instanceof FluidPipeBlockEntity fluidPipe ? fluidPipe.filters() : null;
+        if (filters == null) return InteractionResult.PASS;
         if (player instanceof ServerPlayer serverPlayer) {
             serverPlayer.openMenu(new ExtendedMenuProvider<BlockPos>() {
                 @Override
@@ -158,7 +184,7 @@ public class PipeBlock extends Block implements EntityBlock {
 
                 @Override
                 public AbstractContainerMenu createMenu(int containerId, Inventory inventory, Player opener) {
-                    return new PipeFilterMenu(containerId, inventory, pipe.filters(), pos);
+                    return new PipeFilterMenu(containerId, inventory, filters, pos);
                 }
             });
         }

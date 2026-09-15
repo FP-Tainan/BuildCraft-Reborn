@@ -29,5 +29,6 @@ public final class BuildCraftRebornClient implements ClientModInitializer {
         BlockEntityRendererRegistry.register(BCBlockEntities.TANK.get(), TankRenderer::new);
         BlockEntityRendererRegistry.register(BCBlockEntities.QUARRY.get(), QuarryRenderer::new);
         BlockEntityRendererRegistry.register(BCBlockEntities.PIPE.get(), PipeItemRenderer::new);
+        BlockEntityRendererRegistry.register(BCBlockEntities.FLUID_PIPE.get(), net.buildcraftreborn.client.render.FluidPipeRenderer::new);
     }
 }

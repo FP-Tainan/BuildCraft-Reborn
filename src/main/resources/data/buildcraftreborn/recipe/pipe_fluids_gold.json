@@ -1,0 +1,6 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": ["buildcraftreborn:pipe_items_gold", "buildcraftreborn:pipe_sealant"],
+  "result": {"id": "buildcraftreborn:pipe_fluids_gold", "count": 1}
+}

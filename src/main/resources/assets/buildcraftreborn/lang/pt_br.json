@@ -79,5 +79,16 @@
   "block.buildcraftreborn.pipe_items_void": "Tubo de Transporte Vazio",
   "block.buildcraftreborn.pipe_items_obsidian": "Tubo de Transporte de Obsidiana",
   "block.buildcraftreborn.pipe_structure_cobblestone": "Tubo de Estrutura de Pedregulho",
-  "gui.buildcraftreborn.engine.power_label": "Potência:"
+  "gui.buildcraftreborn.engine.power_label": "Potência:",
+  "item.buildcraftreborn.pipe_sealant": "Vedação de Tubo",
+  "block.buildcraftreborn.pipe_fluids_wood": "Tubo de Fluido de Madeira",
+  "block.buildcraftreborn.pipe_fluids_cobblestone": "Tubo de Fluido de Pedregulho",
+  "block.buildcraftreborn.pipe_fluids_stone": "Tubo de Fluido de Pedra",
+  "block.buildcraftreborn.pipe_fluids_sandstone": "Tubo de Fluido de Arenito",
+  "block.buildcraftreborn.pipe_fluids_quartz": "Tubo de Fluido de Quartzo",
+  "block.buildcraftreborn.pipe_fluids_gold": "Tubo de Fluido de Ouro",
+  "block.buildcraftreborn.pipe_fluids_iron": "Tubo de Fluido de Ferro",
+  "block.buildcraftreborn.pipe_fluids_diamond": "Tubo de Fluido de Diamante",
+  "block.buildcraftreborn.pipe_fluids_clay": "Tubo de Fluido de Argila",
+  "block.buildcraftreborn.pipe_fluids_void": "Tubo de Fluido Vazio"
 }
