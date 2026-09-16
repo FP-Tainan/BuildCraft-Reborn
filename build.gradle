@@ -25,9 +25,8 @@ dependencies {
     implementation "net.fabricmc:fabric-loader:${project.loader_version}"
     implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
 
-    // Biblioteca de energia CW/MV/RA, empacotada dentro do jar do BuildCraft Reborn
+    // Biblioteca de energia CW/MV/RA: mod separado, precisa estar na pasta mods junto com este
     implementation project(':craft-energy')
-    include project(':craft-energy')
 }
 
 processResources {
